@@ -1,214 +1,158 @@
-"""Your ledger. This is the whole assignment.
+"""The book: ingestion, idempotency, and answering questions about history.
 
-`client.py` handles the network and hands you one event at a time. You return
-the journal legs it produced. Some events correctly produce none: return an
-empty list, not None-as-an-accident.
+`client.py` hands one event in and takes its journal legs back. Everything about
+*what* the legs are lives in `ledger.py`; this module is about *when* they are
+produced and how the same question can be asked of the past.
 
-One event type is implemented as a worked example. The rest raise, with the rule
-from PROTOCOL.md quoted in the message, so a practice run tells you exactly what
-is left rather than silently scoring zero.
+The design decision that shapes the rest is that **state is a fold of the
+delivery-ordered event log**. Every first delivery is appended to a log, and
+the live ledger is that log applied incrementally. Three requirements fall out
+of it rather than being bolted on:
 
-Two things to get right before anything else:
+  * **As-of checkpoints.** Some checkpoint requests ask what the book looked
+    like once a named event had been processed "and nothing after it". Current
+    state cannot answer that; a log prefix replayed into a fresh ledger can.
+  * **Idempotency.** A duplicate never reaches the ledger, so a re-delivery
+    cannot move a balance.
+  * **The replay.** At an unannounced point the server drops the connection and
+    rewinds several hundred events. Since those arrive as duplicates, an
+    idempotent consumer notices nothing.
 
-  * Use `Decimal`, never `float`. Money here does not always divide evenly, and
-    a float implementation will disagree with us by a cent in places you will
-    struggle to find.
-  * Key balances by (customer, account), not by account. At least one event
-    moves money between two customers on the same account, and an
-    account-level book shows nothing wrong at all.
+Nothing here is allowed to stop the stream. The single most expensive mistake
+available is crashing: one event refused costs one event, and a server that
+stops misses everything after it.
 """
 from __future__ import annotations
 
 from collections import defaultdict
-from decimal import Decimal, ROUND_HALF_UP
+from decimal import InvalidOperation
+from typing import Optional
 
-D = Decimal
-ZERO = D("0.00")
-
-
-def money(x: Decimal) -> Decimal:
-    """2 decimal places, half away from zero. Not round(), which is half-even."""
-    return x.quantize(D("0.01"), rounding=ROUND_HALF_UP)
+import validate
+from ledger import Ledger, Rejected
 
 
-def leg(account: str, customer_id: str, debit=ZERO, credit=ZERO) -> dict:
-    return {"account": account, "customer_id": customer_id,
-            "debit": str(money(D(debit))), "credit": str(money(D(credit)))}
+def _dispatch(state: Ledger, ev: dict, counters: Optional[dict] = None) -> list[dict]:
+    """Apply one event to a ledger and return its legs.
+
+    Deterministic in (ledger state, event), which is what makes replay produce
+    exactly the state the live pass produced.
+    """
+    def count(bucket: str, key: str) -> None:
+        if counters is not None:
+            counters[bucket][key] += 1
+
+    event_id, etype = ev["event_id"], ev["type"]
+
+    # The defect hunt. Detectors count always and reject only once armed.
+    for name, reason in validate.inspect(ev, state):
+        count("detected", f"{etype}/{name}")
+        if name in validate.ARMED:
+            count("rejected", f"{etype}: {name}")
+            return []
+
+    handler = getattr(state, "on_" + etype, None)
+    if handler is None:
+        count("unhandled", etype)
+        return []
+
+    try:
+        legs = handler(ev["payload"], ev) or []
+        return state.post(event_id, legs)
+    except Rejected as exc:
+        # Refused on its own merits. No legs, and the book is as it was.
+        state.rollback(event_id)
+        count("rejected", f"{etype}: {exc}")
+        return []
+    except (KeyError, IndexError, InvalidOperation, TypeError, ValueError) as exc:
+        # A payload that will not parse. Reject it, carry on.
+        state.rollback(event_id)
+        count("malformed", f"{etype}: {type(exc).__name__} {exc}")
+        return []
+    except Exception as exc:                       # noqa: BLE001 - never stop the stream
+        state.rollback(event_id)
+        count("errors", f"{etype}: {type(exc).__name__} {exc}")
+        return []
 
 
 class Book:
     def __init__(self) -> None:
-        # balances[(customer_id, account)] = debit-positive balance
-        self.balances: dict[tuple[str, str], Decimal] = defaultdict(lambda: ZERO)
-        self.seen: set[str] = set()
-        # What you have not written yet. An unimplemented handler must not stop
-        # the run: the client keeps consuming and tells you the list at the end.
-        self.todo: dict[str, int] = defaultdict(int)
+        self.state = Ledger()
+        self.log: list[dict] = []                 # first deliveries, in order
+        self.legs: dict[str, list[dict]] = {}     # what we answered, per event
+        self.counters = {b: defaultdict(int) for b in
+                         ("applied", "detected", "rejected", "malformed",
+                          "unhandled", "errors")}
+        self.duplicates = 0
 
-    # -----------------------------------------------------------------------
+    # -- ingestion -----------------------------------------------------------
     def apply(self, ev: dict) -> list[dict]:
-        """Post one event and return its legs.
-
-        The same event_id can arrive more than once, and the server will
-        deliberately re-send several hundred events partway through the run.
-        Posting twice is the single most expensive mistake available here.
-        """
-        eid = ev["event_id"]
-        if eid in self.seen:
-            return []                      # already posted; nothing new happens
-        self.seen.add(eid)
-
-        handler = getattr(self, "on_" + ev["type"], None)
-        if handler is None:
-            self.todo[ev["type"]] += 1
-            return []
+        """Post one event and return its legs. Safe to call with anything."""
         try:
-            legs = handler(ev["payload"], ev) or []
-        except NotImplementedError:
-            # Not written yet. Submit nothing for it and carry on, so one
-            # missing handler costs you that event rather than the whole run.
-            self.todo[ev["type"]] += 1
+            validate.structural(ev)
+        except validate.Malformed as exc:
+            eid = (ev or {}).get("event_id") if isinstance(ev, dict) else None
+            self.counters["malformed"][f"structural: {exc}"] += 1
+            if eid:
+                self.legs.setdefault(eid, [])
             return []
-        except Rejected:
-            # An event you refuse still gets a submission, with no legs, and it
-            # must leave your book exactly as it was.
-            return []
-        self._post(legs)
+
+        event_id = ev["event_id"]
+        if event_id in self.legs:
+            # An id we have seen is an id we have seen, whatever we did with
+            # it. Re-delivery must not move a balance.
+            self.duplicates += 1
+            return self.legs[event_id]
+
+        self.log.append(ev)
+        legs = _dispatch(self.state, ev, self.counters)
+        self.counters["applied"][ev["type"]] += 1
+        self.legs[event_id] = legs
         return legs
 
-    def _post(self, legs: list[dict]) -> None:
-        dr = sum(D(l["debit"]) for l in legs)
-        cr = sum(D(l["credit"]) for l in legs)
-        if money(dr) != money(cr):
-            raise AssertionError(f"unbalanced: dr {dr} cr {cr}")
-        for l in legs:
-            self.balances[(l["customer_id"], l["account"])] += (
-                D(l["debit"]) - D(l["credit"]))
+    def seen(self, event_id: str) -> bool:
+        return event_id in self.legs
 
-    # -- worked example -----------------------------------------------------
-    def on_deposit(self, p: dict, ev: dict) -> list[dict]:
-        """Cash arrives, and the firm owes the customer more.
+    # -- reporting -----------------------------------------------------------
+    def snapshot(self, as_of_event_id: Optional[str] = None) -> dict:
+        """The state a checkpoint wants.
 
-            Dr 1100 amount        Cr 2010 amount
+        With `as_of_event_id`, the state as it stood once that event had been
+        processed in delivery order and nothing after it - so a backdated event
+        that arrived later is not in the answer.
         """
-        amount = money(D(p["amount"]))
-        cid = p["customer_id"]
-        return [leg("1100", cid, debit=amount),
-                leg("2010", cid, credit=amount)]
+        if not as_of_event_id:
+            return self.state.snapshot()
 
-    # -- yours --------------------------------------------------------------
-    def on_fee_charged(self, p, ev):
-        raise NotImplementedError("Dr 2010 amount / Cr 1100 amount")
+        cut = None
+        for i, ev in enumerate(self.log):
+            if ev["event_id"] == as_of_event_id:
+                cut = i + 1
+                break
+        if cut is None:
+            # Asked about an event we never received. Current state is the
+            # closest honest answer; answering nothing scores nothing.
+            self.counters["errors"][f"as_of unknown: {as_of_event_id}"] += 1
+            return self.state.snapshot()
 
-    def on_fee_refund(self, p, ev):
-        raise NotImplementedError(
-            "Dr 1100 / Cr 2010. The amount is NOT in this payload: look it up "
-            "from the fee_charged event named by refunds_source_id")
+        past = Ledger()
+        for ev in self.log[:cut]:
+            _dispatch(past, ev)
+        return past.snapshot()
 
-    def on_interest_credited(self, p, ev):
-        raise NotImplementedError(
-            "Dr 1100 gross / Cr 2010 customer_share / Cr 4200 the remainder")
+    def replay_state(self, upto: Optional[int] = None) -> Ledger:
+        """A fresh ledger folded from the log. Used by the offline harness to
+        prove that incremental state and replayed state agree."""
+        past = Ledger()
+        for ev in self.log[:upto]:
+            _dispatch(past, ev)
+        return past
 
-    def on_transfer_between_customers(self, p, ev):
-        raise NotImplementedError(
-            "Dr 2010 (from_customer_id) / Cr 2010 (to_customer_id). Both legs "
-            "land on 2010, so the ACCOUNT nets to zero")
-
-    def on_fx_deposit(self, p, ev):
-        raise NotImplementedError(
-            "Dr 1100 usd_at_market_rate / Cr 2010 usd_at_customer_rate / "
-            "Cr 4100 the difference")
-
-    def on_withdrawal_requested(self, p, ev):
-        raise NotImplementedError("Dr 2010 amount / Cr 2300 amount")
-
-    def on_withdrawal_settled(self, p, ev):
-        raise NotImplementedError(
-            "Dr 2300 / Cr 1100. Look up the amount from the request")
-
-    def on_withdrawal_rejected(self, p, ev):
-        raise NotImplementedError("Dr 2300 / Cr 2010")
-
-    def on_order_placed(self, p, ev):
-        raise NotImplementedError(
-            "No legs. A placement moves no money: it creates a hold, which is "
-            "reported at checkpoints and never posted")
-
-    def on_order_partially_filled(self, p, ev):
-        return self.on_order_filled(p, ev)
-
-    def on_order_filled(self, p, ev):
-        raise NotImplementedError(
-            "buy:  Dr 2010 principal+commission, Dr 1200 principal / "
-            "Cr 2350 principal, Cr 2100 principal, Cr 4000 commission. "
-            "sell: Dr 1150 principal, Dr 2100 FIFO cost / Cr 2010 "
-            "principal-commission-reg, Cr 1200 cost, Cr 4000 commission, "
-            "Cr 2400 reg. Cash does NOT move on the trade date")
-
-    def on_trade_settled(self, p, ev):
-        raise NotImplementedError(
-            "buy: Dr 2350 / Cr 1100.  sell: Dr 1100 / Cr 1150")
-
-    def on_order_cancelled(self, p, ev):
-        raise NotImplementedError("No legs. Release the remaining hold")
-
-    def on_order_rejected(self, p, ev):
-        return self.on_order_cancelled(p, ev)
-
-    def on_dividend_cash(self, p, ev):
-        raise NotImplementedError(
-            "Dr 1100 net / Cr 2010 net. Tax is withheld at source, so raise no "
-            "payable")
-
-    def on_dividend_reinvested(self, p, ev):
-        raise NotImplementedError(
-            "Dr 1200 net / Cr 2100 net, and add a lot. Cash is not involved")
-
-    def on_stock_split(self, p, ev):
-        raise NotImplementedError(
-            "No legs. Quantity scales; total cost does not change")
-
-    def on_symbol_change(self, p, ev):
-        raise NotImplementedError("No legs. Re-key the holding")
-
-    def on_reversal(self, p, ev):
-        raise NotImplementedError(
-            "Post the exact inverse of the original's legs, and undo its effect "
-            "on your LOT BOOK too. A reversed buy whose lot you leave behind "
-            "balances perfectly and corrupts every later cost basis")
-
-    # -- reporting ----------------------------------------------------------
-    def snapshot(self) -> dict:
-        """What a checkpoint_request wants: your whole state, right now.
-
-        Report every account you have ever posted to, including any that have
-        netted back to zero. Trial balance values are debit-positive, so
-        liabilities carry a negative sign.
-        """
-        tb: dict[str, Decimal] = defaultdict(lambda: ZERO)
-        for (_cid, acct), bal in self.balances.items():
-            tb[acct] += bal
-
-        customers: dict[str, dict] = {}
-        for (cid, acct), bal in self.balances.items():
-            c = customers.setdefault(cid, {"wallet_cash": ZERO,
-                                           "cash_hold": ZERO, "positions": {}})
-            if acct == "2010":
-                c["wallet_cash"] += -bal          # a liability, so credit-positive
-
+    def report(self) -> dict:
+        """A run summary: what we handled, refused, and could not read."""
         return {
-            "trial_balance": {a: str(money(v)) for a, v in sorted(tb.items())},
-            "customers": {cid: {"wallet_cash": str(money(c["wallet_cash"])),
-                                "cash_hold": str(money(c["cash_hold"])),
-                                "positions": c["positions"]}
-                          for cid, c in sorted(customers.items())},
+            "events": len(self.log),
+            "duplicates": self.duplicates,
+            **{bucket: dict(sorted(counts.items(), key=lambda kv: -kv[1]))
+               for bucket, counts in self.counters.items()},
         }
-
-
-class Rejected(Exception):
-    """Raise from a handler for an event you refuse to post.
-
-    An oversell, a reversal of something you never received, a payload that
-    will not parse. Rejecting one event and carrying on beats stopping: a
-    server that stalls misses everything after it.
-    """

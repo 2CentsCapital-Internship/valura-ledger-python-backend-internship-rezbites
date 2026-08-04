@@ -1,5 +1,20 @@
 # Ledger Arena: protocol specification
 
+> ## SUPERSEDED - do not implement from this file
+>
+> This snapshot is materially out of date against the served specification at
+> **https://hiring-arena.twocc.in/protocol**, which the note below says wins.
+> It is kept only because it shipped with the kit.
+>
+> What it gets wrong: **11 accounts instead of 20** (no per-broker payables
+> 2411/2412/2413, no 2420, 2430, 4010, 5000, 5010, 5100); **`commission`
+> handed to you in the fill payload** instead of six amounts derived from a
+> broker tariff; **no broker routing**; **no `open_order_routes` or as-of
+> checkpoints**; **no settlement events**; **no systematic defect**; and
+> scoring given as postings 45 / checkpoints 25 rather than **30 / 40**.
+>
+> This implementation follows the live specification. See `NOTES.md`.
+
 > This copy is a snapshot taken when the kit was published. The canonical
 > version is served at **https://hiring-arena.twocc.in/protocol**, and if the
 > two ever disagree, that one wins. Any clarification made in Discord is folded
