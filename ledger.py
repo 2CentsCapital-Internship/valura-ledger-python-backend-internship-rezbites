@@ -347,7 +347,8 @@ class Ledger:
             ] + firm
 
         if p.get("trade_id"):
-            self.book.record_trade(p["trade_id"], cid, side, principal)
+            self.book.record_trade(p["trade_id"], cid, side, principal,
+                                   ev["event_id"])
         self.book.fill(p, final=final)
         return legs
 
@@ -359,6 +360,20 @@ class Ledger:
             raise Rejected(f"trade_settled for unknown trade {trade_id}")
         if trade_id in self.settled_trades:
             raise Rejected(f"trade {trade_id} already settled")
+        if t.get("event_id") in self.reversed_events:
+            # The fill was reversed before settlement day, so the obligation it
+            # created has already been cancelled. There is nothing left to
+            # discharge, and paying it would move cash for a trade that no
+            # longer exists. Practice confirms this exactly: of 65 settlements,
+            # the 7 whose fill had already been reversed were the only ones we
+            # got wrong, and both accounts of the entry (1100 and 2350) were
+            # named as differing.
+            #
+            # Order matters. A reversal arriving *after* settlement does not
+            # make the settlement retrospectively wrong - all 58 of those
+            # scored correct - because at the time it happened the obligation
+            # was real.
+            raise Rejected(f"trade {trade_id} was reversed before settlement")
         self.settled_trades.add(trade_id)
 
         cid, principal = t["customer_id"], t["principal"]

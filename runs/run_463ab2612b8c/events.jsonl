@@ -1,0 +1,807 @@
+{"event_id": "evt_42ca167852d4fbef", "type": "deposit", "payload": {"customer_id": "CUST-1000", "amount": "25000.00"}, "offset": 0}
+{"event_id": "evt_5839dd17e4130ddb", "type": "deposit", "payload": {"customer_id": "CUST-1001", "amount": "25000.00"}, "offset": 1}
+{"event_id": "evt_4e7cd01fab60e48b", "type": "deposit", "payload": {"customer_id": "CUST-1002", "amount": "25000.00"}, "offset": 2}
+{"event_id": "evt_c9512a1fc9835be2", "type": "deposit", "payload": {"customer_id": "CUST-1003", "amount": "25000.00"}, "offset": 3}
+{"event_id": "evt_f40f8ec9662dc606", "type": "deposit", "payload": {"customer_id": "CUST-1004", "amount": "25000.00"}, "offset": 4}
+{"event_id": "evt_40b175b1610cd7c6", "type": "deposit", "payload": {"customer_id": "CUST-1005", "amount": "25000.00"}, "offset": 5}
+{"event_id": "evt_3485bd57f4b41198", "type": "deposit", "payload": {"customer_id": "CUST-1006", "amount": "25000.00"}, "offset": 6}
+{"event_id": "evt_ff647556a56512e7", "type": "deposit", "payload": {"customer_id": "CUST-1007", "amount": "25000.00"}, "offset": 7}
+{"event_id": "evt_99c264974fabfc8b", "type": "deposit", "payload": {"customer_id": "CUST-1008", "amount": "25000.00"}, "offset": 8}
+{"event_id": "evt_4831b809d046ec22", "type": "deposit", "payload": {"customer_id": "CUST-1009", "amount": "25000.00"}, "offset": 9}
+{"event_id": "evt_ebfffdc9dafe8186", "type": "deposit", "payload": {"customer_id": "CUST-1010", "amount": "25000.00"}, "offset": 10}
+{"event_id": "evt_ea48c1e70654866a", "type": "deposit", "payload": {"customer_id": "CUST-1011", "amount": "25000.00"}, "offset": 11}
+{"event_id": "evt_5c8c47c95c0e3ce7", "type": "order_placed", "payload": {"order_id": "ord_5c8c47c95c0e", "customer_id": "CUST-1009", "side": "buy", "symbol": "ACME", "quantity": "16", "limit_price": "169.07", "asset_class": "equity", "est_charges": "8.00"}, "offset": 12}
+{"event_id": "evt_daf455b1ce6325bb", "type": "deposit", "payload": {"customer_id": "CUST-1004", "amount": "1542.90"}, "offset": 13}
+{"event_id": "evt_02cc45072be01305", "type": "order_partially_filled", "payload": {"order_id": "ord_5c8c47c95c0e", "customer_id": "CUST-1009", "side": "buy", "symbol": "ACME", "quantity": "8", "price": "167.11", "principal": "1336.88", "asset_class": "equity", "broker": "BRK-B", "partner_rate": "0.25", "trade_id": "evt_02cc45072be01305"}, "offset": 14}
+{"event_id": "evt_4de78a8689893570", "type": "deposit", "payload": {"customer_id": "CUST-1008", "amount": "3789.90"}, "offset": 15}
+{"event_id": "evt_a11bc6f1a0caea44", "type": "trade_settled", "payload": {"trade_id": "evt_02cc45072be01305"}, "offset": 16}
+{"event_id": "evt_c1d164e3ad41784e", "type": "deposit", "payload": {"customer_id": "CUST-1002", "amount": "7334.04"}, "offset": 17}
+{"event_id": "evt_c43f7e71741fbd67", "type": "order_placed", "payload": {"order_id": "ord_c43f7e71741f", "customer_id": "CUST-1004", "side": "buy", "symbol": "CRUX", "quantity": "56", "limit_price": "388.62", "asset_class": "etf", "est_charges": "70.00"}, "offset": 18}
+{"event_id": "evt_7d80ef87cf35c2d3", "type": "order_filled", "payload": {"order_id": "ord_5c8c47c95c0e", "customer_id": "CUST-1009", "side": "buy", "symbol": "ACME", "quantity": "8", "price": "168.51", "principal": "1348.08", "asset_class": "equity", "broker": "BRK-B", "partner_rate": "0.25", "trade_id": "evt_7d80ef87cf35c2d3"}, "offset": 19}
+{"event_id": "evt_76586ffb7aa6fa95", "type": "order_placed", "payload": {"order_id": "ord_76586ffb7aa6", "customer_id": "CUST-1004", "side": "buy", "symbol": "DELT", "quantity": "40", "limit_price": "288.02", "asset_class": "bond", "est_charges": "33.00"}, "offset": 20}
+{"event_id": "evt_53b9329eb6e7da87", "type": "trade_settled", "payload": {"trade_id": "evt_7d80ef87cf35c2d3"}, "offset": 21}
+{"event_id": "evt_1fe7ffa096972b8c", "type": "order_partially_filled", "payload": {"order_id": "ord_76586ffb7aa6", "customer_id": "CUST-1004", "side": "buy", "symbol": "DELT", "quantity": "10", "price": "361.25", "principal": "3612.50", "asset_class": "bond", "broker": "BRK-B", "partner_rate": "0.30", "trade_id": "evt_1fe7ffa096972b8c"}, "offset": 22}
+{"event_id": "evt_edec273ee283dda6", "type": "trade_settled", "payload": {"trade_id": "evt_1fe7ffa096972b8c"}, "offset": 23}
+{"event_id": "evt_74090e641ba1c2ae", "type": "deposit", "payload": {"customer_id": "CUST-1010", "amount": "12749.60"}, "offset": 24}
+{"event_id": "evt_19ad3a5da51f814a", "type": "order_placed", "payload": {"order_id": "ord_19ad3a5da51f", "customer_id": "CUST-1010", "side": "buy", "symbol": "JUNO", "quantity": "25", "limit_price": "273.22", "asset_class": "equity", "est_charges": "20.00"}, "offset": 25}
+{"event_id": "evt_ecffd0bac556a10d", "type": "order_placed", "payload": {"order_id": "ord_ecffd0bac556", "customer_id": "CUST-1004", "side": "sell", "symbol": "DELT", "quantity": "2.5", "limit_price": "361.29", "asset_class": "bond", "est_charges": "4.00"}, "offset": 26}
+{"event_id": "evt_5602f928a2546078", "type": "order_partially_filled", "payload": {"order_id": "ord_ecffd0bac556", "customer_id": "CUST-1004", "side": "sell", "symbol": "DELT", "quantity": "1.25", "price": "367.14", "principal": "458.93", "asset_class": "bond", "broker": "BRK-C", "partner_rate": "0.30", "trade_id": "evt_5602f928a2546078"}, "offset": 27}
+{"event_id": "evt_254703b422fc4e78", "type": "deposit", "payload": {"customer_id": "CUST-1004", "amount": "6780.02"}, "offset": 28}
+{"event_id": "evt_d816db80bf59f637", "type": "trade_settled", "payload": {"trade_id": "evt_5602f928a2546078"}, "offset": 29}
+{"event_id": "evt_8396b0a5d3903beb", "type": "order_filled", "payload": {"order_id": "ord_76586ffb7aa6", "customer_id": "CUST-1004", "side": "buy", "symbol": "DELT", "quantity": "30", "price": "282.49", "principal": "8474.70", "asset_class": "bond", "broker": "BRK-B", "partner_rate": "0.30", "trade_id": "evt_8396b0a5d3903beb"}, "offset": 30}
+{"event_id": "evt_45e60cd797a79ef7", "type": "deposit", "payload": {"customer_id": "CUST-1005", "amount": "16412.06"}, "offset": 31}
+{"event_id": "evt_3650d68b5404e865", "type": "deposit", "payload": {"customer_id": "CUST-1008", "amount": "14362.22"}, "offset": 32}
+{"event_id": "evt_082bda66b568e2af", "type": "order_partially_filled", "payload": {"order_id": "ord_c43f7e71741f", "customer_id": "CUST-1004", "side": "buy", "symbol": "CRUX", "quantity": "28", "price": "386.48", "principal": "10821.44", "asset_class": "etf", "broker": "BRK-A", "partner_rate": "0.25", "trade_id": "evt_082bda66b568e2af"}, "offset": 33}
+{"event_id": "evt_6e73454f11ee3fe9", "type": "order_placed", "payload": {"order_id": "ord_6e73454f11ee", "customer_id": "CUST-1010", "side": "buy", "symbol": "IONX", "quantity": "1", "limit_price": "42.54", "asset_class": "bond", "est_charges": "1.00"}, "offset": 34}
+{"event_id": "evt_ef0359b1fb44ebd2", "type": "trade_settled", "payload": {"trade_id": "evt_8396b0a5d3903beb"}, "offset": 35}
+{"event_id": "evt_63cded3e6d407113", "type": "trade_settled", "payload": {"trade_id": "evt_082bda66b568e2af"}, "offset": 36}
+{"event_id": "evt_81718b40dc9b3671", "type": "deposit", "payload": {"customer_id": "CUST-1000", "amount": "18498.88"}, "offset": 37}
+{"event_id": "evt_5032b9859c5740c8", "type": "order_placed", "payload": {"order_id": "ord_5032b9859c57", "customer_id": "CUST-1005", "side": "buy", "symbol": "JUNO", "quantity": "5", "limit_price": "29.01", "asset_class": "equity", "est_charges": "2.00"}, "offset": 38}
+{"event_id": "evt_763efbce831809da", "type": "order_placed", "payload": {"order_id": "ord_763efbce8318", "customer_id": "CUST-1003", "side": "buy", "symbol": "JUNO", "quantity": "38", "limit_price": "350.34", "asset_class": "equity", "est_charges": "38.00"}, "offset": 39}
+{"event_id": "evt_c80bc79a0299a43d", "type": "order_partially_filled", "payload": {"order_id": "ord_19ad3a5da51f", "customer_id": "CUST-1010", "side": "buy", "symbol": "JUNO", "quantity": "10", "price": "483.75", "principal": "4837.50", "asset_class": "equity", "broker": "BRK-B", "partner_rate": "0.50", "trade_id": "evt_c80bc79a0299a43d"}, "offset": 40}
+{"event_id": "evt_3ba49d996a307912", "type": "order_placed", "payload": {"order_id": "ord_3ba49d996a30", "customer_id": "CUST-1011", "side": "buy", "symbol": "HELI", "quantity": "44", "limit_price": "39.06", "asset_class": "etf", "est_charges": "6.00"}, "offset": 41}
+{"event_id": "evt_8e0961525b512918", "type": "order_partially_filled", "payload": {"order_id": "ord_19ad3a5da51f", "customer_id": "CUST-1010", "side": "buy", "symbol": "JUNO", "quantity": "10", "price": "338.75", "principal": "3387.50", "asset_class": "equity", "broker": "BRK-B", "partner_rate": "0.50", "trade_id": "evt_8e0961525b512918"}, "offset": 42}
+{"event_id": "evt_de39280ebf9fd0b5", "type": "order_filled", "payload": {"order_id": "ord_5032b9859c57", "customer_id": "CUST-1005", "side": "buy", "symbol": "JUNO", "quantity": "5", "price": "677.50", "principal": "3387.50", "asset_class": "equity", "broker": "BRK-A", "partner_rate": "0.35", "trade_id": "evt_de39280ebf9fd0b5"}, "offset": 43}
+{"event_id": "evt_fad4a684267770cd", "type": "order_partially_filled", "payload": {"order_id": "ord_19ad3a5da51f", "customer_id": "CUST-1010", "side": "buy", "symbol": "JUNO", "quantity": "2.5", "price": "273.25", "principal": "683.13", "asset_class": "equity", "broker": "BRK-B", "partner_rate": "0.50", "trade_id": "evt_fad4a684267770cd"}, "offset": 44}
+{"event_id": "evt_00f6bb4d4bc92293", "type": "deposit", "payload": {"customer_id": "CUST-1000", "amount": "17402.31"}, "offset": 45}
+{"event_id": "evt_9e330483dc368279", "type": "order_placed", "payload": {"order_id": "ord_9e330483dc36", "customer_id": "CUST-1001", "side": "buy", "symbol": "LUMA", "quantity": "41", "limit_price": "82.13", "asset_class": "etf", "est_charges": "11.00"}, "offset": 46}
+{"event_id": "evt_a4d642e94082968e", "type": "trade_settled", "payload": {"trade_id": "evt_c80bc79a0299a43d"}, "offset": 47}
+{"event_id": "evt_635e1feef8e47c5b", "type": "trade_settled", "payload": {"trade_id": "evt_8e0961525b512918"}, "offset": 48}
+{"event_id": "evt_6e3cdd13719bb214", "type": "deposit", "payload": {"customer_id": "CUST-1006", "amount": "17179.16"}, "offset": 49}
+{"event_id": "evt_1613ec5ebedb8405", "type": "deposit", "payload": {"customer_id": "CUST-1006", "amount": "13634.54"}, "offset": 50}
+{"event_id": "evt_e94e76c9f474c6e1", "type": "deposit", "payload": {"customer_id": "CUST-1006", "amount": "5621.52"}, "offset": 51}
+{"event_id": "evt_45db68b1858a333a", "type": "trade_settled", "payload": {"trade_id": "evt_de39280ebf9fd0b5"}, "offset": 52}
+{"event_id": "evt_4e21321904988815", "type": "order_partially_filled", "payload": {"order_id": "ord_763efbce8318", "customer_id": "CUST-1003", "side": "buy", "symbol": "JUNO", "quantity": "10", "price": "198.75", "principal": "1987.50", "asset_class": "equity", "broker": "BRK-B", "partner_rate": "0.35", "trade_id": "evt_4e21321904988815"}, "offset": 53}
+{"event_id": "evt_66fdde61398dfa58", "type": "order_partially_filled", "payload": {"order_id": "ord_c43f7e71741f", "customer_id": "CUST-1004", "side": "buy", "symbol": "CRUX", "quantity": "10", "price": "238.75", "principal": "2387.50", "asset_class": "etf", "broker": "BRK-A", "partner_rate": "0.25", "trade_id": "evt_66fdde61398dfa58"}, "offset": 54}
+{"event_id": "evt_60303bed8b0200fc", "type": "deposit", "payload": {"customer_id": "CUST-1010", "amount": "16401.32"}, "offset": 55}
+{"event_id": "evt_ba29b3c0ca222a5c", "type": "trade_settled", "payload": {"trade_id": "evt_fad4a684267770cd"}, "offset": 56}
+{"event_id": "evt_77cef7d2efc5be46", "type": "deposit", "payload": {"customer_id": "CUST-1011", "amount": "2568.52"}, "offset": 57}
+{"event_id": "evt_c617f068ce635dba", "type": "trade_settled", "payload": {"trade_id": "evt_4e21321904988815"}, "offset": 58}
+{"event_id": "evt_b66c2253412214c0", "type": "deposit", "payload": {"customer_id": "CUST-1010", "amount": "11968.40"}, "offset": 59}
+{"event_id": "evt_fbd0b8ab2b5815f7", "type": "deposit", "payload": {"customer_id": "CUST-1007", "amount": "18421.44"}, "offset": 60}
+{"event_id": "evt_f5fd47bba725416b", "type": "order_placed", "payload": {"order_id": "ord_f5fd47bba725", "customer_id": "CUST-1001", "side": "buy", "symbol": "JUNO", "quantity": "3", "limit_price": "32.60", "asset_class": "equity", "est_charges": "2.00"}, "offset": 61}
+{"event_id": "evt_f617ddec45231438", "type": "deposit", "payload": {"customer_id": "CUST-1002", "amount": "7879.52"}, "offset": 62}
+{"event_id": "evt_aec6ff046201006c", "type": "order_filled", "payload": {"order_id": "ord_6e73454f11ee", "customer_id": "CUST-1010", "side": "buy", "symbol": "IONX", "quantity": "1", "price": "43.79", "principal": "43.79", "asset_class": "bond", "broker": "BRK-C", "partner_rate": "0.30", "trade_id": "evt_aec6ff046201006c"}, "offset": 63}
+{"event_id": "evt_9121bc4ce6749730", "type": "order_filled", "payload": {"order_id": "ord_19ad3a5da51f", "customer_id": "CUST-1010", "side": "buy", "symbol": "JUNO", "quantity": "2.5", "price": "271.58", "principal": "678.95", "asset_class": "equity", "broker": "BRK-B", "partner_rate": "0.50", "trade_id": "evt_9121bc4ce6749730"}, "offset": 64}
+{"event_id": "evt_d78c6a4eb1648279", "type": "deposit", "payload": {"customer_id": "CUST-1004", "amount": "10708.51"}, "offset": 65}
+{"event_id": "evt_e767866ada3af833", "type": "deposit", "payload": {"customer_id": "CUST-1003", "amount": "11960.05"}, "offset": 66}
+{"event_id": "evt_0de4458c4ac71e88", "type": "trade_settled", "payload": {"trade_id": "evt_66fdde61398dfa58"}, "offset": 67}
+{"event_id": "evt_9c16086762392e71", "type": "trade_settled", "payload": {"trade_id": "evt_aec6ff046201006c"}, "offset": 68}
+{"event_id": "evt_8f1f5bf7217b9528", "type": "trade_settled", "payload": {"trade_id": "evt_9121bc4ce6749730"}, "offset": 69}
+{"event_id": "evt_ddec742376226a18", "type": "order_filled", "payload": {"order_id": "ord_ecffd0bac556", "customer_id": "CUST-1004", "side": "sell", "symbol": "DELT", "quantity": "1.25", "price": "368.66", "principal": "460.83", "asset_class": "bond", "broker": "BRK-C", "partner_rate": "0.30", "trade_id": "evt_ddec742376226a18"}, "offset": 70}
+{"event_id": "evt_4091afaed5dc272f", "type": "trade_settled", "payload": {"trade_id": "evt_ddec742376226a18"}, "offset": 71}
+{"event_id": "evt_945aabb14d9ef444", "type": "order_placed", "payload": {"order_id": "ord_945aabb14d9e", "customer_id": "CUST-1009", "side": "buy", "symbol": "LUMA", "quantity": "2", "limit_price": "29.21", "asset_class": "etf", "est_charges": "1.00"}, "offset": 72}
+{"event_id": "evt_1154c4becad44780", "type": "order_partially_filled", "payload": {"order_id": "ord_945aabb14d9e", "customer_id": "CUST-1009", "side": "buy", "symbol": "LUMA", "quantity": "1", "price": "28.58", "principal": "28.58", "asset_class": "etf", "broker": "BRK-C", "partner_rate": "0.30", "trade_id": "evt_1154c4becad44780"}, "offset": 73}
+{"event_id": "evt_9b270800e3e9a8c0", "type": "order_placed", "payload": {"order_id": "ord_9b270800e3e9", "customer_id": "CUST-1003", "side": "sell", "symbol": "JUNO", "quantity": "2.8", "limit_price": "54.58", "asset_class": "equity", "est_charges": "2.00"}, "offset": 74}
+{"event_id": "evt_c23e39b596e2a0b5", "type": "order_filled", "payload": {"order_id": "ord_c43f7e71741f", "customer_id": "CUST-1004", "side": "buy", "symbol": "CRUX", "quantity": "18", "price": "394.14", "principal": "7094.52", "asset_class": "etf", "broker": "BRK-A", "partner_rate": "0.25", "trade_id": "evt_c23e39b596e2a0b5"}, "offset": 75}
+{"event_id": "evt_f78a7c36de4449e1", "type": "order_filled", "payload": {"order_id": "ord_9b270800e3e9", "customer_id": "CUST-1003", "side": "sell", "symbol": "JUNO", "quantity": "2.8", "price": "55.92", "principal": "156.58", "asset_class": "equity", "broker": "BRK-A", "partner_rate": "0.35", "trade_id": "evt_f78a7c36de4449e1"}, "offset": 76}
+{"event_id": "evt_d99d787bd3bdccda", "type": "order_placed", "payload": {"order_id": "ord_d99d787bd3bd", "customer_id": "CUST-1011", "side": "buy", "symbol": "HELI", "quantity": "33", "limit_price": "268.45", "asset_class": "etf", "est_charges": "29.00"}, "offset": 77}
+{"event_id": "evt_0323269e45a420c5", "type": "order_partially_filled", "payload": {"order_id": "ord_763efbce8318", "customer_id": "CUST-1003", "side": "buy", "symbol": "JUNO", "quantity": "10", "price": "173.75", "principal": "1737.50", "asset_class": "equity", "broker": "BRK-B", "partner_rate": "0.35", "trade_id": "evt_0323269e45a420c5"}, "offset": 78}
+{"event_id": "evt_79fe85d519fe334a", "type": "deposit", "payload": {"customer_id": "CUST-1000", "amount": "1140.26"}, "offset": 79}
+{"event_id": "evt_76d823639e4d5652", "type": "fee_charged", "payload": {"customer_id": "CUST-1008", "amount": "29.17"}, "offset": 80}
+{"event_id": "evt_87b9a371b854de4c", "type": "broker_fees_settled", "payload": {"customer_id": "CUST-1004", "broker": "BRK-A"}, "offset": 81}
+{"event_id": "evt_9d0c2f02375ffb4a", "type": "trade_settled", "payload": {"trade_id": "evt_1154c4becad44780"}, "offset": 82}
+{"event_id": "evt_5dea2c8ea34bcd31", "type": "fx_deposit", "payload": {"customer_id": "CUST-1003", "currency": "EUR", "amount_foreign": "8607.10", "market_rate": "82.8466", "customer_rate": "83.39", "usd_at_market_rate": "103.89", "usd_at_customer_rate": "103.22"}, "offset": 83}
+{"event_id": "evt_41f7fda646d40947", "type": "fee_charged", "payload": {"customer_id": "CUST-1009", "amount": "20.19"}, "offset": 84}
+{"event_id": "evt_4721e329b591749a", "type": "order_placed", "payload": {"order_id": "ord_4721e329b591", "customer_id": "CUST-1001", "side": "buy", "symbol": "ACME", "quantity": "9", "limit_price": "22.09", "asset_class": "equity", "est_charges": "2.00"}, "offset": 85}
+{"event_id": "evt_5969b2163069f2a4", "type": "order_rejected", "payload": {"order_id": "ord_f5fd47bba725"}, "offset": 86}
+{"event_id": "evt_2519695214974554", "type": "withdrawal_requested", "payload": {"withdrawal_id": "wdr_adbf6d4e1897", "customer_id": "CUST-1008", "amount": "2380.35"}, "offset": 87}
+{"event_id": "evt_9fc16bf1eda716af", "type": "fx_deposit", "payload": {"customer_id": "CUST-1011", "currency": "GBP", "amount_foreign": "8636.55", "market_rate": "22.4864", "customer_rate": "22.56", "usd_at_market_rate": "384.08", "usd_at_customer_rate": "382.83"}, "offset": 88}
+{"event_id": "evt_785950b728eacd53", "type": "withdrawal_settled", "payload": {"withdrawal_id": "wdr_adbf6d4e1897"}, "offset": 89}
+{"event_id": "evt_22b91a1d9b5db379", "type": "transfer_between_customers", "payload": {"from_customer_id": "CUST-1004", "to_customer_id": "CUST-1008", "amount": "1881.26"}, "offset": 90}
+{"event_id": "evt_561ea16f0c9a4a3a", "type": "fx_deposit", "payload": {"customer_id": "CUST-1011", "currency": "INR", "amount_foreign": "4388.19", "market_rate": "56.375", "customer_rate": "56.64", "usd_at_market_rate": "77.84", "usd_at_customer_rate": "77.48"}, "offset": 91}
+{"event_id": "evt_307455ce292127e3", "type": "custodian_fees_settled", "payload": {"customer_id": "CUST-1003"}, "offset": 92}
+{"event_id": "evt_c5e9e66500e3f99d", "type": "broker_fees_settled", "payload": {"customer_id": "CUST-1003", "broker": "BRK-B"}, "offset": 93}
+{"event_id": "evt_117e47f51f3c3dd9", "type": "order_placed", "payload": {"order_id": "ord_117e47f51f3c", "customer_id": "CUST-1000", "side": "buy", "symbol": "ACME", "quantity": "59", "limit_price": "200.61", "asset_class": "equity", "est_charges": "34.00"}, "offset": 94}
+{"event_id": "evt_60e66df6d1427102", "type": "trade_settled", "payload": {"trade_id": "evt_c23e39b596e2a0b5"}, "offset": 95}
+{"event_id": "evt_e6a2dc9b0bf11f7a", "type": "deposit", "payload": {"customer_id": "CUST-1011", "amount": "9665.36"}, "offset": 96}
+{"event_id": "evt_4ee4ae3240737da6", "type": "fx_deposit", "payload": {"customer_id": "CUST-1010", "currency": "INR", "amount_foreign": "5600.58", "market_rate": "53.0829", "customer_rate": "53.26", "usd_at_market_rate": "105.51", "usd_at_customer_rate": "105.16"}, "offset": 97}
+{"event_id": "evt_5c3cbf50774e59c7", "type": "transfer_between_customers", "payload": {"from_customer_id": "CUST-1004", "to_customer_id": "CUST-1003", "amount": "3052.26"}, "offset": 98}
+{"event_id": "evt_4cb628c19a9f767a", "type": "dividend_cash", "payload": {"customer_id": "CUST-1005", "symbol": "JUNO", "gross_amount": "2.10", "withholding_tax": "0.53", "net_amount": "1.57"}, "offset": 99}
+{"event_id": "evt_b5b39c462e32662c", "type": "order_placed", "payload": {"order_id": "ord_b5b39c462e32", "customer_id": "CUST-1000", "side": "buy", "symbol": "CRUX", "quantity": "49", "limit_price": "94.96", "asset_class": "etf", "est_charges": "15.00"}, "offset": 100}
+{"event_id": "evt_4fd6f6f742c8b89a", "type": "interest_credited", "payload": {"customer_id": "CUST-1003", "gross_amount": "286.79", "customer_share": "123.32"}, "offset": 101}
+{"event_id": "evt_f958422713b87c78", "type": "reg_fees_remitted", "payload": {"customer_id": "CUST-1004"}, "offset": 102}
+{"event_id": "evt_027195d9caa8cbde", "type": "dividend_cash", "payload": {"customer_id": "CUST-1003", "symbol": "JUNO", "gross_amount": "11.52", "withholding_tax": "2.88", "net_amount": "8.64"}, "offset": 103}
+{"event_id": "evt_588556e7418e87e5", "type": "fee_charged", "payload": {"customer_id": "CUST-1000", "amount": "5.68"}, "offset": 104}
+{"event_id": "evt_6cddcb5844d56cd3", "type": "fx_deposit", "payload": {"customer_id": "CUST-1008", "currency": "EUR", "amount_foreign": "4305.70", "market_rate": "51.0357", "customer_rate": "51.27", "usd_at_market_rate": "84.37", "usd_at_customer_rate": "83.98"}, "offset": 105}
+{"event_id": "evt_32bc23fd16cca5ec", "type": "deposit", "payload": {"customer_id": "CUST-1009", "amount": "19065.61"}, "offset": 106}
+{"event_id": "evt_707e30fe08c4b951", "type": "fee_refund", "payload": {"customer_id": "CUST-1000", "refunds_source_id": "evt_588556e7418e87e5"}, "offset": 107}
+{"event_id": "evt_257bb53fc1834e6b", "type": "trade_settled", "payload": {"trade_id": "evt_f78a7c36de4449e1"}, "offset": 108}
+{"event_id": "evt_e26513e6d47d4636", "type": "withdrawal_requested", "payload": {"withdrawal_id": "wdr_d4ee61864218", "customer_id": "CUST-1003", "amount": "794.00"}, "offset": 109}
+{"event_id": "evt_6c04f37fd65f8400", "type": "fx_deposit", "payload": {"customer_id": "CUST-1010", "currency": "GBP", "amount_foreign": "2516.42", "market_rate": "63.9415", "customer_rate": "64.26", "usd_at_market_rate": "39.36", "usd_at_customer_rate": "39.16"}, "offset": 110}
+{"event_id": "evt_10d0691921c7c6ec", "type": "transfer_between_customers", "payload": {"from_customer_id": "CUST-1009", "to_customer_id": "CUST-1006", "amount": "3734.12"}, "offset": 111}
+{"event_id": "evt_0b1211e6f1b9100f", "type": "fee_refund", "payload": {"customer_id": "CUST-1009", "refunds_source_id": "evt_41f7fda646d40947"}, "offset": 112}
+{"event_id": "evt_790b8a17fd4bc282", "type": "order_placed", "payload": {"order_id": "ord_790b8a17fd4b", "customer_id": "CUST-1010", "side": "sell", "symbol": "JUNO", "quantity": "18", "limit_price": "233.75", "asset_class": "equity", "est_charges": "12.00"}, "offset": 113}
+{"event_id": "evt_f302b4ea7ae26bdc", "type": "withdrawal_requested", "payload": {"withdrawal_id": "wdr_1a54f15a7b3d", "customer_id": "CUST-1002", "amount": "87.81"}, "offset": 114}
+{"event_id": "evt_15697b53d9afec26", "type": "transfer_between_customers", "payload": {"from_customer_id": "CUST-1006", "to_customer_id": "CUST-1003", "amount": "2891.80"}, "offset": 115}
+{"event_id": "evt_f54bcc804be08f85", "type": "transfer_between_customers", "payload": {"from_customer_id": "CUST-1004", "to_customer_id": "CUST-1006", "amount": "1500.44"}, "offset": 116}
+{"event_id": "evt_988618c5f592dad7", "type": "deposit", "payload": {"customer_id": "CUST-1007", "amount": "8254.11"}, "offset": 117}
+{"event_id": "evt_d621be0d635ae620", "type": "dividend_reinvested", "payload": {"customer_id": "CUST-1010", "symbol": "IONX", "gross_amount": "0.30", "withholding_tax": "0.08", "net_amount": "0.22", "reinvest_price": "230.22", "reinvest_quantity": "0.000956"}, "offset": 118}
+{"event_id": "evt_a333729ba248bbba", "type": "fx_deposit", "payload": {"customer_id": "CUST-1005", "currency": "EUR", "amount_foreign": "5802.34", "market_rate": "87.125", "customer_rate": "87.70", "usd_at_market_rate": "66.60", "usd_at_customer_rate": "66.16"}, "offset": 119}
+{"event_id": "evt_946b08d3cc2b2301", "type": "interest_credited", "payload": {"customer_id": "CUST-1006", "gross_amount": "266.84", "customer_share": "168.11"}, "offset": 120}
+{"event_id": "evt_9ca1457863c7704e", "type": "deposit", "payload": {"customer_id": "CUST-1011", "amount": "6021.84"}, "offset": 121}
+{"event_id": "evt_0ff307c4055c6311", "type": "deposit", "payload": {"customer_id": "CUST-1011", "amount": "10675.14"}, "offset": 122}
+{"event_id": "evt_1c4bb5204f064912", "type": "interest_credited", "payload": {"customer_id": "CUST-1005", "gross_amount": "348.74", "customer_share": "233.66"}, "offset": 123}
+{"event_id": "evt_1c4bb5204f064912", "type": "interest_credited", "payload": {"customer_id": "CUST-1005", "gross_amount": "348.74", "customer_share": "233.66"}, "offset": 124}
+{"event_id": "evt_ac5e6abd0441d8d1", "type": "custodian_fees_settled", "payload": {"customer_id": "CUST-1010"}, "offset": 125}
+{"event_id": "evt_073f41b4d8618b89", "type": "order_partially_filled", "payload": {"order_id": "ord_d99d787bd3bd", "customer_id": "CUST-1011", "side": "buy", "symbol": "HELI", "quantity": "16.5", "price": "263.59", "principal": "4349.24", "asset_class": "etf", "broker": "BRK-A", "partner_rate": "0.35", "trade_id": "evt_073f41b4d8618b89"}, "offset": 126}
+{"event_id": "evt_b6164afb62968cc6", "type": "fee_charged", "payload": {"customer_id": "CUST-1000", "amount": "21.25"}, "offset": 127}
+{"event_id": "evt_f38bb1209238d30e", "type": "dividend_cash", "payload": {"customer_id": "CUST-1004", "symbol": "DELT", "gross_amount": "41.63", "withholding_tax": "10.41", "net_amount": "31.22"}, "offset": 128}
+{"event_id": "evt_7e07141d6254e302", "type": "withdrawal_requested", "payload": {"withdrawal_id": "wdr_202c06dda688", "customer_id": "CUST-1004", "amount": "2870.99"}, "offset": 129}
+{"event_id": "evt_2632634ff54cf4e3", "type": "deposit", "payload": {"customer_id": "CUST-1008", "amount": "14537.26"}, "offset": 130}
+{"event_id": "evt_905e4d04bfa73346", "type": "trade_settled", "payload": {"trade_id": "evt_0323269e45a420c5"}, "offset": 131}
+{"event_id": "evt_1da1b850185c253f", "type": "order_placed", "payload": {"order_id": "ord_1da1b850185c", "customer_id": "CUST-1010", "side": "buy", "symbol": "LUMA", "quantity": "31", "limit_price": "222.00", "asset_class": "etf", "est_charges": "23.00"}, "offset": 132}
+{"event_id": "evt_e9f97a68373a195e", "type": "fee_refund", "payload": {"customer_id": "CUST-1000", "refunds_source_id": "evt_b6164afb62968cc6"}, "offset": 133}
+{"event_id": "evt_24ab18087d6e3025", "type": "fx_deposit", "payload": {"customer_id": "CUST-1006", "currency": "EUR", "amount_foreign": "8468.14", "market_rate": "49.0829", "customer_rate": "49.18", "usd_at_market_rate": "172.53", "usd_at_customer_rate": "172.19"}, "offset": 134}
+{"event_id": "evt_ace797b90b2b6d81", "type": "fx_deposit", "payload": {"customer_id": "CUST-1004", "currency": "AED", "amount_foreign": "4802.84", "market_rate": "7.0542", "customer_rate": "7.09", "usd_at_market_rate": "680.85", "usd_at_customer_rate": "677.41"}, "offset": 135}
+{"event_id": "evt_c7faad3a9a424842", "type": "transfer_between_customers", "payload": {"from_customer_id": "CUST-1003", "to_customer_id": "CUST-1011", "amount": "2974.88"}, "offset": 136}
+{"event_id": "evt_13e09013e40733bb", "type": "withdrawal_settled", "payload": {"withdrawal_id": "wdr_d4ee61864218"}, "offset": 137}
+{"event_id": "evt_2f3cb5a30eb74b36", "type": "deposit", "payload": {"customer_id": "CUST-1008", "amount": "637.04"}, "offset": 138}
+{"event_id": "evt_87acbb70dbf82716", "type": "fee_charged", "payload": {"customer_id": "CUST-1007", "amount": "24.56"}, "offset": 139}
+{"event_id": "evt_67dfec94ea7011dc", "type": "fee_charged", "payload": {"customer_id": "CUST-1003", "amount": "18.41"}, "offset": 140}
+{"event_id": "evt_f419ef9823fd334f", "type": "fee_charged", "payload": {"customer_id": "CUST-1002", "amount": "39.03"}, "offset": 141}
+{"event_id": "evt_a75eff8a15ccd477", "type": "fx_deposit", "payload": {"customer_id": "CUST-1000", "currency": "EUR", "amount_foreign": "3488.60", "market_rate": "53.6886", "customer_rate": "54.03", "usd_at_market_rate": "64.98", "usd_at_customer_rate": "64.57"}, "offset": 142}
+{"event_id": "evt_c1720eed041a82bc", "type": "fee_charged", "payload": {"customer_id": "CUST-1003", "amount": "32.04"}, "offset": 143}
+{"event_id": "evt_aed317ca29693761", "type": "fx_deposit", "payload": {"customer_id": "CUST-1009", "currency": "AED", "amount_foreign": "4771.01", "market_rate": "38.9674", "customer_rate": "39.07", "usd_at_market_rate": "122.44", "usd_at_customer_rate": "122.11"}, "offset": 144}
+{"event_id": "evt_9c2556ae12072925", "type": "interest_credited", "payload": {"customer_id": "CUST-1006", "gross_amount": "314.47", "customer_share": "216.98"}, "offset": 145}
+{"event_id": "evt_ac4e6321805378c2", "type": "fee_refund", "payload": {"customer_id": "CUST-1003", "refunds_source_id": "evt_c1720eed041a82bc"}, "offset": 146}
+{"event_id": "evt_a5e4e7b671ca8f35", "type": "order_placed", "payload": {"order_id": "ord_a5e4e7b671ca", "customer_id": "CUST-1006", "side": "buy", "symbol": "JUNO", "quantity": "8", "limit_price": "276.65", "asset_class": "equity", "est_charges": "7.00"}, "offset": 147}
+{"event_id": "evt_ae2ce5ff09def9ac", "type": "order_partially_filled", "payload": {"order_id": "ord_a5e4e7b671ca", "customer_id": "CUST-1006", "side": "buy", "symbol": "JUNO", "quantity": "5", "price": "807.50", "principal": "4037.50", "asset_class": "equity", "broker": "BRK-B", "partner_rate": "0.30", "trade_id": "evt_ae2ce5ff09def9ac"}, "offset": 148}
+{"event_id": "evt_41ea29b5617810ab", "type": "fx_deposit", "payload": {"customer_id": "CUST-1002", "currency": "EUR", "amount_foreign": "7402.41", "market_rate": "45.6414", "customer_rate": "45.97", "usd_at_market_rate": "162.19", "usd_at_customer_rate": "161.03"}, "offset": 149}
+{"event_id": "evt_8803d44588563528", "type": "fee_charged", "payload": {"customer_id": "CUST-1003", "amount": "14.77"}, "offset": 150}
+{"event_id": "evt_28b1a62ffed7eaae", "type": "withdrawal_rejected", "payload": {"withdrawal_id": "wdr_1a54f15a7b3d"}, "offset": 151}
+{"event_id": "evt_ddd9b7e0da111a3c", "type": "withdrawal_settled", "payload": {"withdrawal_id": "wdr_202c06dda688"}, "offset": 152}
+{"event_id": "evt_04cf3a4928de647a", "type": "interest_credited", "payload": {"customer_id": "CUST-1003", "gross_amount": "93.11", "customer_share": "61.45"}, "offset": 153}
+{"event_id": "evt_76b3a0b6c18fe742", "type": "fee_refund", "payload": {"customer_id": "CUST-1003", "refunds_source_id": "evt_8803d44588563528"}, "offset": 154}
+{"event_id": "evt_d10dca8e9bb3b6c7", "type": "interest_credited", "payload": {"customer_id": "CUST-1004", "gross_amount": "106.66", "customer_share": "42.66"}, "offset": 155}
+{"event_id": "evt_40e16f5337881e3d", "type": "broker_fees_settled", "payload": {"customer_id": "CUST-1005", "broker": "BRK-A"}, "offset": 156}
+{"event_id": "evt_ee7316f107a12c29", "type": "transfer_between_customers", "payload": {"from_customer_id": "CUST-1004", "to_customer_id": "CUST-1009", "amount": "1250.10"}, "offset": 157}
+{"event_id": "evt_9bae6f6e6d43d4dc", "type": "interest_credited", "payload": {"customer_id": "CUST-1004", "gross_amount": "85.60", "customer_share": "67.62"}, "offset": 158}
+{"event_id": "evt_0cc7e6ac75cbf23c", "type": "deposit", "payload": {"customer_id": "CUST-1006", "amount": "15049.48"}, "offset": 159}
+{"event_id": "evt_4d7160f59ad7c42d", "type": "custodian_fees_settled", "payload": {"customer_id": "CUST-1009"}, "offset": 160}
+{"event_id": "evt_f28470808fbb83d7", "type": "fx_deposit", "payload": {"customer_id": "CUST-1010", "currency": "EUR", "amount_foreign": "1871.43", "market_rate": "28.7766", "customer_rate": "29.02", "usd_at_market_rate": "65.03", "usd_at_customer_rate": "64.49"}, "offset": 161}
+{"event_id": "evt_f28470808fbb83d7", "type": "fx_deposit", "payload": {"customer_id": "CUST-1010", "currency": "EUR", "amount_foreign": "1871.43", "market_rate": "28.7766", "customer_rate": "29.02", "usd_at_market_rate": "65.03", "usd_at_customer_rate": "64.49"}, "offset": 162}
+{"event_id": "evt_96c2bfb54de4934e", "type": "partner_payout", "payload": {"customer_id": "CUST-1003"}, "offset": 163}
+{"event_id": "evt_5be1f98d6dad0c34", "type": "trade_settled", "payload": {"trade_id": "evt_073f41b4d8618b89"}, "offset": 164}
+{"event_id": "evt_7e55c3220b8cc1c6", "type": "custodian_fees_settled", "payload": {"customer_id": "CUST-1004"}, "offset": 165}
+{"event_id": "evt_a1d07e916c347a39", "type": "dividend_cash", "payload": {"customer_id": "CUST-1010", "symbol": "JUNO", "gross_amount": "29.25", "withholding_tax": "7.31", "net_amount": "21.94"}, "offset": 166}
+{"event_id": "evt_e51f6c21243c7355", "type": "order_placed", "payload": {"order_id": "ord_e51f6c21243c", "customer_id": "CUST-1001", "side": "buy", "symbol": "LUMA", "quantity": "36", "limit_price": "56.24", "asset_class": "etf", "est_charges": "7.00"}, "offset": 167}
+{"event_id": "evt_2c8ab1467c126ff5", "type": "interest_credited", "payload": {"customer_id": "CUST-1007", "gross_amount": "121.75", "customer_share": "66.96"}, "offset": 168}
+{"event_id": "evt_a9501816f970d4fc", "type": "trade_settled", "payload": {"trade_id": "evt_ae2ce5ff09def9ac"}, "offset": 169}
+{"event_id": "evt_0dc1e409625bdc59", "type": "withdrawal_requested", "payload": {"withdrawal_id": "wdr_3de72bd32802", "customer_id": "CUST-1006", "amount": "2331.16"}, "offset": 170}
+{"event_id": "evt_ce6cbc078af0ae6c", "type": "dividend_cash", "payload": {"customer_id": "CUST-1006", "symbol": "JUNO", "gross_amount": "0.95", "withholding_tax": "0.24", "net_amount": "0.71"}, "offset": 171}
+{"event_id": "evt_0561b11cb401e9fd", "type": "transfer_between_customers", "payload": {"from_customer_id": "CUST-1005", "to_customer_id": "CUST-1004", "amount": "2398.52"}, "offset": 172}
+{"event_id": "evt_c5bcce814ba156cb", "type": "broker_fees_settled", "payload": {"customer_id": "CUST-1004", "broker": "BRK-B"}, "offset": 173}
+{"event_id": "evt_f4df5e128ea3c374", "type": "order_placed", "payload": {"order_id": "ord_f4df5e128ea3", "customer_id": "CUST-1002", "side": "buy", "symbol": "DELT", "quantity": "11", "limit_price": "259.82", "asset_class": "bond", "est_charges": "9.00"}, "offset": 174}
+{"event_id": "evt_64832c33abf1a9e1", "type": "fx_deposit", "payload": {"customer_id": "CUST-1011", "currency": "GBP", "amount_foreign": "8302.30", "market_rate": "57.0396", "customer_rate": "57.27", "usd_at_market_rate": "145.55", "usd_at_customer_rate": "144.97"}, "offset": 175}
+{"event_id": "evt_7f9acae6d4743c70", "type": "fx_deposit", "payload": {"customer_id": "CUST-1000", "currency": "GBP", "amount_foreign": "7395.48", "market_rate": "68.7768", "customer_rate": "69.11", "usd_at_market_rate": "107.53", "usd_at_customer_rate": "107.01"}, "offset": 176}
+{"event_id": "evt_f8680f54a9dce298", "type": "dividend_cash", "payload": {"customer_id": "CUST-1009", "symbol": "ACME", "gross_amount": "13.92", "withholding_tax": "3.48", "net_amount": "10.44"}, "offset": 177}
+{"event_id": "evt_dac5dcf236f87ba2", "type": "order_partially_filled", "payload": {"order_id": "ord_e51f6c21243c", "customer_id": "CUST-1001", "side": "buy", "symbol": "LUMA", "quantity": "18", "price": "57.21", "principal": "1029.78", "asset_class": "etf", "broker": "BRK-A", "partner_rate": "0.35", "trade_id": "evt_dac5dcf236f87ba2"}, "offset": 178}
+{"event_id": "evt_9dca4fa2211dcfba", "type": "fee_charged", "payload": {"customer_id": "CUST-1011", "amount": "11.77"}, "offset": 179}
+{"event_id": "evt_68ddf46c76c589f3", "type": "order_partially_filled", "payload": {"order_id": "ord_3ba49d996a30", "customer_id": "CUST-1011", "side": "buy", "symbol": "HELI", "quantity": "10", "price": "353.75", "principal": "3537.50", "asset_class": "etf", "broker": "BRK-A", "partner_rate": "0.25", "trade_id": "evt_68ddf46c76c589f3"}, "offset": 180}
+{"event_id": "evt_ad6e961521a61687", "type": "custodian_fees_settled", "payload": {"customer_id": "CUST-1005"}, "offset": 181}
+{"event_id": "evt_2b109d5396bbf74d", "type": "transfer_between_customers", "payload": {"from_customer_id": "CUST-1005", "to_customer_id": "CUST-1007", "amount": "1432.60"}, "offset": 182}
+{"event_id": "evt_f310e05b0136d815", "type": "fee_charged", "payload": {"customer_id": "CUST-1008", "amount": "30.25"}, "offset": 183}
+{"event_id": "evt_4cc0d37ed897f737", "type": "deposit", "payload": {"customer_id": "CUST-1001", "amount": "9755.40"}, "offset": 184}
+{"event_id": "evt_c90e822849fc1e71", "type": "dividend_cash", "payload": {"customer_id": "CUST-1004", "symbol": "DELT", "gross_amount": "36.75", "withholding_tax": "9.19", "net_amount": "27.56"}, "offset": 185}
+{"event_id": "evt_0171fc3f2ca74860", "type": "dividend_cash", "payload": {"customer_id": "CUST-1001", "symbol": "LUMA", "gross_amount": "16.56", "withholding_tax": "4.14", "net_amount": "12.42"}, "offset": 186}
+{"event_id": "evt_f96219433bd2c22f", "type": "fee_charged", "payload": {"customer_id": "CUST-1002", "amount": "18.53"}, "offset": 187}
+{"event_id": "evt_699de61833f6eb9d", "type": "deposit", "payload": {"customer_id": "CUST-1004", "amount": "7689.44"}, "offset": 188}
+{"event_id": "evt_7577d7b3a0cb0a7a", "type": "broker_fees_settled", "payload": {"customer_id": "CUST-1003", "broker": "BRK-A"}, "offset": 189}
+{"event_id": "evt_7265ee0c805512ff", "type": "fee_charged", "payload": {"customer_id": "CUST-1005", "amount": "15.63"}, "offset": 190}
+{"event_id": "evt_a0fddce03aee90a6", "type": "dividend_reinvested", "payload": {"customer_id": "CUST-1001", "symbol": "LUMA", "gross_amount": "7.38", "withholding_tax": "1.85", "net_amount": "5.53", "reinvest_price": "352.31", "reinvest_quantity": "0.015696"}, "offset": 191}
+{"event_id": "evt_4dc5077cc6a85b10", "type": "fx_deposit", "payload": {"customer_id": "CUST-1007", "currency": "AED", "amount_foreign": "8623.83", "market_rate": "60.5871", "customer_rate": "61.11", "usd_at_market_rate": "142.34", "usd_at_customer_rate": "141.12"}, "offset": 192}
+{"event_id": "evt_65516b426c514ef2", "type": "deposit", "payload": {"customer_id": "CUST-1009", "amount": "7185.30"}, "offset": 193}
+{"event_id": "evt_eca600e8b8f98320", "type": "fx_deposit", "payload": {"customer_id": "CUST-1010", "currency": "EUR", "amount_foreign": "7314.59", "market_rate": "87.3566", "customer_rate": "87.63", "usd_at_market_rate": "83.73", "usd_at_customer_rate": "83.47"}, "offset": 194}
+{"event_id": "evt_1b2a58e60567263d", "type": "dividend_cash", "payload": {"customer_id": "CUST-1009", "symbol": "ACME", "gross_amount": "18.08", "withholding_tax": "4.52", "net_amount": "13.56"}, "offset": 195}
+{"event_id": "evt_fb2db8524c125cd5", "type": "order_placed", "payload": {"order_id": "ord_fb2db8524c12", "customer_id": "CUST-1006", "side": "buy", "symbol": "JUNO", "quantity": "59", "limit_price": "158.18", "asset_class": "equity", "est_charges": "27.00"}, "offset": 196}
+{"event_id": "evt_fb2db8524c125cd5", "type": "order_placed", "payload": {"order_id": "ord_fb2db8524c12", "customer_id": "CUST-1006", "side": "buy", "symbol": "JUNO", "quantity": "59", "limit_price": "158.18", "asset_class": "equity", "est_charges": "27.00"}, "offset": 197}
+{"event_id": "evt_f766e619c46bea94", "type": "transfer_between_customers", "payload": {"from_customer_id": "CUST-1003", "to_customer_id": "CUST-1006", "amount": "3207.98"}, "offset": 198}
+{"event_id": "evt_c0493b0523bdb216", "type": "transfer_between_customers", "payload": {"from_customer_id": "CUST-1008", "to_customer_id": "CUST-1009", "amount": "431.91"}, "offset": 199}
+{"event_id": "evt_d95d3ae4f700a873", "type": "fee_charged", "payload": {"customer_id": "CUST-1009", "amount": "10.14"}, "offset": 200}
+{"event_id": "evt_238b28bb0a978347", "type": "deposit", "payload": {"customer_id": "CUST-1003", "amount": "2901.56"}, "offset": 201}
+{"event_id": "evt_a3274d7fcc6e6701", "type": "dividend_reinvested", "payload": {"customer_id": "CUST-1001", "symbol": "LUMA", "gross_amount": "9.73", "withholding_tax": "2.43", "net_amount": "7.30", "reinvest_price": "23.28", "reinvest_quantity": "0.313574"}, "offset": 202}
+{"event_id": "evt_ad566dd48f315581", "type": "dividend_reinvested", "payload": {"customer_id": "CUST-1003", "symbol": "JUNO", "gross_amount": "11.18", "withholding_tax": "2.80", "net_amount": "8.38", "reinvest_price": "314.66", "reinvest_quantity": "0.026632"}, "offset": 203}
+{"event_id": "evt_ff6ab9e144d248c2", "type": "withdrawal_settled", "payload": {"withdrawal_id": "wdr_3de72bd32802"}, "offset": 204}
+{"event_id": "evt_066081654ed3f0b4", "type": "transfer_between_customers", "payload": {"from_customer_id": "CUST-1002", "to_customer_id": "CUST-1007", "amount": "835.22"}, "offset": 205}
+{"event_id": "evt_77310e6b8fbdf311", "type": "fee_charged", "payload": {"customer_id": "CUST-1009", "amount": "25.11"}, "offset": 206}
+{"event_id": "evt_07e76348c2e89a2d", "type": "order_partially_filled", "payload": {"order_id": "ord_b5b39c462e32", "customer_id": "CUST-1000", "side": "buy", "symbol": "CRUX", "quantity": "24.5", "price": "95.87", "principal": "2348.82", "asset_class": "etf", "broker": "BRK-A", "partner_rate": "0.25", "trade_id": "evt_07e76348c2e89a2d"}, "offset": 207}
+{"event_id": "evt_1641bfbf1c479173", "type": "reg_fees_remitted", "payload": {"customer_id": "CUST-1003"}, "offset": 208}
+{"event_id": "evt_43763f11fa05443f", "type": "withdrawal_requested", "payload": {"withdrawal_id": "wdr_4a312e89a7d9", "customer_id": "CUST-1006", "amount": "2992.86"}, "offset": 209}
+{"event_id": "evt_906dae634796898e", "type": "order_placed", "payload": {"order_id": "ord_906dae634796", "customer_id": "CUST-1010", "side": "sell", "symbol": "JUNO", "quantity": "11", "limit_price": "246.13", "asset_class": "equity", "est_charges": "8.00"}, "offset": 210}
+{"event_id": "evt_2acbf109273a4aee", "type": "fee_charged", "payload": {"customer_id": "CUST-1008", "amount": "2.82"}, "offset": 211}
+{"event_id": "evt_864c2761b10cc995", "type": "reg_fees_remitted", "payload": {"customer_id": "CUST-1001"}, "offset": 212}
+{"event_id": "evt_e0f7619d110ca445", "type": "fx_deposit", "payload": {"customer_id": "CUST-1006", "currency": "GBP", "amount_foreign": "8679.43", "market_rate": "63.0732", "customer_rate": "63.39", "usd_at_market_rate": "137.61", "usd_at_customer_rate": "136.92"}, "offset": 213}
+{"event_id": "evt_69cf1842c25a3ec0", "type": "dividend_cash", "payload": {"customer_id": "CUST-1004", "symbol": "CRUX", "gross_amount": "18.48", "withholding_tax": "4.62", "net_amount": "13.86"}, "offset": 214}
+{"event_id": "evt_ba649f751002b180", "type": "broker_fees_settled", "payload": {"customer_id": "CUST-1001", "broker": "BRK-A"}, "offset": 215}
+{"event_id": "evt_df3b27677a89ab6c", "type": "order_partially_filled", "payload": {"order_id": "ord_a5e4e7b671ca", "customer_id": "CUST-1006", "side": "buy", "symbol": "JUNO", "quantity": "1.5", "price": "273.61", "principal": "410.42", "asset_class": "equity", "broker": "BRK-B", "partner_rate": "0.30", "trade_id": "evt_df3b27677a89ab6c"}, "offset": 216}
+{"event_id": "evt_e187e42434966694", "type": "dividend_reinvested", "payload": {"customer_id": "CUST-1000", "symbol": "CRUX", "gross_amount": "13.48", "withholding_tax": "3.37", "net_amount": "10.11", "reinvest_price": "23.24", "reinvest_quantity": "0.435026"}, "offset": 217}
+{"event_id": "evt_dcf688923c055ea4", "type": "dividend_cash", "payload": {"customer_id": "CUST-1001", "symbol": "LUMA", "gross_amount": "18.33", "withholding_tax": "4.58", "net_amount": "13.75"}, "offset": 218}
+{"event_id": "evt_2b8da6413b35dd54", "type": "dividend_cash", "payload": {"customer_id": "CUST-1004", "symbol": "DELT", "gross_amount": "31.13", "withholding_tax": "7.78", "net_amount": "23.35"}, "offset": 219}
+{"event_id": "evt_77986751a071b46b", "type": "dividend_cash", "payload": {"customer_id": "CUST-1003", "symbol": "JUNO", "gross_amount": "0.86", "withholding_tax": "0.22", "net_amount": "0.64"}, "offset": 220}
+{"event_id": "evt_27e51333699ea3ea", "type": "transfer_between_customers", "payload": {"from_customer_id": "CUST-1002", "to_customer_id": "CUST-1011", "amount": "629.63"}, "offset": 221}
+{"event_id": "evt_a387e536586c168a", "type": "deposit", "payload": {"customer_id": "CUST-1010", "amount": "5956.43"}, "offset": 222}
+{"event_id": "evt_bb79dbf87531a2bc", "type": "fee_charged", "payload": {"customer_id": "CUST-1003", "amount": "18.73"}, "offset": 223}
+{"event_id": "evt_4bf11726632fb711", "type": "interest_credited", "payload": {"customer_id": "CUST-1011", "gross_amount": "345.59", "customer_share": "186.62"}, "offset": 224}
+{"event_id": "evt_4bf11726632fb711", "type": "interest_credited", "payload": {"customer_id": "CUST-1011", "gross_amount": "345.59", "customer_share": "186.62"}, "offset": 225}
+{"event_id": "evt_584001ea3abc228e", "type": "dividend_cash", "payload": {"customer_id": "CUST-1009", "symbol": "ACME", "gross_amount": "9.92", "withholding_tax": "2.48", "net_amount": "7.44"}, "offset": 226}
+{"event_id": "evt_d43247e2b65a90a4", "type": "fx_deposit", "payload": {"customer_id": "CUST-1010", "currency": "INR", "amount_foreign": "3791.90", "market_rate": "27.4331", "customer_rate": "27.61", "usd_at_market_rate": "138.22", "usd_at_customer_rate": "137.34"}, "offset": 227}
+{"event_id": "evt_959844dc7e451f3f", "type": "custodian_fees_settled", "payload": {"customer_id": "CUST-1001"}, "offset": 228}
+{"event_id": "evt_879101f15d41fe23", "type": "order_partially_filled", "payload": {"order_id": "ord_3ba49d996a30", "customer_id": "CUST-1011", "side": "buy", "symbol": "HELI", "quantity": "17", "price": "38.79", "principal": "659.43", "asset_class": "etf", "broker": "BRK-A", "partner_rate": "0.25", "trade_id": "evt_879101f15d41fe23"}, "offset": 229}
+{"event_id": "evt_f17b05c1364f1dd3", "type": "interest_credited", "payload": {"customer_id": "CUST-1009", "gross_amount": "91.49", "customer_share": "46.66"}, "offset": 230}
+{"event_id": "evt_9e8fef1c4eae6085", "type": "deposit", "payload": {"customer_id": "CUST-1011", "amount": "12456.10"}, "offset": 231}
+{"event_id": "evt_54d6a6e63a2322a0", "type": "dividend_cash", "payload": {"customer_id": "CUST-1004", "symbol": "DELT", "gross_amount": "1.88", "withholding_tax": "0.47", "net_amount": "1.41"}, "offset": 232}
+{"event_id": "evt_5d44accf1d996cbe", "type": "transfer_between_customers", "payload": {"from_customer_id": "CUST-1001", "to_customer_id": "CUST-1005", "amount": "2627.74"}, "offset": 233}
+{"event_id": "evt_15e172cd541b5184", "type": "order_filled", "payload": {"order_id": "ord_a5e4e7b671ca", "customer_id": "CUST-1006", "side": "buy", "symbol": "JUNO", "quantity": "1.5", "price": "280.08", "principal": "420.12", "asset_class": "equity", "broker": "BRK-B", "partner_rate": "0.30", "trade_id": "evt_15e172cd541b5184"}, "offset": 234}
+{"event_id": "evt_56fa100ddd0840b6", "type": "custodian_fees_settled", "payload": {"customer_id": "CUST-1000"}, "offset": 235}
+{"event_id": "evt_ed01a62aee482185", "type": "fee_charged", "payload": {"customer_id": "CUST-1004", "amount": "17.79"}, "offset": 236}
+{"event_id": "evt_5dc98bf24e233af2", "type": "withdrawal_settled", "payload": {"withdrawal_id": "wdr_4a312e89a7d9"}, "offset": 237}
+{"event_id": "evt_682a449a4a235b9b", "type": "transfer_between_customers", "payload": {"from_customer_id": "CUST-1007", "to_customer_id": "CUST-1010", "amount": "2731.11"}, "offset": 238}
+{"event_id": "evt_85b0f50c8ec8aac7", "type": "trade_settled", "payload": {"trade_id": "evt_dac5dcf236f87ba2"}, "offset": 239}
+{"event_id": "evt_74129a9e6c7b8031", "type": "dividend_reinvested", "payload": {"customer_id": "CUST-1009", "symbol": "LUMA", "gross_amount": "0.76", "withholding_tax": "0.19", "net_amount": "0.57", "reinvest_price": "233.11", "reinvest_quantity": "0.002445"}, "offset": 240}
+{"event_id": "evt_9cd27a472f22f2c2", "type": "trade_settled", "payload": {"trade_id": "evt_68ddf46c76c589f3"}, "offset": 241}
+{"event_id": "evt_684850ce0fc1bfd0", "type": "fee_charged", "payload": {"customer_id": "CUST-1004", "amount": "10.69"}, "offset": 242}
+{"event_id": "evt_faa0fd3cf41f793a", "type": "trade_settled", "payload": {"trade_id": "evt_07e76348c2e89a2d"}, "offset": 243}
+{"event_id": "evt_4668c04e1c47c7c1", "type": "trade_settled", "payload": {"trade_id": "evt_df3b27677a89ab6c"}, "offset": 244}
+{"event_id": "evt_38e9ef1b0d167593", "type": "transfer_between_customers", "payload": {"from_customer_id": "CUST-1008", "to_customer_id": "CUST-1007", "amount": "3720.60"}, "offset": 245}
+{"event_id": "evt_9c5d4897002b647f", "type": "transfer_between_customers", "payload": {"from_customer_id": "CUST-1006", "to_customer_id": "CUST-1005", "amount": "1125.59"}, "offset": 246}
+{"event_id": "evt_ef7b474c708cf5ee", "type": "withdrawal_requested", "payload": {"withdrawal_id": "wdr_34a1dd030d39", "customer_id": "CUST-1010", "amount": "2784.90"}, "offset": 247}
+{"event_id": "evt_38eee039b4d1172c", "type": "fx_deposit", "payload": {"customer_id": "CUST-1002", "currency": "GBP", "amount_foreign": "8760.13", "market_rate": "49.5811", "customer_rate": "49.71", "usd_at_market_rate": "176.68", "usd_at_customer_rate": "176.22"}, "offset": 248}
+{"event_id": "evt_d8a0f5218344b049", "type": "fee_charged", "payload": {"customer_id": "CUST-1009", "amount": "39.61"}, "offset": 249}
+{"event_id": "evt_2bf321e21e8ab7a1", "type": "deposit", "payload": {"customer_id": "CUST-1001", "amount": "8440.94"}, "offset": 250}
+{"event_id": "evt_273b7e0ee279a6cc", "type": "order_partially_filled", "payload": {"order_id": "ord_f4df5e128ea3", "customer_id": "CUST-1002", "side": "buy", "symbol": "DELT", "quantity": "5.5", "price": "255.87", "principal": "1407.29", "asset_class": "bond", "broker": "BRK-B", "partner_rate": "0.20", "trade_id": "evt_273b7e0ee279a6cc"}, "offset": 251}
+{"event_id": "evt_7948dbac62c82c82", "type": "withdrawal_requested", "payload": {"withdrawal_id": "wdr_f6bc56621b09", "customer_id": "CUST-1011", "amount": "148.51"}, "offset": 252}
+{"event_id": "evt_94162a82bf179c8a", "type": "custodian_fees_settled", "payload": {"customer_id": "CUST-1011"}, "offset": 253}
+{"event_id": "evt_515206e88b0eec23", "type": "transfer_between_customers", "payload": {"from_customer_id": "CUST-1004", "to_customer_id": "CUST-1011", "amount": "1048.76"}, "offset": 254}
+{"event_id": "evt_9848eca32193f178", "type": "fx_deposit", "payload": {"customer_id": "CUST-1002", "currency": "INR", "amount_foreign": "2183.69", "market_rate": "62.2153", "customer_rate": "62.59", "usd_at_market_rate": "35.10", "usd_at_customer_rate": "34.89"}, "offset": 255}
+{"event_id": "evt_de0752f724868a59", "type": "transfer_between_customers", "payload": {"from_customer_id": "CUST-1008", "to_customer_id": "CUST-1005", "amount": "1769.69"}, "offset": 256}
+{"event_id": "evt_76d8bf67d05b0bf2", "type": "transfer_between_customers", "payload": {"from_customer_id": "CUST-1002", "to_customer_id": "CUST-1000", "amount": "3391.04"}, "offset": 257}
+{"event_id": "evt_a45a02f10bb37f74", "type": "withdrawal_settled", "payload": {"withdrawal_id": "wdr_f6bc56621b09"}, "offset": 258}
+{"event_id": "evt_22ddc47eaa596271", "type": "transfer_between_customers", "payload": {"from_customer_id": "CUST-1000", "to_customer_id": "CUST-1010", "amount": "2857.52"}, "offset": 259}
+{"event_id": "evt_ba0d5af52aab4078", "type": "custodian_fees_settled", "payload": {"customer_id": "CUST-1006"}, "offset": 260}
+{"event_id": "evt_1c8c1239d2448cf7", "type": "fee_charged", "payload": {"customer_id": "CUST-1005", "amount": "5.82"}, "offset": 261}
+{"event_id": "cp_cp0", "type": "checkpoint_request", "payload": {"checkpoint_id": "cp0", "respond_within_seconds": 60}, "offset": 262}
+{"event_id": "evt_5a1e602d6e6c2878", "type": "broker_fees_settled", "payload": {"customer_id": "CUST-1004", "broker": "BRK-C"}, "offset": 263}
+{"event_id": "evt_1f48a52bfc3f4a0b", "type": "interest_credited", "payload": {"customer_id": "CUST-1004", "gross_amount": "125.11", "customer_share": "100.09"}, "offset": 264}
+{"event_id": "evt_73a507f8a9f49d02", "type": "deposit", "payload": {"customer_id": "CUST-1010", "amount": "19938.23"}, "offset": 265}
+{"event_id": "evt_cbbe4b0ad134c665", "type": "withdrawal_settled", "payload": {"withdrawal_id": "wdr_34a1dd030d39"}, "offset": 266}
+{"event_id": "evt_8eed3fdeda04e746", "type": "fee_charged", "payload": {"customer_id": "CUST-1005", "amount": "13.79"}, "offset": 267}
+{"event_id": "evt_e8d0227a49431af1", "type": "broker_fees_settled", "payload": {"customer_id": "CUST-1010", "broker": "BRK-C"}, "offset": 268}
+{"event_id": "evt_e8d0227a49431af1", "type": "broker_fees_settled", "payload": {"customer_id": "CUST-1010", "broker": "BRK-C"}, "offset": 269}
+{"event_id": "evt_2485225d45a41677", "type": "fee_charged", "payload": {"customer_id": "CUST-1001", "amount": "27.73"}, "offset": 270}
+{"event_id": "evt_9db4b946a859a23f", "type": "fee_charged", "payload": {"customer_id": "CUST-1003", "amount": "15.05"}, "offset": 271}
+{"event_id": "evt_09a464a87e79a498", "type": "fee_charged", "payload": {"customer_id": "CUST-1007", "amount": "18.17"}, "offset": 272}
+{"event_id": "evt_e74f18705a4f56de", "type": "interest_credited", "payload": {"customer_id": "CUST-1005", "gross_amount": "157.55", "customer_share": "92.95"}, "offset": 273}
+{"event_id": "evt_6c5b099da1f60ef3", "type": "transfer_between_customers", "payload": {"from_customer_id": "CUST-1008", "to_customer_id": "CUST-1004", "amount": "3944.31"}, "offset": 274}
+{"event_id": "evt_b8fa3b6c08e58133", "type": "transfer_between_customers", "payload": {"from_customer_id": "CUST-1000", "to_customer_id": "CUST-1010", "amount": "2559.46"}, "offset": 275}
+{"event_id": "evt_0a36399e71850a18", "type": "interest_credited", "payload": {"customer_id": "CUST-1005", "gross_amount": "189.89", "customer_share": "91.15"}, "offset": 276}
+{"event_id": "evt_a1894357480b322d", "type": "dividend_cash", "payload": {"customer_id": "CUST-1000", "symbol": "CRUX", "gross_amount": "4.24", "withholding_tax": "1.06", "net_amount": "3.18"}, "offset": 277}
+{"event_id": "evt_c30dddbf11e4fc40", "type": "trade_settled", "payload": {"trade_id": "evt_879101f15d41fe23"}, "offset": 278}
+{"event_id": "evt_d8f211c324cd3f3c", "type": "withdrawal_requested", "payload": {"withdrawal_id": "wdr_a54710854cf3", "customer_id": "CUST-1008", "amount": "2303.68"}, "offset": 279}
+{"event_id": "evt_35c284ab29275b6e", "type": "order_placed", "payload": {"order_id": "ord_35c284ab2927", "customer_id": "CUST-1007", "side": "buy", "symbol": "ACME", "quantity": "36", "limit_price": "315.60", "asset_class": "equity", "est_charges": "32.00"}, "offset": 280}
+{"event_id": "evt_7edbb5f517b7aedc", "type": "withdrawal_settled", "payload": {"withdrawal_id": "wdr_a54710854cf3"}, "offset": 281}
+{"event_id": "evt_2bac064f276beea3", "type": "fx_deposit", "payload": {"customer_id": "CUST-1000", "currency": "GBP", "amount_foreign": "7163.63", "market_rate": "72.5532", "customer_rate": "72.89", "usd_at_market_rate": "98.74", "usd_at_customer_rate": "98.28"}, "offset": 282}
+{"event_id": "evt_2f0663dd506eb990", "type": "fee_refund", "payload": {"customer_id": "CUST-1003", "refunds_source_id": "evt_9db4b946a859a23f"}, "offset": 283}
+{"event_id": "evt_59a72fcdcfc2fc3a", "type": "dividend_cash", "payload": {"customer_id": "CUST-1000", "symbol": "CRUX", "gross_amount": "26.93", "withholding_tax": "6.73", "net_amount": "20.20"}, "offset": 284}
+{"event_id": "evt_6b4f0763d6562b05", "type": "partner_payout", "payload": {"customer_id": "CUST-1011"}, "offset": 285}
+{"event_id": "evt_ec15b93876e859a2", "type": "deposit", "payload": {"customer_id": "CUST-1006", "amount": "19397.38"}, "offset": 286}
+{"event_id": "evt_35ba4c5a8ec1b4ae", "type": "dividend_cash", "payload": {"customer_id": "CUST-1009", "symbol": "LUMA", "gross_amount": "0.50", "withholding_tax": "0.13", "net_amount": "0.37"}, "offset": 287}
+{"event_id": "evt_5d127b6f2d968da3", "type": "transfer_between_customers", "payload": {"from_customer_id": "CUST-1010", "to_customer_id": "CUST-1001", "amount": "1167.85"}, "offset": 288}
+{"event_id": "evt_1f2224ebb5ba1292", "type": "deposit", "payload": {"customer_id": "CUST-1007", "amount": "8759.84"}, "offset": 289}
+{"event_id": "evt_1f1d1ec12b42f44e", "type": "dividend_cash", "payload": {"customer_id": "CUST-1011", "symbol": "HELI", "gross_amount": "21.32", "withholding_tax": "5.33", "net_amount": "15.99"}, "offset": 290}
+{"event_id": "evt_0f120f7999664c74", "type": "interest_credited", "payload": {"customer_id": "CUST-1005", "gross_amount": "252.89", "customer_share": "197.25"}, "offset": 291}
+{"event_id": "evt_3c7ea2dd86b0b417", "type": "reg_fees_remitted", "payload": {"customer_id": "CUST-1011"}, "offset": 292}
+{"event_id": "evt_6ac2b61a25840acc", "type": "fee_refund", "payload": {"customer_id": "CUST-1005", "refunds_source_id": "evt_8eed3fdeda04e746"}, "offset": 293}
+{"event_id": "evt_c836e6651eebda55", "type": "fee_refund", "payload": {"customer_id": "CUST-1004", "refunds_source_id": "evt_684850ce0fc1bfd0"}, "offset": 294}
+{"event_id": "evt_71f47bc10f3774ce", "type": "order_partially_filled", "payload": {"order_id": "ord_d99d787bd3bd", "customer_id": "CUST-1011", "side": "buy", "symbol": "HELI", "quantity": "10", "price": "418.75", "principal": "4187.50", "asset_class": "etf", "broker": "BRK-A", "partner_rate": "0.35", "trade_id": "evt_71f47bc10f3774ce"}, "offset": 295}
+{"event_id": "evt_d2f7352bd3524512", "type": "interest_credited", "payload": {"customer_id": "CUST-1006", "gross_amount": "125.30", "customer_share": "61.40"}, "offset": 296}
+{"event_id": "evt_6d08260d7492f9f0", "type": "custodian_fees_settled", "payload": {"customer_id": "CUST-1011"}, "offset": 297}
+{"event_id": "evt_06882a0e4c134ac1", "type": "dividend_reinvested", "payload": {"customer_id": "CUST-1001", "symbol": "LUMA", "gross_amount": "15.03", "withholding_tax": "3.76", "net_amount": "11.27", "reinvest_price": "279.08", "reinvest_quantity": "0.040383"}, "offset": 298}
+{"event_id": "evt_a085f92dafc551e6", "type": "interest_credited", "payload": {"customer_id": "CUST-1007", "gross_amount": "148.14", "customer_share": "78.51"}, "offset": 299}
+{"event_id": "evt_80a162722b4046a8", "type": "broker_fees_settled", "payload": {"customer_id": "CUST-1009", "broker": "BRK-C"}, "offset": 300}
+{"event_id": "evt_1f1602df8cdb8420", "type": "fee_refund", "payload": {"customer_id": "CUST-1009", "refunds_source_id": "evt_77310e6b8fbdf311"}, "offset": 301}
+{"event_id": "evt_f23917d964a8b190", "type": "fee_refund", "payload": {"customer_id": "CUST-1008", "refunds_source_id": "evt_f310e05b0136d815"}, "offset": 302}
+{"event_id": "evt_21f32e20f9fbc7e7", "type": "fee_charged", "payload": {"customer_id": "CUST-1009", "amount": "23.17"}, "offset": 303}
+{"event_id": "evt_893bca02fa8b7a65", "type": "order_placed", "payload": {"order_id": "ord_893bca02fa8b", "customer_id": "CUST-1010", "side": "sell", "symbol": "JUNO", "quantity": "14", "limit_price": "154.26", "asset_class": "equity", "est_charges": "7.00"}, "offset": 304}
+{"event_id": "evt_cd3fa3d97c7e42c3", "type": "interest_credited", "payload": {"customer_id": "CUST-1002", "gross_amount": "6.56", "customer_share": "3.67"}, "offset": 305}
+{"event_id": "evt_2bba856ff535dd36", "type": "order_placed", "payload": {"order_id": "ord_2bba856ff535", "customer_id": "CUST-1009", "side": "sell", "symbol": "ACME", "quantity": "6.72", "limit_price": "315.19", "asset_class": "equity", "est_charges": "6.00"}, "offset": 306}
+{"event_id": "evt_c55eb4e4d137160e", "type": "fee_refund", "payload": {"customer_id": "CUST-1009", "refunds_source_id": "evt_21f32e20f9fbc7e7"}, "offset": 307}
+{"event_id": "evt_e1c6d1d5b6345d29", "type": "broker_fees_settled", "payload": {"customer_id": "CUST-1006", "broker": "BRK-B"}, "offset": 308}
+{"event_id": "evt_7a17332f499c596b", "type": "trade_settled", "payload": {"trade_id": "evt_15e172cd541b5184"}, "offset": 309}
+{"event_id": "evt_eb459ec2d208d53d", "type": "trade_settled", "payload": {"trade_id": "evt_273b7e0ee279a6cc"}, "offset": 310}
+{"event_id": "evt_49caa4eca5d93d60", "type": "interest_credited", "payload": {"customer_id": "CUST-1007", "gross_amount": "318.50", "customer_share": "207.03"}, "offset": 311}
+{"event_id": "evt_2c2c12531ee217f6", "type": "trade_settled", "payload": {"trade_id": "evt_71f47bc10f3774ce"}, "offset": 312}
+{"event_id": "evt_a0ad1a042f677d04", "type": "fx_deposit", "payload": {"customer_id": "CUST-1003", "currency": "INR", "amount_foreign": "5124.56", "market_rate": "11.8375", "customer_rate": "11.92", "usd_at_market_rate": "432.91", "usd_at_customer_rate": "429.91"}, "offset": 313}
+{"event_id": "evt_5b905860a27b2230", "type": "fx_deposit", "payload": {"customer_id": "CUST-1011", "currency": "INR", "amount_foreign": "8117.17", "market_rate": "19.7847", "customer_rate": "19.83", "usd_at_market_rate": "410.28", "usd_at_customer_rate": "409.34"}, "offset": 314}
+{"event_id": "evt_1443a1cdbfce0e32", "type": "withdrawal_requested", "payload": {"withdrawal_id": "wdr_1d2511cf7056", "customer_id": "CUST-1011", "amount": "2359.68"}, "offset": 315}
+{"event_id": "evt_c3e68c35fe38e555", "type": "deposit", "payload": {"customer_id": "CUST-1008", "amount": "11030.71"}, "offset": 316}
+{"event_id": "evt_922924937a1989d7", "type": "dividend_cash", "payload": {"customer_id": "CUST-1010", "symbol": "IONX", "gross_amount": "0.30", "withholding_tax": "0.08", "net_amount": "0.22"}, "offset": 317}
+{"event_id": "evt_7a5f07a5c432621e", "type": "fee_charged", "payload": {"customer_id": "CUST-1005", "amount": "7.63"}, "offset": 318}
+{"event_id": "evt_1b13a986e2474629", "type": "broker_fees_settled", "payload": {"customer_id": "CUST-1002", "broker": "BRK-B"}, "offset": 319}
+{"event_id": "evt_063952f60be9e944", "type": "interest_credited", "payload": {"customer_id": "CUST-1003", "gross_amount": "80.93", "customer_share": "50.99"}, "offset": 320}
+{"event_id": "evt_fe1f0e75f33aca9b", "type": "interest_credited", "payload": {"customer_id": "CUST-1006", "gross_amount": "324.56", "customer_share": "266.14"}, "offset": 321}
+{"event_id": "evt_8ea42e964e417383", "type": "deposit", "payload": {"customer_id": "CUST-1000", "amount": "7491.83"}, "offset": 322}
+{"event_id": "evt_5c2986e9efc71958", "type": "fx_deposit", "payload": {"customer_id": "CUST-1004", "currency": "EUR", "amount_foreign": "6991.01", "market_rate": "85.0325", "customer_rate": "85.35", "usd_at_market_rate": "82.22", "usd_at_customer_rate": "81.91"}, "offset": 323}
+{"event_id": "evt_bad762aab853399b", "type": "transfer_between_customers", "payload": {"from_customer_id": "CUST-1008", "to_customer_id": "CUST-1010", "amount": "2961.61"}, "offset": 324}
+{"event_id": "evt_12494d4a31ebe901", "type": "order_filled", "payload": {"order_id": "ord_2bba856ff535", "customer_id": "CUST-1009", "side": "sell", "symbol": "ACME", "quantity": "6.72", "price": "308.67", "principal": "2074.26", "asset_class": "equity", "broker": "BRK-B", "partner_rate": "0.35", "trade_id": "evt_12494d4a31ebe901"}, "offset": 325}
+{"event_id": "evt_1de51f427e52f659", "type": "reg_fees_remitted", "payload": {"customer_id": "CUST-1000"}, "offset": 326}
+{"event_id": "evt_149719d7faf574ca", "type": "stock_split", "payload": {"customer_id": "CUST-1006", "symbol": "JUNO", "ratio_from": 1, "ratio_to": 2}, "offset": 327}
+{"event_id": "evt_c02600e1bf960de1", "type": "reg_fees_remitted", "payload": {"customer_id": "CUST-1010"}, "offset": 328}
+{"event_id": "evt_2ffa5ce9f41a074a", "type": "fee_charged", "payload": {"customer_id": "CUST-1004", "amount": "9.49"}, "offset": 329}
+{"event_id": "evt_07a560a449138b23", "type": "deposit", "payload": {"customer_id": "CUST-1010", "amount": "16075.85"}, "offset": 330}
+{"event_id": "evt_6c7866865dc9148f", "type": "order_cancelled", "payload": {"order_id": "ord_790b8a17fd4b"}, "offset": 331}
+{"event_id": "evt_ab761d1308f4fd88", "type": "fee_charged", "payload": {"customer_id": "CUST-1008", "amount": "4.48"}, "offset": 332}
+{"event_id": "evt_5800273bcc9be725", "type": "dividend_cash", "payload": {"customer_id": "CUST-1010", "symbol": "JUNO", "gross_amount": "26.25", "withholding_tax": "6.56", "net_amount": "19.69"}, "offset": 333}
+{"event_id": "evt_814b53588ce3a88e", "type": "interest_credited", "payload": {"customer_id": "CUST-1003", "gross_amount": "134.35", "customer_share": "92.70"}, "offset": 334}
+{"event_id": "evt_55cc1e4501d425d7", "type": "fx_deposit", "payload": {"customer_id": "CUST-1004", "currency": "GBP", "amount_foreign": "5031.83", "market_rate": "50.3821", "customer_rate": "50.46", "usd_at_market_rate": "99.87", "usd_at_customer_rate": "99.72"}, "offset": 335}
+{"event_id": "evt_c92bd3c91014ece8", "type": "fee_charged", "payload": {"customer_id": "CUST-1003", "amount": "6.06"}, "offset": 336}
+{"event_id": "evt_a16ce3fe6163d5b6", "type": "symbol_change", "payload": {"customer_id": "CUST-1004", "old_symbol": "CRUX", "new_symbol": "CRUXX"}, "backdated_days": 2, "offset": 337}
+{"event_id": "evt_3fe54816e89ad422", "type": "reversal", "payload": {"reverses_event_id": "evt_e187e42434966694", "reason": "operational correction"}, "offset": 338}
+{"event_id": "evt_ab9d3b4017f952c4", "type": "reversal", "payload": {"reverses_event_id": "evt_a3274d7fcc6e6701", "reason": "operational correction"}, "offset": 339}
+{"event_id": "evt_c4afc07a05354383", "type": "reversal", "payload": {"reverses_event_id": "evt_d621be0d635ae620", "reason": "operational correction"}, "offset": 340}
+{"event_id": "evt_d3f58c1662c20e7d", "type": "reversal", "payload": {"reverses_event_id": "evt_74129a9e6c7b8031", "reason": "operational correction"}, "offset": 341}
+{"event_id": "evt_968b9a68ecfaa8ba", "type": "interest_credited", "payload": {"customer_id": "CUST-1001", "gross_amount": "134.85", "customer_share": "71.47"}, "offset": 342}
+{"event_id": "evt_d841dff8d864c1fb", "type": "fx_deposit", "payload": {"customer_id": "CUST-1004", "currency": "GBP", "amount_foreign": "8404.54", "market_rate": "79.116", "customer_rate": "79.59", "usd_at_market_rate": "106.23", "usd_at_customer_rate": "105.60"}, "backdated_days": 4, "offset": 343}
+{"event_id": "evt_4dc23cb187358c21", "type": "fx_deposit", "payload": {"customer_id": "CUST-1009", "currency": "GBP", "amount_foreign": "1465.28", "market_rate": "55.0775", "customer_rate": "55.45", "usd_at_market_rate": "26.60", "usd_at_customer_rate": "26.43"}, "offset": 344}
+{"event_id": "evt_f21b46a82d8a7de4", "type": "interest_credited", "payload": {"customer_id": "CUST-1004", "gross_amount": "52.74", "customer_share": "35.86"}, "offset": 345}
+{"event_id": "evt_a586cef6ec0715cc", "type": "stock_split", "payload": {"customer_id": "CUST-1004", "symbol": "DELT", "ratio_from": 2, "ratio_to": 3}, "offset": 346}
+{"event_id": "evt_b0ac1e7b3843f384", "type": "withdrawal_requested", "payload": {"withdrawal_id": "wdr_94a19468e73f", "customer_id": "CUST-1008", "amount": "2471.54"}, "offset": 347}
+{"event_id": "evt_6c5b6bbd0f753c08", "type": "fee_charged", "payload": {"customer_id": "CUST-1000", "amount": "32.07"}, "backdated_days": 2, "offset": 348}
+{"event_id": "evt_123e59632f317564", "type": "trade_settled", "payload": {"trade_id": "evt_12494d4a31ebe901"}, "offset": 349}
+{"event_id": "evt_171df4425aa2851d", "type": "order_placed", "payload": {"order_id": "ord_171df4425aa2", "customer_id": "CUST-1004", "side": "buy", "symbol": "CRUXX", "quantity": "47", "limit_price": "251.05", "asset_class": "etf", "est_charges": "38.00"}, "offset": 350}
+{"event_id": "evt_d290cbab11ae02f3", "type": "withdrawal_settled", "payload": {"withdrawal_id": "wdr_94a19468e73f"}, "offset": 351}
+{"event_id": "evt_c1fcce4cd0b5c0cf", "type": "fx_deposit", "payload": {"customer_id": "CUST-1002", "currency": "AED", "amount_foreign": "1626.54", "market_rate": "82.6133", "customer_rate": "83.14", "usd_at_market_rate": "19.69", "usd_at_customer_rate": "19.56"}, "offset": 352}
+{"event_id": "evt_cce765c8736d433b", "type": "transfer_between_customers", "payload": {"from_customer_id": "CUST-1004", "to_customer_id": "CUST-1007", "amount": "3169.43"}, "offset": 353}
+{"event_id": "evt_9987a6bd0954b6c7", "type": "fee_charged", "payload": {"customer_id": "CUST-1005", "amount": "10.65"}, "backdated_days": 3, "offset": 354}
+{"event_id": "evt_d8c446d32a9b3054", "type": "order_partially_filled", "payload": {"order_id": "ord_906dae634796", "customer_id": "CUST-1010", "side": "sell", "symbol": "JUNO", "quantity": "10", "price": "291.25", "principal": "2912.50", "asset_class": "equity", "broker": "BRK-B", "partner_rate": "0.30", "trade_id": "evt_d8c446d32a9b3054"}, "offset": 355}
+{"event_id": "evt_e70c00c882267f45", "type": "custodian_fees_settled", "payload": {"customer_id": "CUST-1010"}, "offset": 356}
+{"event_id": "evt_e70c00c882267f45", "type": "custodian_fees_settled", "payload": {"customer_id": "CUST-1010"}, "offset": 357}
+{"event_id": "evt_e6b8d0079afae761", "type": "stock_split", "payload": {"customer_id": "CUST-1010", "symbol": "JUNO", "ratio_from": 2, "ratio_to": 3}, "offset": 358}
+{"event_id": "evt_f97894cc74867373", "type": "deposit", "payload": {"customer_id": "CUST-1009", "amount": "4467.45"}, "offset": 359}
+{"event_id": "evt_d3401f420c60bb01", "type": "fx_deposit", "payload": {"customer_id": "CUST-1001", "currency": "EUR", "amount_foreign": "1952.03", "market_rate": "20.4861", "customer_rate": "20.56", "usd_at_market_rate": "95.29", "usd_at_customer_rate": "94.94"}, "offset": 360}
+{"event_id": "evt_7daff2327f6388cb", "type": "fx_deposit", "payload": {"customer_id": "CUST-1003", "currency": "INR", "amount_foreign": "5358.27", "market_rate": "1.5658", "customer_rate": "1.57", "usd_at_market_rate": "3422.07", "usd_at_customer_rate": "3412.91"}, "offset": 361}
+{"event_id": "evt_f2436f7c88f52306", "type": "fx_deposit", "payload": {"customer_id": "CUST-1003", "currency": "AED", "amount_foreign": "2868.65", "market_rate": "74.5672", "customer_rate": "75.07", "usd_at_market_rate": "38.47", "usd_at_customer_rate": "38.21"}, "offset": 362}
+{"event_id": "evt_63f8ff329ff177bb", "type": "fee_charged", "payload": {"customer_id": "CUST-1000", "amount": "26.66"}, "offset": 363}
+{"event_id": "evt_9b4418d7599ed9bc", "type": "withdrawal_settled", "payload": {"withdrawal_id": "wdr_1d2511cf7056"}, "offset": 364}
+{"event_id": "evt_d75f674465ef8a4b", "type": "trade_settled", "payload": {"trade_id": "evt_d8c446d32a9b3054"}, "offset": 365}
+{"event_id": "evt_2b187236a8a5dce0", "type": "withdrawal_requested", "payload": {"withdrawal_id": "wdr_f0ba9050e79f", "customer_id": "CUST-1006", "amount": "1337.91"}, "offset": 366}
+{"event_id": "evt_3fee68be4872acca", "type": "fee_charged", "payload": {"customer_id": "CUST-1011", "amount": "22.71"}, "offset": 367}
+{"event_id": "evt_10d1261478c263cd", "type": "transfer_between_customers", "payload": {"from_customer_id": "CUST-1009", "to_customer_id": "CUST-1006", "amount": "2222.81"}, "offset": 368}
+{"event_id": "evt_6d6041d0f3bc9904", "type": "reg_fees_remitted", "payload": {"customer_id": "CUST-1009"}, "offset": 369}
+{"event_id": "evt_a41745d6db7a0a2f", "type": "order_partially_filled", "payload": {"order_id": "ord_35c284ab2927", "customer_id": "CUST-1007", "side": "buy", "symbol": "ACME", "quantity": "10", "price": "461.25", "principal": "4612.50", "asset_class": "equity", "broker": "BRK-B", "partner_rate": "0.30", "trade_id": "evt_a41745d6db7a0a2f"}, "backdated_days": 4, "offset": 370}
+{"event_id": "evt_a41745d6db7a0a2f", "type": "order_partially_filled", "payload": {"order_id": "ord_35c284ab2927", "customer_id": "CUST-1007", "side": "buy", "symbol": "ACME", "quantity": "10", "price": "461.25", "principal": "4612.50", "asset_class": "equity", "broker": "BRK-B", "partner_rate": "0.30", "trade_id": "evt_a41745d6db7a0a2f"}, "backdated_days": 4, "offset": 371}
+{"event_id": "evt_6e9265571f8b95ca", "type": "fee_refund", "payload": {"customer_id": "CUST-1011", "refunds_source_id": "evt_3fee68be4872acca"}, "offset": 372}
+{"event_id": "evt_52326726890a2500", "type": "deposit", "payload": {"customer_id": "CUST-1001", "amount": "17119.07"}, "offset": 373}
+{"event_id": "evt_2103cda9bb94f133", "type": "reversal", "payload": {"reverses_event_id": "evt_ad566dd48f315581", "reason": "operational correction"}, "offset": 374}
+{"event_id": "evt_c5e68008b62e0b07", "type": "deposit", "payload": {"customer_id": "CUST-1001", "amount": "19884.12"}, "offset": 375}
+{"event_id": "evt_790c2e87f1821cc9", "type": "interest_credited", "payload": {"customer_id": "CUST-1010", "gross_amount": "126.62", "customer_share": "64.58"}, "offset": 376}
+{"event_id": "evt_95ac87d00d9e2d95", "type": "order_partially_filled", "payload": {"order_id": "ord_763efbce8318", "customer_id": "CUST-1003", "side": "buy", "symbol": "JUNO", "quantity": "10", "price": "298.75", "principal": "2987.50", "asset_class": "equity", "broker": "BRK-B", "partner_rate": "0.35", "trade_id": "evt_95ac87d00d9e2d95"}, "offset": 377}
+{"event_id": "evt_65357feca1d9b334", "type": "symbol_change", "payload": {"customer_id": "CUST-1001", "old_symbol": "LUMA", "new_symbol": "LUMAX"}, "offset": 378}
+{"event_id": "evt_1fe9375c1f14ce77", "type": "fx_deposit", "payload": {"customer_id": "CUST-1005", "currency": "EUR", "amount_foreign": "1452.13", "market_rate": "12.9187", "customer_rate": "12.99", "usd_at_market_rate": "112.41", "usd_at_customer_rate": "111.79"}, "offset": 379}
+{"event_id": "evt_41e101268c4ab246", "type": "stock_split", "payload": {"customer_id": "CUST-1009", "symbol": "LUMA", "ratio_from": 2, "ratio_to": 3}, "offset": 380}
+{"event_id": "evt_51c4edc47ab7669b", "type": "trade_settled", "payload": {"trade_id": "evt_a41745d6db7a0a2f"}, "offset": 381}
+{"event_id": "evt_03c99e7d5c4907d9", "type": "fee_charged", "payload": {"customer_id": "CUST-1007", "amount": "1.54"}, "offset": 382}
+{"event_id": "evt_8aec46268cd3e5d9", "type": "reversal", "payload": {"reverses_event_id": "evt_a41745d6db7a0a2f", "reason": "operational correction"}, "offset": 383}
+{"event_id": "cp_cp_postchaos", "type": "checkpoint_request", "payload": {"checkpoint_id": "cp_postchaos", "respond_within_seconds": 60}, "offset": 384}
+{"event_id": "evt_22c6a37bb0b9bd59", "type": "order_filled", "payload": {"order_id": "ord_945aabb14d9e", "customer_id": "CUST-1009", "side": "buy", "symbol": "LUMA", "quantity": "1", "price": "29.21", "principal": "29.21", "asset_class": "etf", "broker": "BRK-C", "partner_rate": "0.30", "trade_id": "evt_22c6a37bb0b9bd59"}, "offset": 385}
+{"event_id": "evt_05dfecc786df74bd", "type": "reversal", "payload": {"reverses_event_id": "evt_22c6a37bb0b9bd59", "reason": "operational correction"}, "offset": 386}
+{"event_id": "evt_7aa374eab8eabd7e", "type": "order_placed", "payload": {"order_id": "ord_7aa374eab8ea", "customer_id": "CUST-1011", "side": "buy", "symbol": "HELI", "quantity": "59", "limit_price": "32.66", "asset_class": "etf", "est_charges": "7.00"}, "offset": 387}
+{"event_id": "evt_a1ddaa50a1b0c198", "type": "fx_deposit", "payload": {"customer_id": "CUST-1000", "currency": "AED", "amount_foreign": "6944.47", "market_rate": "34.1539", "customer_rate": "34.25", "usd_at_market_rate": "203.33", "usd_at_customer_rate": "202.76"}, "offset": 388}
+{"event_id": "evt_73c796dc1945482b", "type": "transfer_between_customers", "payload": {"from_customer_id": "CUST-1003", "to_customer_id": "CUST-1002", "amount": "2576.41"}, "offset": 389}
+{"event_id": "evt_73c796dc1945482b", "type": "transfer_between_customers", "payload": {"from_customer_id": "CUST-1003", "to_customer_id": "CUST-1002", "amount": "2576.41"}, "offset": 390}
+{"event_id": "evt_23b19bbc5f5d5bb1", "type": "reversal", "payload": {"reverses_event_id": "evt_95ac87d00d9e2d95", "reason": "operational correction"}, "offset": 391}
+{"event_id": "evt_6e9546bd07b746bd", "type": "trade_settled", "payload": {"trade_id": "evt_95ac87d00d9e2d95"}, "offset": 392}
+{"event_id": "evt_27a35e555dcf0391", "type": "order_partially_filled", "payload": {"order_id": "ord_7aa374eab8ea", "customer_id": "CUST-1011", "side": "buy", "symbol": "HELI", "quantity": "10", "price": "266.25", "principal": "2662.50", "asset_class": "etf", "broker": "BRK-A", "partner_rate": "0.35", "trade_id": "evt_27a35e555dcf0391"}, "backdated_days": 2, "offset": 393}
+{"event_id": "evt_13d3bc26dbc56162", "type": "interest_credited", "payload": {"customer_id": "CUST-1003", "gross_amount": "112.36", "customer_share": "88.76"}, "offset": 394}
+{"event_id": "evt_88b7cb8070e0eb73", "type": "stock_split", "payload": {"customer_id": "CUST-1003", "symbol": "JUNO", "ratio_from": 2, "ratio_to": 3}, "offset": 395}
+{"event_id": "evt_d0836d9941abd733", "type": "fx_deposit", "payload": {"customer_id": "CUST-1005", "currency": "GBP", "amount_foreign": "5820.10", "market_rate": "56.509", "customer_rate": "56.72", "usd_at_market_rate": "102.99", "usd_at_customer_rate": "102.61"}, "offset": 396}
+{"event_id": "evt_66962b9721e55f5e", "type": "fee_charged", "payload": {"customer_id": "CUST-1001", "amount": "29.66"}, "offset": 397}
+{"event_id": "evt_0daf793d35818dcb", "type": "trade_settled", "payload": {"trade_id": "evt_22c6a37bb0b9bd59"}, "offset": 398}
+{"event_id": "evt_4a1b1df0d6e4a9fc", "type": "reversal", "payload": {"reverses_event_id": "evt_27a35e555dcf0391", "reason": "operational correction"}, "offset": 399}
+{"event_id": "evt_14fd6bfed37dc58c", "type": "fee_charged", "payload": {"customer_id": "CUST-1007", "amount": "15.83"}, "offset": 400}
+{"event_id": "evt_a8e84be03ddeeacf", "type": "transfer_between_customers", "payload": {"from_customer_id": "CUST-1004", "to_customer_id": "CUST-1003", "amount": "3135.96"}, "offset": 401}
+{"event_id": "evt_4c4905d5d9255cff", "type": "transfer_between_customers", "payload": {"from_customer_id": "CUST-1004", "to_customer_id": "CUST-1003", "amount": "903.11"}, "offset": 402}
+{"event_id": "evt_d14ba111be40e48a", "type": "trade_settled", "payload": {"trade_id": "evt_27a35e555dcf0391"}, "offset": 403}
+{"event_id": "evt_1313bb39e1305521", "type": "withdrawal_rejected", "payload": {"withdrawal_id": "wdr_f0ba9050e79f"}, "offset": 404}
+{"event_id": "evt_c82e265e071dc8e5", "type": "reg_fees_remitted", "payload": {"customer_id": "CUST-1006"}, "offset": 405}
+{"event_id": "evt_77c01ea0e5765568", "type": "order_partially_filled", "payload": {"order_id": "ord_763efbce8318", "customer_id": "CUST-1003", "side": "buy", "symbol": "JUNO", "quantity": "4", "price": "341.65", "principal": "1366.60", "asset_class": "equity", "broker": "BRK-B", "partner_rate": "0.35", "trade_id": "evt_77c01ea0e5765568"}, "offset": 406}
+{"event_id": "evt_b56d65abac1761e0", "type": "fx_deposit", "payload": {"customer_id": "CUST-1003", "currency": "EUR", "amount_foreign": "7336.34", "market_rate": "85.6129", "customer_rate": "86.29", "usd_at_market_rate": "85.69", "usd_at_customer_rate": "85.02"}, "offset": 407}
+{"event_id": "evt_dc05d6e768d86f03", "type": "stock_split", "payload": {"customer_id": "CUST-1004", "symbol": "DELT", "ratio_from": 1, "ratio_to": 3}, "offset": 408}
+{"event_id": "evt_22cb974852cae8c2", "type": "order_partially_filled", "payload": {"order_id": "ord_e51f6c21243c", "customer_id": "CUST-1001", "side": "buy", "symbol": "LUMA", "quantity": "18", "price": "57.21", "principal": "1029.78", "asset_class": "etf", "broker": "BRK-A", "partner_rate": "0.35", "trade_id": "evt_dac5dcf236f87ba2"}, "offset": 409}
+{"event_id": "evt_8be466b2cc385553", "type": "order_partially_filled", "payload": {"order_id": "ord_e51f6c21243c", "customer_id": "CUST-1001", "side": "buy", "symbol": "LUMA", "quantity": "9", "price": "57.57", "principal": "518.13", "asset_class": "etf", "broker": "BRK-A", "partner_rate": "0.35", "trade_id": "evt_8be466b2cc385553"}, "offset": 410}
+{"event_id": "evt_f4e159a62792f814", "type": "trade_settled", "payload": {"trade_id": "evt_77c01ea0e5765568"}, "offset": 411}
+{"event_id": "evt_ba547b304058df50", "type": "withdrawal_requested", "payload": {"withdrawal_id": "wdr_9e0175163eff", "customer_id": "CUST-1008", "amount": "2862.25"}, "offset": 412}
+{"event_id": "evt_9ea91676c9900c03", "type": "fx_deposit", "payload": {"customer_id": "CUST-1003", "currency": "GBP", "amount_foreign": "5096.23", "market_rate": "8.4423", "customer_rate": "8.51", "usd_at_market_rate": "603.65", "usd_at_customer_rate": "598.85"}, "offset": 413}
+{"event_id": "evt_c0bb04e973369e93", "type": "reversal", "payload": {"reverses_event_id": "evt_77c01ea0e5765568", "reason": "operational correction"}, "offset": 414}
+{"event_id": "evt_159db7fc2fd103f3", "type": "deposit", "payload": {"customer_id": "CUST-1008", "amount": "17964.57"}, "offset": 415}
+{"event_id": "evt_684fc7f4a0cd6143", "type": "fee_charged", "payload": {"customer_id": "CUST-1009", "amount": "33.78"}, "offset": 416}
+{"event_id": "evt_4dbaa387f0e20788", "type": "withdrawal_requested", "payload": {"withdrawal_id": "wdr_f2ee113adafb", "customer_id": "CUST-1010", "amount": "1050.78"}, "offset": 417}
+{"event_id": "evt_3670f85f561cd511", "type": "reg_fees_remitted", "payload": {"customer_id": "CUST-1007"}, "offset": 418}
+{"event_id": "evt_59ee4590243cbc00", "type": "symbol_change", "payload": {"customer_id": "CUST-1002", "old_symbol": "DELT", "new_symbol": "DELTX"}, "offset": 419}
+{"event_id": "evt_c3a9bdc3d1cba138", "type": "reversal", "payload": {"reverses_event_id": "evt_8be466b2cc385553", "reason": "operational correction"}, "offset": 420}
+{"event_id": "evt_ae605e90a66ddb09", "type": "withdrawal_requested", "payload": {"withdrawal_id": "wdr_0287c53e9ff0", "customer_id": "CUST-1011", "amount": "2728.78"}, "offset": 421}
+{"event_id": "evt_1f184f64c98bc8d6", "type": "trade_settled", "payload": {"trade_id": "evt_8be466b2cc385553"}, "offset": 422}
+{"event_id": "evt_701a7e22df31a0a0", "type": "symbol_change", "payload": {"customer_id": "CUST-1002", "old_symbol": "DELTX", "new_symbol": "DELTXX"}, "offset": 423}
+{"event_id": "evt_0dcc4b78ab532ec4", "type": "transfer_between_customers", "payload": {"from_customer_id": "CUST-1002", "to_customer_id": "CUST-1007", "amount": "3354.91"}, "offset": 424}
+{"event_id": "evt_7dd22f417e6627fc", "type": "fx_deposit", "payload": {"customer_id": "CUST-1006", "currency": "INR", "amount_foreign": "4238.83", "market_rate": "15.4677", "customer_rate": "15.57", "usd_at_market_rate": "274.04", "usd_at_customer_rate": "272.24"}, "offset": 425}
+{"event_id": "evt_a45dba1cb12c7032", "type": "stock_split", "payload": {"customer_id": "CUST-1009", "symbol": "ACME", "ratio_from": 2, "ratio_to": 3}, "offset": 426}
+{"event_id": "evt_e0dca557120aaaaa", "type": "fee_refund", "payload": {"customer_id": "CUST-1009", "refunds_source_id": "evt_684fc7f4a0cd6143"}, "offset": 427}
+{"event_id": "evt_f524ae3a38f54ea2", "type": "interest_credited", "payload": {"customer_id": "CUST-1001", "gross_amount": "259.12", "customer_share": "163.25"}, "offset": 428}
+{"event_id": "evt_81b2d3d7db84caa8", "type": "reversal", "payload": {"reverses_event_id": "evt_22cb974852cae8c2", "reason": "operational correction"}, "offset": 429}
+{"event_id": "evt_067c424166c4cc48", "type": "transfer_between_customers", "payload": {"from_customer_id": "CUST-1002", "to_customer_id": "CUST-1006", "amount": "3127.66"}, "offset": 430}
+{"event_id": "evt_4b9da4b3531e7fdb", "type": "fee_refund", "payload": {"customer_id": "CUST-1000", "refunds_source_id": "evt_63f8ff329ff177bb"}, "offset": 431}
+{"event_id": "evt_450ad2e393ff6417", "type": "partner_payout", "payload": {"customer_id": "CUST-1010"}, "offset": 432}
+{"event_id": "evt_edefe4976a951c90", "type": "fx_deposit", "payload": {"customer_id": "CUST-1006", "currency": "INR", "amount_foreign": "4973.81", "market_rate": "85.5504", "customer_rate": "85.76", "usd_at_market_rate": "58.14", "usd_at_customer_rate": "58.00"}, "offset": 433}
+{"event_id": "evt_276136b3a1004e3d", "type": "transfer_between_customers", "payload": {"from_customer_id": "CUST-1010", "to_customer_id": "CUST-1005", "amount": "1495.05"}, "offset": 434}
+{"event_id": "cp_asof0", "type": "checkpoint_request", "payload": {"checkpoint_id": "asof0", "respond_within_seconds": 60, "as_of_event_id": "evt_80a162722b4046a8"}, "offset": 435}
+{"event_id": "evt_883d7b7b2ed60aad", "type": "symbol_change", "payload": {"customer_id": "CUST-1001", "old_symbol": "LUMA", "new_symbol": "LUMAX"}, "offset": 436}
+{"event_id": "evt_f46fc69a7f8ba6d8", "type": "transfer_between_customers", "payload": {"from_customer_id": "CUST-1006", "to_customer_id": "CUST-1011", "amount": "656.94"}, "offset": 437}
+{"event_id": "evt_523da03ae2bd2a58", "type": "fx_deposit", "payload": {"customer_id": "CUST-1001", "currency": "EUR", "amount_foreign": "8222.94", "market_rate": "34.4754", "customer_rate": "34.75", "usd_at_market_rate": "238.52", "usd_at_customer_rate": "236.63"}, "offset": 438}
+{"event_id": "evt_9ed06dce9c99da03", "type": "fee_charged", "payload": {"customer_id": "CUST-1004", "amount": "8.27"}, "backdated_days": 2, "offset": 439}
+{"event_id": "evt_36d56e808e815cba", "type": "order_placed", "payload": {"order_id": "ord_36d56e808e81", "customer_id": "CUST-1010", "side": "sell", "symbol": "JUNO", "quantity": "14.175", "limit_price": "388.72", "asset_class": "equity", "est_charges": "16.00"}, "offset": 440}
+{"event_id": "evt_6185d5fa319b6220", "type": "withdrawal_requested", "payload": {"withdrawal_id": "wdr_1d64b9577664", "customer_id": "CUST-1002", "amount": "1371.71"}, "offset": 441}
+{"event_id": "evt_6185d5fa319b6220", "type": "withdrawal_requested", "payload": {"withdrawal_id": "wdr_1d64b9577664", "customer_id": "CUST-1002", "amount": "1371.71"}, "offset": 442}
+{"event_id": "evt_b5ef3b248ca79e81", "type": "dividend_cash", "payload": {"customer_id": "CUST-1004", "symbol": "DELT", "gross_amount": "185.63", "withholding_tax": "46.41", "net_amount": "139.22"}, "offset": 443}
+{"event_id": "evt_5267346239b87fe9", "type": "fx_deposit", "payload": {"customer_id": "CUST-1004", "currency": "AED", "amount_foreign": "2536.36", "market_rate": "9.6581", "customer_rate": "9.72", "usd_at_market_rate": "262.61", "usd_at_customer_rate": "260.94"}, "offset": 444}
+{"event_id": "evt_202ff279b31d9c13", "type": "deposit", "payload": {"customer_id": "CUST-1005", "amount": "1307.64"}, "offset": 445}
+{"event_id": "evt_9403e75cd2ea487c", "type": "withdrawal_settled", "payload": {"withdrawal_id": "wdr_0287c53e9ff0"}, "offset": 446}
+{"event_id": "evt_617f25eebaaecbfe", "type": "order_placed", "payload": {"order_id": "ord_617f25eebaae", "customer_id": "CUST-1008", "side": "buy", "symbol": "ACME", "quantity": "22", "limit_price": "349.70", "asset_class": "equity", "est_charges": "22.00"}, "offset": 447}
+{"event_id": "evt_18e76e5590a4192d", "type": "reversal", "payload": {"reverses_event_id": "evt_2b8da6413b35dd54", "reason": "operational correction"}, "offset": 448}
+{"event_id": "evt_3a55061d5ed06007", "type": "fx_deposit", "payload": {"customer_id": "CUST-1006", "currency": "EUR", "amount_foreign": "5642.36", "market_rate": "61.4505", "customer_rate": "61.83", "usd_at_market_rate": "91.82", "usd_at_customer_rate": "91.26"}, "offset": 449}
+{"event_id": "evt_7cae05364a138007", "type": "order_placed", "payload": {"order_id": "ord_7cae05364a13", "customer_id": "CUST-1001", "side": "sell", "symbol": "LUMAX", "quantity": "2.97", "limit_price": "350.56", "asset_class": "etf", "est_charges": "4.00"}, "offset": 450}
+{"event_id": "evt_f669214f8ed3ec57", "type": "interest_credited", "payload": {"customer_id": "CUST-1010", "gross_amount": "384.12", "customer_share": "291.93"}, "offset": 451}
+{"event_id": "evt_d13127705f774aff", "type": "transfer_between_customers", "payload": {"from_customer_id": "CUST-1005", "to_customer_id": "CUST-1008", "amount": "2629.25"}, "offset": 452}
+{"event_id": "evt_a6cfc103c078e656", "type": "withdrawal_settled", "payload": {"withdrawal_id": "wdr_1d64b9577664"}, "backdated_days": 4, "offset": 453}
+{"event_id": "evt_f99f34ba6d78e13e", "type": "fee_charged", "payload": {"customer_id": "CUST-1003", "amount": "16.45"}, "offset": 454}
+{"event_id": "evt_27e46b8fc1409eaf", "type": "order_filled", "payload": {"order_id": "ord_f4df5e128ea3", "customer_id": "CUST-1002", "side": "buy", "symbol": "DELT", "quantity": "5.5", "price": "257.14", "principal": "1414.27", "asset_class": "bond", "broker": "BRK-B", "partner_rate": "0.20", "trade_id": "evt_27e46b8fc1409eaf"}, "offset": 455}
+{"event_id": "evt_5843106e02fc69b0", "type": "order_partially_filled", "payload": {"order_id": "ord_893bca02fa8b", "customer_id": "CUST-1010", "side": "sell", "symbol": "JUNO", "quantity": "10", "price": "236.25", "principal": "2362.50", "asset_class": "equity", "broker": "BRK-B", "partner_rate": "0.25", "trade_id": "evt_5843106e02fc69b0"}, "offset": 456}
+{"event_id": "evt_cd71241380b1edc8", "type": "withdrawal_requested", "payload": {"withdrawal_id": "wdr_3e086d64ad33", "customer_id": "CUST-1007", "amount": "2643.98"}, "offset": 457}
+{"event_id": "evt_3f5ce5d8e51b1220", "type": "interest_credited", "payload": {"customer_id": "CUST-1006", "gross_amount": "265.77", "customer_share": "151.49"}, "offset": 458}
+{"event_id": "cp_cp1", "type": "checkpoint_request", "payload": {"checkpoint_id": "cp1", "respond_within_seconds": 60}, "offset": 459}
+{"event_id": "evt_cabb0c57603760c5", "type": "order_placed", "payload": {"order_id": "ord_cabb0c576037", "customer_id": "CUST-1005", "side": "sell", "symbol": "JUNO", "quantity": "2.25", "limit_price": "267.43", "asset_class": "equity", "est_charges": "2.00"}, "offset": 460}
+{"event_id": "evt_04f8acdf6cf72eaf", "type": "withdrawal_settled", "payload": {"withdrawal_id": "wdr_9e0175163eff"}, "offset": 461}
+{"event_id": "evt_f76ab88090abffa2", "type": "dividend_cash", "payload": {"customer_id": "CUST-1007", "symbol": "ACME", "gross_amount": "2.70", "withholding_tax": "0.68", "net_amount": "2.02"}, "offset": 462}
+{"event_id": "evt_caaed509f231b528", "type": "order_placed", "payload": {"order_id": "ord_caaed509f231", "customer_id": "CUST-1010", "side": "sell", "symbol": "JUNO", "quantity": "8.375", "limit_price": "138.13", "asset_class": "equity", "est_charges": "4.00"}, "offset": 463}
+{"event_id": "evt_8665100e9c4290f1", "type": "partner_payout", "payload": {"customer_id": "CUST-1004"}, "offset": 464}
+{"event_id": "evt_1d602234b5be14d3", "type": "interest_credited", "payload": {"customer_id": "CUST-1011", "gross_amount": "324.67", "customer_share": "198.05"}, "offset": 465}
+{"event_id": "evt_6464c8d2d76943e5", "type": "fx_deposit", "payload": {"customer_id": "CUST-1010", "currency": "GBP", "amount_foreign": "5607.41", "market_rate": "9.3469", "customer_rate": "9.40", "usd_at_market_rate": "599.92", "usd_at_customer_rate": "596.53"}, "offset": 466}
+{"event_id": "evt_4815697a7e4f1344", "type": "dividend_reinvested", "payload": {"customer_id": "CUST-1011", "symbol": "HELI", "gross_amount": "66.04", "withholding_tax": "16.51", "net_amount": "49.53", "reinvest_price": "340.93", "reinvest_quantity": "0.145279"}, "offset": 467}
+{"event_id": "evt_747ce97a1af021de", "type": "reversal", "payload": {"reverses_event_id": "evt_4815697a7e4f1344", "reason": "operational correction"}, "offset": 468}
+{"event_id": "evt_4a4752d01caaa906", "type": "withdrawal_settled", "payload": {"withdrawal_id": "wdr_3e086d64ad33"}, "offset": 469}
+{"event_id": "evt_24ef1b1033be8c27", "type": "dividend_cash", "payload": {"customer_id": "CUST-1010", "symbol": "IONX", "gross_amount": "0.49", "withholding_tax": "0.12", "net_amount": "0.37"}, "offset": 470}
+{"event_id": "cp_asof1", "type": "checkpoint_request", "payload": {"checkpoint_id": "asof1", "respond_within_seconds": 60, "as_of_event_id": "evt_c92bd3c91014ece8"}, "offset": 471}
+{"event_id": "evt_cf5d7c63de006889", "type": "fee_charged", "payload": {"customer_id": "CUST-1006", "amount": "32.98"}, "offset": 472}
+{"event_id": "evt_559188ce6d6e2687", "type": "fx_deposit", "payload": {"customer_id": "CUST-1004", "currency": "EUR", "amount_foreign": "5779.06", "market_rate": "69.9243", "customer_rate": "70.10", "usd_at_market_rate": "82.65", "usd_at_customer_rate": "82.44"}, "offset": 473}
+{"event_id": "evt_988233c10b772099", "type": "fee_charged", "payload": {"customer_id": "CUST-1006", "amount": "32.60"}, "offset": 474}
+{"event_id": "evt_b664d7a640917112", "type": "withdrawal_requested", "payload": {"withdrawal_id": "wdr_ee1603837800", "customer_id": "CUST-1007", "amount": "817.28"}, "offset": 475}
+{"event_id": "evt_0de2c6f8a0633b3f", "type": "order_partially_filled", "payload": {"order_id": "ord_763efbce8318", "customer_id": "CUST-1003", "side": "buy", "symbol": "JUNO", "quantity": "2", "price": "341.20", "principal": "682.40", "asset_class": "equity", "broker": "BRK-B", "partner_rate": "0.35", "trade_id": "evt_0de2c6f8a0633b3f"}, "backdated_days": 4, "offset": 476}
+{"event_id": "evt_552e4046bd385484", "type": "interest_credited", "payload": {"customer_id": "CUST-1005", "gross_amount": "275.57", "customer_share": "148.81"}, "offset": 477}
+{"event_id": "evt_996ab1d6a5010fa0", "type": "deposit", "payload": {"customer_id": "CUST-1008", "amount": "2003.04"}, "offset": 478}
+{"event_id": "evt_8ad5c79beaa64c5b", "type": "symbol_change", "payload": {"customer_id": "CUST-1005", "old_symbol": "JUNO", "new_symbol": "JUNOX"}, "offset": 479}
+{"event_id": "evt_0b39675bb8a4bcc4", "type": "deposit", "payload": {"customer_id": "CUST-1010", "amount": "13472.02"}, "offset": 480}
+{"event_id": "evt_d3628c375dde31da", "type": "fee_refund", "payload": {"customer_id": "CUST-1003", "refunds_source_id": "evt_f99f34ba6d78e13e"}, "offset": 481}
+{"event_id": "evt_0d0e67e09a9856b4", "type": "stock_split", "payload": {"customer_id": "CUST-1001", "symbol": "LUMAX", "ratio_from": 1, "ratio_to": 2}, "offset": 482}
+{"event_id": "evt_f54cc91e454f810a", "type": "deposit", "payload": {"customer_id": "CUST-1008", "amount": "9499.17"}, "offset": 483}
+{"event_id": "evt_f0cb503527bd3590", "type": "trade_settled", "payload": {"trade_id": "evt_27e46b8fc1409eaf"}, "offset": 484}
+{"event_id": "evt_5b2eb32fd97f1037", "type": "interest_credited", "payload": {"customer_id": "CUST-1000", "gross_amount": "391.95", "customer_share": "301.80"}, "offset": 485}
+{"event_id": "evt_46fc69630eb74f63", "type": "fee_charged", "payload": {"customer_id": "CUST-1006", "amount": "12.34"}, "offset": 486}
+{"event_id": "evt_377ac7311788a32e", "type": "transfer_between_customers", "payload": {"from_customer_id": "CUST-1000", "to_customer_id": "CUST-1008", "amount": "2304.73"}, "offset": 487}
+{"event_id": "evt_dd92476b7c26cf25", "type": "deposit", "payload": {"customer_id": "CUST-1009", "amount": "7315.00"}, "offset": 488}
+{"event_id": "evt_014178c13d7a3dcc", "type": "deposit", "payload": {"customer_id": "CUST-1009", "amount": "17499.53"}, "offset": 489}
+{"event_id": "evt_3173323ccb294979", "type": "trade_settled", "payload": {"trade_id": "evt_5843106e02fc69b0"}, "offset": 490}
+{"event_id": "evt_62fa9d42bb8f87a1", "type": "trade_settled", "payload": {"trade_id": "evt_0de2c6f8a0633b3f"}, "offset": 491}
+{"event_id": "evt_7d1a7a6ff272e258", "type": "stock_split", "payload": {"customer_id": "CUST-1000", "symbol": "CRUX", "ratio_from": 2, "ratio_to": 3}, "offset": 492}
+{"event_id": "evt_4d862cec65776f7a", "type": "withdrawal_settled", "payload": {"withdrawal_id": "wdr_f2ee113adafb"}, "offset": 493}
+{"event_id": "evt_03ba53c27baf1594", "type": "order_rejected", "payload": {"order_id": "ord_1da1b850185c"}, "offset": 494}
+{"event_id": "evt_1abf1434e9e550f5", "type": "order_filled", "payload": {"order_id": "ord_3ba49d996a30", "customer_id": "CUST-1011", "side": "buy", "symbol": "HELI", "quantity": "17", "price": "39.18", "principal": "666.06", "asset_class": "etf", "broker": "BRK-A", "partner_rate": "0.25", "trade_id": "evt_1abf1434e9e550f5"}, "offset": 495}
+{"event_id": "evt_131e5455e1c21664", "type": "dividend_cash", "payload": {"customer_id": "CUST-1009", "symbol": "ACME", "gross_amount": "12.95", "withholding_tax": "3.24", "net_amount": "9.71"}, "offset": 496}
+{"event_id": "evt_0191a1094e02f5ee", "type": "fx_deposit", "payload": {"customer_id": "CUST-1008", "currency": "GBP", "amount_foreign": "2766.33", "market_rate": "54.2106", "customer_rate": "54.43", "usd_at_market_rate": "51.03", "usd_at_customer_rate": "50.82"}, "offset": 497}
+{"event_id": "evt_41b57aa2ba70fb5c", "type": "interest_credited", "payload": {"customer_id": "CUST-1003", "gross_amount": "48.12", "customer_share": "25.98"}, "offset": 498}
+{"event_id": "evt_60c10fe907a574ad", "type": "trade_settled", "payload": {"trade_id": "evt_1abf1434e9e550f5"}, "offset": 499}
+{"event_id": "evt_2dee3eccd592577c", "type": "stock_split", "payload": {"customer_id": "CUST-1006", "symbol": "JUNO", "ratio_from": 1, "ratio_to": 2}, "offset": 500}
+{"event_id": "evt_7d5ef541573a5011", "type": "stock_split", "payload": {"customer_id": "CUST-1007", "symbol": "ACME", "ratio_from": 1, "ratio_to": 2}, "offset": 501}
+{"event_id": "evt_bbe4615b87e1d7b6", "type": "withdrawal_settled", "payload": {"withdrawal_id": "wdr_ee1603837800"}, "offset": 502}
+{"event_id": "evt_567bea16b9236763", "type": "order_partially_filled", "payload": {"order_id": "ord_763efbce8318", "customer_id": "CUST-1003", "side": "buy", "symbol": "JUNO", "quantity": "1", "price": "349.32", "principal": "349.32", "asset_class": "equity", "broker": "BRK-B", "partner_rate": "0.35", "trade_id": "evt_567bea16b9236763"}, "offset": 503}
+{"event_id": "evt_89ffb33b6a473990", "type": "reversal", "payload": {"reverses_event_id": "evt_254703b422fc4e78", "reason": "operational correction"}, "offset": 504}
+{"event_id": "evt_e061a3d9b3e0f93c", "type": "order_placed", "payload": {"order_id": "ord_e061a3d9b3e0", "customer_id": "CUST-1008", "side": "buy", "symbol": "LUMA", "quantity": "16", "limit_price": "285.49", "asset_class": "etf", "est_charges": "15.00"}, "offset": 505}
+{"event_id": "evt_d519edbff873a031", "type": "order_partially_filled", "payload": {"order_id": "ord_171df4425aa2", "customer_id": "CUST-1004", "side": "buy", "symbol": "CRUXX", "quantity": "23.5", "price": "258.28", "principal": "6069.58", "asset_class": "etf", "broker": "BRK-A", "partner_rate": "0.35", "trade_id": "evt_d519edbff873a031"}, "offset": 506}
+{"event_id": "evt_8093fc9f4d356e45", "type": "fx_deposit", "payload": {"customer_id": "CUST-1005", "currency": "AED", "amount_foreign": "5999.88", "market_rate": "75.6327", "customer_rate": "76.03", "usd_at_market_rate": "79.33", "usd_at_customer_rate": "78.91"}, "offset": 507}
+{"event_id": "evt_030faf6ab087389e", "type": "order_partially_filled", "payload": {"order_id": "ord_36d56e808e81", "customer_id": "CUST-1010", "side": "sell", "symbol": "JUNO", "quantity": "10", "price": "251.25", "principal": "2512.50", "asset_class": "equity", "broker": "BRK-B", "partner_rate": "0.25", "trade_id": "evt_030faf6ab087389e"}, "offset": 508}
+{"event_id": "evt_3a2203fd8dc350ba", "type": "order_partially_filled", "payload": {"order_id": "ord_7aa374eab8ea", "customer_id": "CUST-1011", "side": "buy", "symbol": "HELI", "quantity": "10", "price": "266.25", "principal": "2662.50", "asset_class": "etf", "broker": "BRK-A", "partner_rate": "0.35", "trade_id": "evt_27a35e555dcf0391"}, "offset": 509}
+{"event_id": "evt_2746defadd596f08", "type": "fee_refund", "payload": {"customer_id": "CUST-1006", "refunds_source_id": "evt_46fc69630eb74f63"}, "offset": 510}
+{"event_id": "evt_ef396cf9d4446f8a", "type": "partner_payout", "payload": {"customer_id": "CUST-1004"}, "offset": 511}
+{"event_id": "evt_f0259a89d78e9884", "type": "transfer_between_customers", "payload": {"from_customer_id": "CUST-1008", "to_customer_id": "CUST-1005", "amount": "2072.54"}, "offset": 512}
+{"event_id": "evt_a2c3cd6b9fe45ea0", "type": "stock_split", "payload": {"customer_id": "CUST-1004", "symbol": "DELT", "ratio_from": 1, "ratio_to": 3}, "offset": 513}
+{"event_id": "evt_f8a37e99121fe714", "type": "order_placed", "payload": {"order_id": "ord_f8a37e99121f", "customer_id": "CUST-1006", "side": "sell", "symbol": "JUNO", "quantity": "11.2", "limit_price": "220.44", "asset_class": "equity", "est_charges": "7.00"}, "offset": 514}
+{"event_id": "evt_d29b5ba83ba30e4d", "type": "trade_settled", "payload": {"trade_id": "evt_567bea16b9236763"}, "offset": 515}
+{"event_id": "evt_8c647c85bcce5bc8", "type": "reg_fees_remitted", "payload": {"customer_id": "CUST-1001"}, "offset": 516}
+{"event_id": "evt_4e20a31998fd7f18", "type": "fx_deposit", "payload": {"customer_id": "CUST-1006", "currency": "AED", "amount_foreign": "1469.95", "market_rate": "18.2858", "customer_rate": "18.41", "usd_at_market_rate": "80.39", "usd_at_customer_rate": "79.85"}, "backdated_days": 3, "offset": 517}
+{"event_id": "evt_505d0fcfde24cb94", "type": "interest_credited", "payload": {"customer_id": "CUST-1002", "gross_amount": "120.11", "customer_share": "55.25"}, "offset": 518}
+{"event_id": "evt_22d66406e78f4229", "type": "symbol_change", "payload": {"customer_id": "CUST-1001", "old_symbol": "LUMAX", "new_symbol": "LUMAXX"}, "offset": 519}
+{"event_id": "evt_7611eac95a744c6a", "type": "interest_credited", "payload": {"customer_id": "CUST-1004", "gross_amount": "394.17", "customer_share": "260.15"}, "offset": 520}
+{"event_id": "evt_e6bf417ae241d503", "type": "partner_payout", "payload": {"customer_id": "CUST-1007"}, "offset": 521}
+{"event_id": "evt_5365481d597c7686", "type": "dividend_reinvested", "payload": {"customer_id": "CUST-1002", "symbol": "DELT", "gross_amount": "2.64", "withholding_tax": "0.66", "net_amount": "1.98", "reinvest_price": "71.11", "reinvest_quantity": "0.027844"}, "offset": 522}
+{"event_id": "evt_f896faa2e5b9dd60", "type": "reversal", "payload": {"reverses_event_id": "evt_32bc23fd16cca5ec", "reason": "operational correction"}, "offset": 523}
+{"event_id": "evt_cf64dc0fe898f4ab", "type": "fee_charged", "payload": {"customer_id": "CUST-1008", "amount": "16.24"}, "offset": 524}
+{"event_id": "evt_78d35f008e151695", "type": "fee_charged", "payload": {"customer_id": "CUST-1003", "amount": "26.52"}, "offset": 525}
+{"event_id": "evt_65a8e308267d0402", "type": "fee_refund", "payload": {"customer_id": "CUST-1003", "refunds_source_id": "evt_78d35f008e151695"}, "offset": 526}
+{"event_id": "evt_65a8e308267d0402", "type": "fee_refund", "payload": {"customer_id": "CUST-1003", "refunds_source_id": "evt_78d35f008e151695"}, "offset": 527}
+{"event_id": "evt_61488fc41c013456", "type": "interest_credited", "payload": {"customer_id": "CUST-1002", "gross_amount": "296.59", "customer_share": "231.34"}, "offset": 528}
+{"event_id": "evt_80e84dc9ef4846ac", "type": "order_partially_filled", "payload": {"order_id": "ord_171df4425aa2", "customer_id": "CUST-1004", "side": "buy", "symbol": "CRUXX", "quantity": "10", "price": "423.75", "principal": "4237.50", "asset_class": "etf", "broker": "BRK-A", "partner_rate": "0.35", "trade_id": "evt_80e84dc9ef4846ac"}, "offset": 529}
+{"event_id": "evt_3d23f2e9acae0b61", "type": "withdrawal_requested", "payload": {"withdrawal_id": "wdr_4271bb774b8b", "customer_id": "CUST-1008", "amount": "1254.49"}, "offset": 530}
+{"event_id": "evt_c2bf6207a995ad88", "type": "withdrawal_settled", "payload": {"withdrawal_id": "wdr_4271bb774b8b"}, "offset": 531}
+{"event_id": "evt_b5a9ffdef9088d5b", "type": "symbol_change", "payload": {"customer_id": "CUST-1009", "old_symbol": "ACME", "new_symbol": "ACMEX"}, "offset": 532}
+{"event_id": "evt_5dc3646b17446480", "type": "fee_refund", "payload": {"customer_id": "CUST-1005", "refunds_source_id": "evt_9987a6bd0954b6c7"}, "offset": 533}
+{"event_id": "evt_7d096eeb2590ae90", "type": "fee_charged", "payload": {"customer_id": "CUST-1002", "amount": "2.11"}, "backdated_days": 2, "offset": 534}
+{"event_id": "evt_999f174165a719e5", "type": "dividend_reinvested", "payload": {"customer_id": "CUST-1004", "symbol": "DELT", "gross_amount": "65.81", "withholding_tax": "16.45", "net_amount": "49.36", "reinvest_price": "270.66", "reinvest_quantity": "0.182369"}, "offset": 535}
+{"event_id": "evt_d0d2fff43a033ea1", "type": "fee_charged", "payload": {"customer_id": "CUST-1004", "amount": "1.73"}, "offset": 536}
+{"event_id": "evt_6294427bfec32eb7", "type": "stock_split", "payload": {"customer_id": "CUST-1001", "symbol": "LUMAXX", "ratio_from": 2, "ratio_to": 3}, "offset": 537}
+{"event_id": "evt_f09ecc3edc9f91c5", "type": "withdrawal_requested", "payload": {"withdrawal_id": "wdr_9e16b6cd224a", "customer_id": "CUST-1003", "amount": "2864.73"}, "offset": 538}
+{"event_id": "evt_159001bcf627fb27", "type": "transfer_between_customers", "payload": {"from_customer_id": "CUST-1000", "to_customer_id": "CUST-1010", "amount": "2863.79"}, "offset": 539}
+{"event_id": "evt_6542a85bdf2fa005", "type": "order_filled", "payload": {"order_id": "ord_117e47f51f3c", "customer_id": "CUST-1000", "side": "buy", "symbol": "ACME", "quantity": "59", "price": "196.76", "principal": "11608.84", "asset_class": "equity", "broker": "BRK-B", "partner_rate": "0.30", "trade_id": "evt_6542a85bdf2fa005"}, "offset": 540}
+{"event_id": "evt_12357e9915f9e104", "type": "deposit", "payload": {"customer_id": "CUST-1003", "amount": "10397.07"}, "offset": 541}
+{"event_id": "evt_42b4262b82904b09", "type": "reversal", "payload": {"reverses_event_id": "evt_60303bed8b0200fc", "reason": "operational correction"}, "offset": 542}
+{"event_id": "evt_183b58c11ea859b6", "type": "fee_refund", "payload": {"customer_id": "CUST-1004", "refunds_source_id": "evt_d0d2fff43a033ea1"}, "offset": 543}
+{"event_id": "evt_cb99195c6ac0ab62", "type": "fee_charged", "payload": {"customer_id": "CUST-1002", "amount": "34.79"}, "offset": 544}
+{"event_id": "evt_c3c83df59bd2b7e0", "type": "deposit", "payload": {"customer_id": "CUST-1009", "amount": "2593.77"}, "offset": 545}
+{"event_id": "evt_5a1f8208ee6447c8", "type": "transfer_between_customers", "payload": {"from_customer_id": "CUST-1008", "to_customer_id": "CUST-1006", "amount": "1136.31"}, "offset": 546}
+{"event_id": "evt_90dde9ad26b4ae11", "type": "fx_deposit", "payload": {"customer_id": "CUST-1002", "currency": "EUR", "amount_foreign": "1362.33", "market_rate": "11.1139", "customer_rate": "11.17", "usd_at_market_rate": "122.58", "usd_at_customer_rate": "121.96"}, "offset": 547}
+{"event_id": "evt_65c96c2a0d622578", "type": "fee_charged", "payload": {"customer_id": "CUST-1010", "amount": "23.16"}, "offset": 548}
+{"event_id": "evt_221a98a3bf7e2d6c", "type": "reg_fees_remitted", "payload": {"customer_id": "CUST-1002"}, "offset": 549}
+{"event_id": "evt_390e3fcdc42934b2", "type": "fx_deposit", "payload": {"customer_id": "CUST-1001", "currency": "INR", "amount_foreign": "1300.01", "market_rate": "50.3667", "customer_rate": "50.48", "usd_at_market_rate": "25.81", "usd_at_customer_rate": "25.75"}, "offset": 550}
+{"event_id": "evt_405dab9c1e5e5247", "type": "deposit", "payload": {"customer_id": "CUST-1002", "amount": "15521.60"}, "offset": 551}
+{"event_id": "evt_20aa9105e8dbed53", "type": "reversal", "payload": {"reverses_event_id": "evt_999f174165a719e5", "reason": "operational correction"}, "offset": 552}
+{"event_id": "evt_60514336477ba3f5", "type": "fx_deposit", "payload": {"customer_id": "CUST-1008", "currency": "INR", "amount_foreign": "1760.09", "market_rate": "3.3585", "customer_rate": "3.37", "usd_at_market_rate": "524.07", "usd_at_customer_rate": "522.28"}, "offset": 553}
+{"event_id": "evt_a788831327197ed7", "type": "withdrawal_requested", "payload": {"withdrawal_id": "wdr_1ebe0d6f10d4", "customer_id": "CUST-1007", "amount": "2339.85"}, "offset": 554}
+{"event_id": "evt_c8e170dc38f903d3", "type": "dividend_reinvested", "payload": {"customer_id": "CUST-1002", "symbol": "DELT", "gross_amount": "2.27", "withholding_tax": "0.57", "net_amount": "1.70", "reinvest_price": "182.40", "reinvest_quantity": "0.00932"}, "offset": 555}
+{"event_id": "evt_bebf99377a19228d", "type": "withdrawal_settled", "payload": {"withdrawal_id": "wdr_9e16b6cd224a"}, "offset": 556}
+{"event_id": "evt_7b7114effcc7bc10", "type": "stock_split", "payload": {"customer_id": "CUST-1004", "symbol": "CRUXX", "ratio_from": 1, "ratio_to": 2}, "offset": 557}
+{"event_id": "evt_07b262fc8c905307", "type": "deposit", "payload": {"customer_id": "CUST-1007", "amount": "8545.38"}, "offset": 558}
+{"event_id": "evt_f9a51650b5a2c3ff", "type": "withdrawal_requested", "payload": {"withdrawal_id": "wdr_acb910c5733e", "customer_id": "CUST-1009", "amount": "2121.39"}, "offset": 559}
+{"event_id": "evt_3cafb6295d7d97a0", "type": "fee_refund", "payload": {"customer_id": "CUST-1010", "refunds_source_id": "evt_65c96c2a0d622578"}, "offset": 560}
+{"event_id": "evt_1cfb4890808230be", "type": "trade_settled", "payload": {"trade_id": "evt_d519edbff873a031"}, "offset": 561}
+{"event_id": "evt_31c555aa3031501f", "type": "transfer_between_customers", "payload": {"from_customer_id": "CUST-1006", "to_customer_id": "CUST-1005", "amount": "438.68"}, "offset": 562}
+{"event_id": "evt_191956454731d15e", "type": "fee_refund", "payload": {"customer_id": "CUST-1002", "refunds_source_id": "evt_cb99195c6ac0ab62"}, "offset": 563}
+{"event_id": "evt_391beca04df923d3", "type": "withdrawal_settled", "payload": {"withdrawal_id": "wdr_acb910c5733e"}, "offset": 564}
+{"event_id": "evt_92e9b1b847742c36", "type": "order_placed", "payload": {"order_id": "ord_92e9b1b84774", "customer_id": "CUST-1007", "side": "sell", "symbol": "ACME", "quantity": "5.6", "limit_price": "96.68", "asset_class": "equity", "est_charges": "2.00"}, "offset": 565}
+{"event_id": "evt_22015c8a6fae79bc", "type": "order_filled", "payload": {"order_id": "ord_000000000000", "customer_id": "CUST-1011", "side": "sell", "symbol": "ZZZZ", "quantity": "999999", "price": "1.00", "principal": "999999.00", "asset_class": "equity", "broker": "BRK-A", "partner_rate": "0.20"}, "offset": 566}
+{"event_id": "evt_22015c8a6fae79bc", "type": "order_filled", "payload": {"order_id": "ord_000000000000", "customer_id": "CUST-1011", "side": "sell", "symbol": "ZZZZ", "quantity": "999999", "price": "1.00", "principal": "999999.00", "asset_class": "equity", "broker": "BRK-A", "partner_rate": "0.20"}, "offset": 567}
+{"event_id": "evt_c8a193b36715d1e5", "type": "interest_credited", "payload": {"customer_id": "CUST-1005", "gross_amount": "195.62", "customer_share": "134.98"}, "offset": 568}
+{"event_id": "evt_f547bba2b725bdd3", "type": "fee_refund", "payload": {"customer_id": "CUST-1003", "refunds_source_id": "evt_c92bd3c91014ece8"}, "offset": 569}
+{"event_id": "evt_fb93bdea9690d84b", "type": "reversal", "payload": {"reverses_event_id": "evt_6542a85bdf2fa005", "reason": "operational correction"}, "offset": 570}
+{"event_id": "evt_f888477d3486fa94", "type": "order_filled", "payload": {"order_id": "ord_3ba49d996a30", "customer_id": "CUST-1011", "side": "buy", "symbol": "HELI", "quantity": "17", "price": "39.18", "principal": "666.06", "asset_class": "etf", "broker": "BRK-A", "partner_rate": "0.25", "trade_id": "evt_1abf1434e9e550f5"}, "offset": 571}
+{"event_id": "evt_09b7b970c2a74220", "type": "fee_refund", "payload": {"customer_id": "CUST-1008", "refunds_source_id": "evt_ab761d1308f4fd88"}, "offset": 572}
+{"event_id": "evt_9f6a6455cb2e25cb", "type": "interest_credited", "payload": {"customer_id": "CUST-1003", "gross_amount": "172.47", "customer_share": "108.66"}, "offset": 573}
+{"event_id": "evt_b30a12848c930059", "type": "order_filled", "payload": {"order_id": "ord_000000000000", "customer_id": "CUST-1009", "side": "sell", "symbol": "ZZZZ", "quantity": "999999", "price": "1.00", "principal": "999999.00", "asset_class": "equity", "broker": "BRK-A", "partner_rate": "0.20"}, "offset": 574}
+{"event_id": "evt_cdea7a0da5170d0f", "type": "fee_charged", "payload": {"customer_id": "CUST-1003", "amount": "15.39"}, "offset": 575}
+{"event_id": "evt_fb7863090c5be56d", "type": "stock_split", "payload": {"customer_id": "CUST-1009", "symbol": "LUMA", "ratio_from": 1, "ratio_to": 3}, "offset": 576}
+{"event_id": "evt_fb7863090c5be56d", "type": "stock_split", "payload": {"customer_id": "CUST-1009", "symbol": "LUMA", "ratio_from": 1, "ratio_to": 3}, "offset": 577}
+{"event_id": "evt_040041c2cd26bd96", "type": "withdrawal_settled", "payload": {"withdrawal_id": "wdr_1ebe0d6f10d4"}, "offset": 578}
+{"event_id": "evt_00a83ff3476be508", "type": "order_partially_filled", "payload": {"order_id": "ord_fb2db8524c12", "customer_id": "CUST-1006", "side": "buy", "symbol": "JUNO", "quantity": "10", "price": "398.75", "principal": "3987.50", "asset_class": "equity", "broker": "BRK-B", "partner_rate": "0.25", "trade_id": "evt_00a83ff3476be508"}, "offset": 579}
+{"event_id": "evt_a7e00060da57727f", "type": "reversal", "payload": {"reverses_event_id": "evt_1abf1434e9e550f5", "reason": "operational correction"}, "offset": 580}
+{"event_id": "evt_d07fe41bef5bbd74", "type": "interest_credited", "payload": {"customer_id": "CUST-1011", "gross_amount": "341.15", "customer_share": "173.99"}, "offset": 581}
+{"event_id": "evt_12fb8bfdb851b268", "type": "fee_refund", "payload": {"customer_id": "CUST-1011", "refunds_source_id": "evt_9dca4fa2211dcfba"}, "offset": 582}
+{"event_id": "evt_058beebbff69ae31", "type": "reversal", "payload": {"reverses_event_id": "evt_567bea16b9236763", "reason": "operational correction"}, "backdated_days": 1, "offset": 583}
+{"event_id": "evt_76084d27063c2f29", "type": "fee_charged", "payload": {"customer_id": "CUST-1007", "amount": "5.81"}, "offset": 584}
+{"event_id": "evt_a0c1735f747fdbfe", "type": "trade_settled", "payload": {"trade_id": "evt_030faf6ab087389e"}, "offset": 585}
+{"event_id": "evt_b2802567cd5ab037", "type": "fee_refund", "payload": {"customer_id": "CUST-1007", "refunds_source_id": "evt_76084d27063c2f29"}, "offset": 586}
+{"event_id": "evt_6ffd9e320e78f884", "type": "dividend_cash", "payload": {"customer_id": "CUST-1009", "symbol": "ACMEX", "gross_amount": "3.62", "withholding_tax": "0.91", "net_amount": "2.71"}, "backdated_days": 2, "offset": 587}
+{"event_id": "evt_0156415ec9c975d1", "type": "dividend_reinvested", "payload": {"customer_id": "CUST-1010", "symbol": "JUNO", "gross_amount": "1.25", "withholding_tax": "0.31", "net_amount": "0.94", "reinvest_price": "167.06", "reinvest_quantity": "0.005627"}, "offset": 588}
+{"event_id": "evt_aa9d2849d3d36a40", "type": "withdrawal_requested", "payload": {"withdrawal_id": "wdr_59eca883d3f3", "customer_id": "CUST-1006", "amount": "2434.45"}, "offset": 589}
+{"event_id": "evt_94f4c46a6179fef0", "type": "fee_charged", "payload": {"customer_id": "CUST-1007", "amount": "28.04"}, "offset": 590}
+{"event_id": "evt_561e97a1d4d8f1d1", "type": "deposit", "payload": {"customer_id": "CUST-1006", "amount": "14601.69"}, "offset": 591}
+{"event_id": "evt_d0735c9fbe889bc5", "type": "dividend_cash", "payload": {"customer_id": "CUST-1003", "symbol": "JUNO", "gross_amount": "32.53", "withholding_tax": "8.13", "net_amount": "24.40"}, "offset": 592}
+{"event_id": "evt_53195ebb50b27567", "type": "interest_credited", "payload": {"customer_id": "CUST-1003", "gross_amount": "74.69", "customer_share": "34.36"}, "offset": 593}
+{"event_id": "evt_14201ccab3878fcc", "type": "reversal", "payload": {"reverses_event_id": "evt_0de2c6f8a0633b3f", "reason": "operational correction"}, "offset": 594}
+{"event_id": "evt_ae4c5f2ffef5d4b9", "type": "dividend_cash", "payload": {"customer_id": "CUST-1004", "symbol": "DELT", "gross_amount": "45.58", "withholding_tax": "11.40", "net_amount": "34.18"}, "offset": 595}
+{"event_id": "evt_453a0c2da3b5c132", "type": "dividend_cash", "payload": {"customer_id": "CUST-1000", "symbol": "CRUX", "gross_amount": "36.28", "withholding_tax": "9.07", "net_amount": "27.21"}, "offset": 596}
+{"event_id": "evt_844321212368d1c1", "type": "reversal", "payload": {"reverses_event_id": "evt_0156415ec9c975d1", "reason": "operational correction"}, "offset": 597}
+{"event_id": "evt_30c2c03b2995e080", "type": "fx_deposit", "payload": {"customer_id": "CUST-1004", "currency": "GBP", "amount_foreign": "7657.35", "market_rate": "22.913", "customer_rate": "22.96", "usd_at_market_rate": "334.19", "usd_at_customer_rate": "333.51"}, "offset": 598}
+{"event_id": "evt_a424737e6cfe3290", "type": "deposit", "payload": {"customer_id": "CUST-1000", "amount": "12897.64"}, "offset": 599}
+{"event_id": "evt_d47b9a4e17666a91", "type": "order_partially_filled", "payload": {"order_id": "ord_171df4425aa2", "customer_id": "CUST-1004", "side": "buy", "symbol": "CRUXX", "quantity": "10", "price": "423.75", "principal": "4237.50", "asset_class": "etf", "broker": "BRK-A", "partner_rate": "0.35", "trade_id": "evt_80e84dc9ef4846ac"}, "offset": 600}
+{"event_id": "evt_c9ca5f2fdb8e3a1e", "type": "fee_charged", "payload": {"customer_id": "CUST-1000", "amount": "21.30"}, "offset": 601}
+{"event_id": "evt_1dba0da79b1f7e65", "type": "fee_charged", "payload": {"customer_id": "CUST-1004", "amount": "20.25"}, "offset": 602}
+{"event_id": "evt_a2bc9bb406a4ff73", "type": "reversal", "payload": {"reverses_event_id": "evt_c8e170dc38f903d3", "reason": "operational correction"}, "offset": 603}
+{"event_id": "evt_2118872b0d508459", "type": "fx_deposit", "payload": {"customer_id": "CUST-1007", "currency": "GBP", "amount_foreign": "3518.03", "market_rate": "62.6598", "customer_rate": "63.05", "usd_at_market_rate": "56.14", "usd_at_customer_rate": "55.80"}, "offset": 604}
+{"event_id": "evt_9a39b9783b2a10ca", "type": "reg_fees_remitted", "payload": {"customer_id": "CUST-1009"}, "offset": 605}
+{"event_id": "evt_c92c99897481b3b2", "type": "trade_settled", "payload": {"trade_id": "evt_80e84dc9ef4846ac"}, "offset": 606}
+{"event_id": "evt_f061db09a30a2a6d", "type": "interest_credited", "payload": {"customer_id": "CUST-1009", "gross_amount": "179.35", "customer_share": "129.13"}, "offset": 607}
+{"event_id": "evt_13f79a8cf443c590", "type": "dividend_cash", "payload": {"customer_id": "CUST-1000", "symbol": "CRUX", "gross_amount": "36.65", "withholding_tax": "9.16", "net_amount": "27.49"}, "offset": 608}
+{"event_id": "evt_46ea2565833ae217", "type": "dividend_cash", "payload": {"customer_id": "CUST-1010", "symbol": "IONX", "gross_amount": "0.23", "withholding_tax": "0.06", "net_amount": "0.17"}, "offset": 609}
+{"event_id": "evt_187aa219d21bec03", "type": "interest_credited", "payload": {"customer_id": "CUST-1008", "gross_amount": "309.83", "customer_share": "167.31"}, "offset": 610}
+{"event_id": "evt_f2260add35ab4215", "type": "interest_credited", "payload": {"customer_id": "CUST-1008", "gross_amount": "277.69", "customer_share": "147.18"}, "offset": 611}
+{"event_id": "evt_df65f4c671a6cdb0", "type": "fee_refund", "payload": {"customer_id": "CUST-1000", "refunds_source_id": "evt_c9ca5f2fdb8e3a1e"}, "offset": 612}
+{"event_id": "evt_998a4365ed883b44", "type": "transfer_between_customers", "payload": {"from_customer_id": "CUST-1005", "to_customer_id": "CUST-1000", "amount": "2904.43"}, "offset": 613}
+{"event_id": "evt_361bc611f7084101", "type": "order_partially_filled", "payload": {"order_id": "ord_e51f6c21243c", "customer_id": "CUST-1001", "side": "buy", "symbol": "LUMA", "quantity": "18", "price": "57.21", "principal": "1029.78", "asset_class": "etf", "broker": "BRK-A", "partner_rate": "0.35", "trade_id": "evt_dac5dcf236f87ba2"}, "offset": 614}
+{"event_id": "evt_c8ecfca533a44e3c", "type": "fx_deposit", "payload": {"customer_id": "CUST-1009", "currency": "AED", "amount_foreign": "3298.75", "market_rate": "52.3327", "customer_rate": "52.57", "usd_at_market_rate": "63.03", "usd_at_customer_rate": "62.75"}, "offset": 615}
+{"event_id": "evt_c097c787393e33f8", "type": "interest_credited", "payload": {"customer_id": "CUST-1003", "gross_amount": "370.31", "customer_share": "199.97"}, "offset": 616}
+{"event_id": "evt_5b96c59fe24bea89", "type": "order_placed", "payload": {"order_id": "ord_5b96c59fe24b", "customer_id": "CUST-1006", "side": "sell", "symbol": "JUNO", "quantity": "24.78", "limit_price": "356.47", "asset_class": "equity", "est_charges": "25.00"}, "offset": 617}
+{"event_id": "evt_89941d33461831ae", "type": "order_cancelled", "payload": {"order_id": "ord_f8a37e99121f"}, "offset": 618}
+{"event_id": "evt_24fc6de58a7d8931", "type": "stock_split", "payload": {"customer_id": "CUST-1011", "symbol": "HELI", "ratio_from": 2, "ratio_to": 3}, "offset": 619}
+{"event_id": "evt_dd89bee3b31a449b", "type": "fee_charged", "payload": {"customer_id": "CUST-1007", "amount": "4.61"}, "offset": 620}
+{"event_id": "evt_2356d0d18d28f880", "type": "deposit", "payload": {"customer_id": "CUST-1002", "amount": "17634.89"}, "offset": 621}
+{"event_id": "evt_cf26d210a2c40814", "type": "order_partially_filled", "payload": {"order_id": "ord_617f25eebaae", "customer_id": "CUST-1008", "side": "buy", "symbol": "ACME", "quantity": "10", "price": "363.75", "principal": "3637.50", "asset_class": "equity", "broker": "BRK-B", "partner_rate": "0.25", "trade_id": "evt_cf26d210a2c40814"}, "offset": 622}
+{"event_id": "evt_bf7ffca0ccfdaeb3", "type": "trade_settled", "payload": {"trade_id": "evt_6542a85bdf2fa005"}, "offset": 623}
+{"event_id": "evt_1f94627bc616de0b", "type": "dividend_reinvested", "payload": {"customer_id": "CUST-1002", "symbol": "DELT", "gross_amount": "5.43", "withholding_tax": "1.36", "net_amount": "4.07", "reinvest_price": "45.04", "reinvest_quantity": "0.090364"}, "offset": 624}
+{"event_id": "evt_683b81d560ce0ec1", "type": "withdrawal_requested", "payload": {"withdrawal_id": "wdr_c1ca313bd6d4", "customer_id": "CUST-1006", "amount": "2033.80"}, "offset": 625}
+{"event_id": "evt_f5460cdf4a99e591", "type": "interest_credited", "payload": {"customer_id": "CUST-1008", "gross_amount": "96.21", "customer_share": "64.46"}, "offset": 626}
+{"event_id": "evt_d8a883df06aff465", "type": "fee_charged", "payload": {"customer_id": "CUST-1008", "amount": "23.77"}, "offset": 627}
+{"event_id": "evt_2a5b88164d2de9da", "type": "transfer_between_customers", "payload": {"from_customer_id": "CUST-1008", "to_customer_id": "CUST-1011", "amount": "1741.01"}, "offset": 628}
+{"event_id": "evt_2a5b88164d2de9da", "type": "transfer_between_customers", "payload": {"from_customer_id": "CUST-1008", "to_customer_id": "CUST-1011", "amount": "1741.01"}, "offset": 629}
+{"event_id": "evt_9886e5e4363c805f", "type": "interest_credited", "payload": {"customer_id": "CUST-1005", "gross_amount": "117.59", "customer_share": "72.91"}, "offset": 630}
+{"event_id": "evt_2c4a76971fe15575", "type": "reversal", "payload": {"reverses_event_id": "evt_cdea7a0da5170d0f", "reason": "operational correction"}, "offset": 631}
+{"event_id": "evt_2c4a76971fe15575", "type": "reversal", "payload": {"reverses_event_id": "evt_cdea7a0da5170d0f", "reason": "operational correction"}, "offset": 632}
+{"event_id": "evt_6bb1d6db49a6a80d", "type": "deposit", "payload": {"customer_id": "CUST-1010", "amount": "8876.20"}, "offset": 633}
+{"event_id": "evt_f813ff7d7f17be22", "type": "fee_charged", "payload": {"customer_id": "CUST-1006", "amount": "1.65"}, "offset": 634}
+{"event_id": "evt_7eadff5eae9c3e2b", "type": "order_filled", "payload": {"order_id": "ord_fb2db8524c12", "customer_id": "CUST-1006", "side": "buy", "symbol": "JUNO", "quantity": "49", "price": "156.74", "principal": "7680.26", "asset_class": "equity", "broker": "BRK-B", "partner_rate": "0.25", "trade_id": "evt_7eadff5eae9c3e2b"}, "backdated_days": 3, "offset": 635}
+{"event_id": "evt_b5c7ca886aa01a3f", "type": "fee_charged", "payload": {"customer_id": "CUST-1000", "amount": "30.55"}, "offset": 636}
+{"event_id": "evt_0bac7061455fb6ee", "type": "deposit", "payload": {"customer_id": "CUST-1011", "amount": "1780.69"}, "offset": 637}
+{"event_id": "evt_0c7184fbcb633e04", "type": "withdrawal_settled", "payload": {"withdrawal_id": "wdr_c1ca313bd6d4"}, "offset": 638}
+{"event_id": "evt_41c1685c585406d2", "type": "withdrawal_rejected", "payload": {"withdrawal_id": "wdr_59eca883d3f3"}, "offset": 639}
+{"event_id": "evt_7e7c8580efcbd02a", "type": "deposit", "payload": {"customer_id": "CUST-1008", "amount": "9349.16"}, "offset": 640}
+{"event_id": "evt_9787d03f05b977db", "type": "withdrawal_requested", "payload": {"withdrawal_id": "wdr_e5d586ef6f17", "customer_id": "CUST-1000", "amount": "2151.34"}, "offset": 641}
+{"event_id": "evt_5905e83ba3a1f59a", "type": "symbol_change", "payload": {"customer_id": "CUST-1004", "old_symbol": "CRUXX", "new_symbol": "CRUXXX"}, "backdated_days": 3, "offset": 642}
+{"event_id": "evt_360ce962bb61a5d8", "type": "fx_deposit", "payload": {"customer_id": "CUST-1009", "currency": "GBP", "amount_foreign": "7854.99", "market_rate": "77.8926", "customer_rate": "78.48", "usd_at_market_rate": "100.84", "usd_at_customer_rate": "100.09"}, "offset": 643}
+{"event_id": "evt_48ee9f110c2015a5", "type": "interest_credited", "payload": {"customer_id": "CUST-1003", "gross_amount": "231.04", "customer_share": "180.21"}, "offset": 644}
+{"event_id": "evt_dc011fe8cd0fbbfe", "type": "fee_charged", "payload": {"customer_id": "CUST-1002", "amount": "14.88"}, "offset": 645}
+{"event_id": "evt_a7ebc675f813efec", "type": "interest_credited", "payload": {"customer_id": "CUST-1011", "gross_amount": "273.01", "customer_share": "128.31"}, "offset": 646}
+{"event_id": "evt_2b4085158f720b40", "type": "reversal", "payload": {"reverses_event_id": "evt_5365481d597c7686", "reason": "operational correction"}, "backdated_days": 2, "offset": 647}
+{"event_id": "evt_53e11a772c42f467", "type": "interest_credited", "payload": {"customer_id": "CUST-1010", "gross_amount": "44.43", "customer_share": "29.77"}, "offset": 648}
+{"event_id": "evt_f0083f90f15618ff", "type": "fx_deposit", "payload": {"customer_id": "CUST-1006", "currency": "AED", "amount_foreign": "8850.40", "market_rate": "31.7064", "customer_rate": "31.78", "usd_at_market_rate": "279.14", "usd_at_customer_rate": "278.49"}, "offset": 649}
+{"event_id": "evt_c349d248fa892592", "type": "order_filled", "payload": {"order_id": "ord_000000000000", "customer_id": "CUST-1001", "side": "sell", "symbol": "ZZZZ", "quantity": "999999", "price": "1.00", "principal": "999999.00", "asset_class": "equity", "broker": "BRK-A", "partner_rate": "0.20"}, "backdated_days": 4, "offset": 650}
+{"event_id": "evt_b7e9dbb23354373e", "type": "trade_settled", "payload": {"trade_id": "evt_00a83ff3476be508"}, "offset": 651}
+{"event_id": "evt_3e447fd52aee1904", "type": "deposit", "payload": {"customer_id": "CUST-1002", "amount": "18051.01"}, "offset": 652}
+{"event_id": "evt_043ce54b2592c6e9", "type": "symbol_change", "payload": {"customer_id": "CUST-1001", "old_symbol": "LUMAXX", "new_symbol": "LUMAXXX"}, "offset": 653}
+{"event_id": "evt_f0cd132a63bdc24a", "type": "broker_fees_settled", "payload": {"customer_id": "CUST-1001", "broker": "BRK-A"}, "offset": 654}
+{"event_id": "evt_c6362b277b372d31", "type": "stock_split", "payload": {"customer_id": "CUST-1000", "symbol": "ACME", "ratio_from": 1, "ratio_to": 3}, "offset": 655}
+{"event_id": "evt_4fbb17a9d05ee42d", "type": "interest_credited", "payload": {"customer_id": "CUST-1006", "gross_amount": "66.75", "customer_share": "46.06"}, "offset": 656}
+{"event_id": "evt_d5580dd2e70dd93c", "type": "reversal", "payload": {"reverses_event_id": "evt_cf26d210a2c40814", "reason": "operational correction"}, "offset": 657}
+{"event_id": "evt_9ec233b96ceb69b5", "type": "deposit", "payload": {"customer_id": "CUST-1009", "amount": "17894.62"}, "offset": 658}
+{"event_id": "evt_2b548a5750eb3b4a", "type": "reversal", "payload": {"reverses_event_id": "evt_00a83ff3476be508", "reason": "operational correction"}, "offset": 659}
+{"event_id": "evt_889da72d2b6aad71", "type": "reversal", "payload": {"reverses_event_id": "evt_1f94627bc616de0b", "reason": "operational correction"}, "offset": 660}
+{"event_id": "evt_17dcfd7986e16643", "type": "reg_fees_remitted", "payload": {"customer_id": "CUST-1011"}, "offset": 661}
+{"event_id": "evt_5b9620ec56439b56", "type": "deposit", "payload": {"customer_id": "CUST-1010", "amount": "18980.98"}, "offset": 662}
+{"event_id": "evt_2bc992c6c252cf2e", "type": "fx_deposit", "payload": {"customer_id": "CUST-1008", "currency": "GBP", "amount_foreign": "8951.04", "market_rate": "48.1358", "customer_rate": "48.54", "usd_at_market_rate": "185.95", "usd_at_customer_rate": "184.41"}, "offset": 663}
+{"event_id": "evt_abe2b40e833197e8", "type": "deposit", "payload": {"customer_id": "CUST-1001", "amount": "7766.86"}, "offset": 664}
+{"event_id": "evt_59068da0d614c8a8", "type": "custodian_fees_settled", "payload": {"customer_id": "CUST-1011"}, "offset": 665}
+{"event_id": "evt_978746cee8d6b115", "type": "custodian_fees_settled", "payload": {"customer_id": "CUST-1007"}, "offset": 666}
+{"event_id": "evt_465d90c667b54f6b", "type": "stock_split", "payload": {"customer_id": "CUST-1004", "symbol": "CRUXXX", "ratio_from": 2, "ratio_to": 3}, "offset": 667}
+{"event_id": "evt_d03f7f26999d0e39", "type": "fx_deposit", "payload": {"customer_id": "CUST-1002", "currency": "INR", "amount_foreign": "3274.17", "market_rate": "16.2735", "customer_rate": "16.30", "usd_at_market_rate": "201.20", "usd_at_customer_rate": "200.87"}, "offset": 668}
+{"event_id": "evt_cd308f3b96c1858b", "type": "stock_split", "payload": {"customer_id": "CUST-1004", "symbol": "DELT", "ratio_from": 1, "ratio_to": 3}, "offset": 669}
+{"event_id": "evt_8abadbf95f0c29e2", "type": "transfer_between_customers", "payload": {"from_customer_id": "CUST-1004", "to_customer_id": "CUST-1000", "amount": "1971.83"}, "offset": 670}
+{"event_id": "evt_030aae4764a949f0", "type": "transfer_between_customers", "payload": {"from_customer_id": "CUST-1004", "to_customer_id": "CUST-1006", "amount": "2568.25"}, "offset": 671}
+{"event_id": "evt_bba452b7ba0382c3", "type": "trade_settled", "payload": {"trade_id": "evt_cf26d210a2c40814"}, "backdated_days": 2, "offset": 672}
+{"event_id": "evt_1254f52632a67880", "type": "trade_settled", "payload": {"trade_id": "evt_7eadff5eae9c3e2b"}, "offset": 673}
+{"event_id": "evt_7eb2e7db3f8dd1e3", "type": "reversal", "payload": {"reverses_event_id": "evt_7eadff5eae9c3e2b", "reason": "operational correction"}, "offset": 674}
+{"event_id": "evt_b4f461c648f359ad", "type": "fee_charged", "payload": {"customer_id": "CUST-1007", "amount": "2.32"}, "offset": 675}
+{"event_id": "cp_cp2", "type": "checkpoint_request", "payload": {"checkpoint_id": "cp2", "respond_within_seconds": 60}, "offset": 676}
+{"event_id": "evt_bea2eb62d91968de", "type": "fee_charged", "payload": {"customer_id": "CUST-1002", "amount": "26.56"}, "offset": 677}
+{"event_id": "evt_55f6330df29e7030", "type": "fx_deposit", "payload": {"customer_id": "CUST-1007", "currency": "GBP", "amount_foreign": "8492.51", "market_rate": "8.427", "customer_rate": "8.49", "usd_at_market_rate": "1007.77", "usd_at_customer_rate": "1000.30"}, "offset": 678}
+{"event_id": "evt_420ba3f687d9390f", "type": "order_partially_filled", "payload": {"order_id": "ord_893bca02fa8b", "customer_id": "CUST-1010", "side": "sell", "symbol": "JUNO", "quantity": "2", "price": "152.61", "principal": "305.22", "asset_class": "equity", "broker": "BRK-B", "partner_rate": "0.25", "trade_id": "evt_420ba3f687d9390f"}, "offset": 679}
+{"event_id": "evt_ba781aca34ce214d", "type": "stock_split", "payload": {"customer_id": "CUST-1004", "symbol": "DELT", "ratio_from": 1, "ratio_to": 3}, "offset": 680}
+{"event_id": "evt_34682251f0d4e6ab", "type": "withdrawal_settled", "payload": {"withdrawal_id": "wdr_e5d586ef6f17"}, "offset": 681}
+{"event_id": "evt_6b76fdcadff4b7d7", "type": "transfer_between_customers", "payload": {"from_customer_id": "CUST-1010", "to_customer_id": "CUST-1004", "amount": "3835.22"}, "offset": 682}
+{"event_id": "evt_61d71dd26d02a776", "type": "interest_credited", "payload": {"customer_id": "CUST-1006", "gross_amount": "319.79", "customer_share": "179.08"}, "offset": 683}
+{"event_id": "evt_75aa75c7b2fbf70b", "type": "withdrawal_requested", "payload": {"withdrawal_id": "wdr_557f017ad616", "customer_id": "CUST-1007", "amount": "2733.57"}, "offset": 684}
+{"event_id": "evt_5399b89a820e0b77", "type": "fee_charged", "payload": {"customer_id": "CUST-1004", "amount": "22.84"}, "offset": 685}
+{"event_id": "evt_1ec5d473451fd128", "type": "custodian_fees_settled", "payload": {"customer_id": "CUST-1003"}, "offset": 686}
+{"event_id": "evt_ec47aa6c6dfa478d", "type": "order_filled", "payload": {"order_id": "ord_171df4425aa2", "customer_id": "CUST-1004", "side": "buy", "symbol": "CRUXX", "quantity": "13.5", "price": "246.51", "principal": "3327.89", "asset_class": "etf", "broker": "BRK-A", "partner_rate": "0.35", "trade_id": "evt_ec47aa6c6dfa478d"}, "offset": 687}
+{"event_id": "evt_5d5abe3f6a90a243", "type": "fee_charged", "payload": {"customer_id": "CUST-1005", "amount": "20.49"}, "offset": 688}
+{"event_id": "evt_0817224616a78f66", "type": "deposit", "payload": {"customer_id": "CUST-1007", "amount": "18030.45"}, "offset": 689}
+{"event_id": "evt_fec9b70fdeac1509", "type": "transfer_between_customers", "payload": {"from_customer_id": "CUST-1003", "to_customer_id": "CUST-1011", "amount": "1879.98"}, "offset": 690}
+{"event_id": "evt_fd771184739d7e95", "type": "fx_deposit", "payload": {"customer_id": "CUST-1011", "currency": "AED", "amount_foreign": "5724.33", "market_rate": "44.1702", "customer_rate": "44.46", "usd_at_market_rate": "129.60", "usd_at_customer_rate": "128.75"}, "backdated_days": 2, "offset": 691}
+{"event_id": "evt_4a96319965ddef09", "type": "trade_settled", "payload": {"trade_id": "evt_420ba3f687d9390f"}, "offset": 692}
+{"event_id": "evt_de22135eb48a0abb", "type": "deposit", "payload": {"customer_id": "CUST-1010", "amount": "2655.49"}, "offset": 693}
+{"event_id": "evt_b7dc5b970a21ba51", "type": "fx_deposit", "payload": {"customer_id": "CUST-1009", "currency": "AED", "amount_foreign": "8797.69", "market_rate": "47.3548", "customer_rate": "47.60", "usd_at_market_rate": "185.78", "usd_at_customer_rate": "184.83"}, "offset": 694}
+{"event_id": "evt_810081fbda896e1f", "type": "order_partially_filled", "payload": {"order_id": "ord_35c284ab2927", "customer_id": "CUST-1007", "side": "buy", "symbol": "ACME", "quantity": "10", "price": "181.25", "principal": "1812.50", "asset_class": "equity", "broker": "BRK-B", "partner_rate": "0.30", "trade_id": "evt_810081fbda896e1f"}, "offset": 695}
+{"event_id": "evt_48eb48e2bba40d44", "type": "fee_charged", "payload": {"customer_id": "CUST-1000", "amount": "24.97"}, "offset": 696}
+{"event_id": "evt_c682e8a34c313dee", "type": "withdrawal_rejected", "payload": {"withdrawal_id": "wdr_557f017ad616"}, "offset": 697}
+{"event_id": "evt_82069ca120d7cca5", "type": "interest_credited", "payload": {"customer_id": "CUST-1006", "gross_amount": "346.06", "customer_share": "207.64"}, "offset": 698}
+{"event_id": "evt_fd5cc55216981197", "type": "fee_refund", "payload": {"customer_id": "CUST-1000", "refunds_source_id": "evt_48eb48e2bba40d44"}, "offset": 699}
+{"event_id": "evt_2cb23fb8841fa486", "type": "reversal", "payload": {"reverses_event_id": "evt_810081fbda896e1f", "reason": "operational correction"}, "offset": 700}
+{"event_id": "evt_2cb23fb8841fa486", "type": "reversal", "payload": {"reverses_event_id": "evt_810081fbda896e1f", "reason": "operational correction"}, "offset": 701}
+{"event_id": "evt_bd45f66d8c2fcae4", "type": "dividend_cash", "payload": {"customer_id": "CUST-1002", "symbol": "DELTXX", "gross_amount": "5.45", "withholding_tax": "1.36", "net_amount": "4.09"}, "offset": 702}
+{"event_id": "evt_40882590335eb521", "type": "trade_settled", "payload": {"trade_id": "evt_ec47aa6c6dfa478d"}, "offset": 703}
+{"event_id": "evt_c2e149fee21887b8", "type": "interest_credited", "payload": {"customer_id": "CUST-1002", "gross_amount": "288.44", "customer_share": "155.76"}, "offset": 704}
+{"event_id": "evt_811b5d28a7aae23c", "type": "withdrawal_requested", "payload": {"withdrawal_id": "wdr_3f7f2cb75626", "customer_id": "CUST-1010", "amount": "102.99"}, "offset": 705}
+{"event_id": "evt_d82b8f89f344b900", "type": "deposit", "payload": {"customer_id": "CUST-1004", "amount": "18495.45"}, "offset": 706}
+{"event_id": "evt_d82b8f89f344b900", "type": "deposit", "payload": {"customer_id": "CUST-1004", "amount": "18495.45"}, "offset": 707}
+{"event_id": "evt_cb6de7bf5d682b64", "type": "interest_credited", "payload": {"customer_id": "CUST-1004", "gross_amount": "397.81", "customer_share": "234.71"}, "offset": 708}
+{"event_id": "evt_de1716f629940290", "type": "fee_charged", "payload": {"customer_id": "CUST-1005", "amount": "27.75"}, "backdated_days": 3, "offset": 709}
+{"event_id": "evt_63f26b3ad21a0253", "type": "partner_payout", "payload": {"customer_id": "CUST-1001"}, "offset": 710}
+{"event_id": "evt_00971f06cc8b5463", "type": "dividend_cash", "payload": {"customer_id": "CUST-1010", "symbol": "JUNO", "gross_amount": "0.42", "withholding_tax": "0.11", "net_amount": "0.31"}, "offset": 711}
+{"event_id": "evt_79b04fc021ef99d4", "type": "symbol_change", "payload": {"customer_id": "CUST-1000", "old_symbol": "ACME", "new_symbol": "ACMEX"}, "offset": 712}
+{"event_id": "evt_25b37324a4ce2b29", "type": "trade_settled", "payload": {"trade_id": "evt_810081fbda896e1f"}, "offset": 713}
+{"event_id": "evt_36c170a6ea0044ef", "type": "order_placed", "payload": {"order_id": "ord_36c170a6ea00", "customer_id": "CUST-1005", "side": "buy", "symbol": "JUNOX", "quantity": "1", "limit_price": "58.28", "asset_class": "equity", "est_charges": "2.00"}, "backdated_days": 2, "offset": 714}
+{"event_id": "evt_bcd502f6b3abc6e8", "type": "order_partially_filled", "payload": {"order_id": "ord_35c284ab2927", "customer_id": "CUST-1007", "side": "buy", "symbol": "ACME", "quantity": "8", "price": "313.71", "principal": "2509.68", "asset_class": "equity", "broker": "BRK-B", "partner_rate": "0.30", "trade_id": "evt_bcd502f6b3abc6e8"}, "offset": 715}
+{"event_id": "evt_aa7684a49d916a00", "type": "deposit", "payload": {"customer_id": "CUST-1010", "amount": "11821.78"}, "offset": 716}
+{"event_id": "evt_75fc62af2e19a043", "type": "fee_charged", "payload": {"customer_id": "CUST-1011", "amount": "30.67"}, "offset": 717}
+{"event_id": "evt_fcbedc10250b53f8", "type": "withdrawal_requested", "payload": {"withdrawal_id": "wdr_a2608e8b8a5c", "customer_id": "CUST-1010", "amount": "2920.29"}, "offset": 718}
+{"event_id": "evt_c5d96dc931fabacf", "type": "symbol_change", "payload": {"customer_id": "CUST-1011", "old_symbol": "HELI", "new_symbol": "HELIX"}, "offset": 719}
+{"event_id": "evt_a58c167462c3f737", "type": "fee_refund", "payload": {"customer_id": "CUST-1005", "refunds_source_id": "evt_de1716f629940290"}, "offset": 720}
+{"event_id": "evt_3c72f1c1d5af9540", "type": "dividend_cash", "payload": {"customer_id": "CUST-1010", "symbol": "JUNO", "gross_amount": "0.47", "withholding_tax": "0.12", "net_amount": "0.35"}, "offset": 721}
+{"event_id": "evt_564d744bbc0ec7bf", "type": "withdrawal_requested", "payload": {"withdrawal_id": "wdr_548b3d880926", "customer_id": "CUST-1000", "amount": "2151.34"}, "offset": 722}
+{"event_id": "evt_a4e1bd4a3434afa7", "type": "interest_credited", "payload": {"customer_id": "CUST-1009", "gross_amount": "237.44", "customer_share": "163.83"}, "offset": 723}
+{"event_id": "evt_20453ba4b92ffaae", "type": "withdrawal_settled", "payload": {"withdrawal_id": "wdr_a2608e8b8a5c"}, "offset": 724}
+{"event_id": "evt_3399e6289caab8e3", "type": "withdrawal_requested", "payload": {"withdrawal_id": "wdr_e240fe122405", "customer_id": "CUST-1005", "amount": "2822.86"}, "offset": 725}
+{"event_id": "evt_8d130f85913b6611", "type": "interest_credited", "payload": {"customer_id": "CUST-1005", "gross_amount": "264.92", "customer_share": "156.30"}, "offset": 726}
+{"event_id": "evt_68db79d48e4e11d4", "type": "dividend_cash", "payload": {"customer_id": "CUST-1002", "symbol": "DELT", "gross_amount": "5.68", "withholding_tax": "1.42", "net_amount": "4.26"}, "offset": 727}
+{"event_id": "evt_097bcdd4118bf06b", "type": "deposit", "payload": {"customer_id": "CUST-1011", "amount": "10362.62"}, "offset": 728}
+{"event_id": "evt_80c0a0bf1f193612", "type": "broker_fees_settled", "payload": {"customer_id": "CUST-1003", "broker": "BRK-B"}, "offset": 729}
+{"event_id": "evt_12d6cb03a6a933fb", "type": "custodian_fees_settled", "payload": {"customer_id": "CUST-1004"}, "offset": 730}
+{"event_id": "evt_12d6cb03a6a933fb", "type": "custodian_fees_settled", "payload": {"customer_id": "CUST-1004"}, "offset": 731}
+{"event_id": "evt_06a67ec4bd1b1fc4", "type": "broker_fees_settled", "payload": {"customer_id": "CUST-1000", "broker": "BRK-B"}, "offset": 732}
+{"event_id": "evt_0dafd464d1e3bb04", "type": "fee_charged", "payload": {"customer_id": "CUST-1011", "amount": "38.32"}, "offset": 733}
+{"event_id": "evt_6a7ff2e2b0c09bb6", "type": "fee_charged", "payload": {"customer_id": "CUST-1009", "amount": "22.52"}, "offset": 734}
+{"event_id": "evt_d1198c5ccb5f50e5", "type": "fx_deposit", "payload": {"customer_id": "CUST-1003", "currency": "INR", "amount_foreign": "5648.20", "market_rate": "86.7234", "customer_rate": "87.01", "usd_at_market_rate": "65.13", "usd_at_customer_rate": "64.91"}, "offset": 735}
+{"event_id": "evt_6ab7ad4a261397fb", "type": "partner_payout", "payload": {"customer_id": "CUST-1008"}, "offset": 736}
+{"event_id": "evt_17d0298fb2fe5db7", "type": "dividend_reinvested", "payload": {"customer_id": "CUST-1009", "symbol": "LUMA", "gross_amount": "0.75", "withholding_tax": "0.19", "net_amount": "0.56", "reinvest_price": "106.03", "reinvest_quantity": "0.005282"}, "offset": 737}
+{"event_id": "evt_5ed2e15c48c9c5d6", "type": "order_placed", "payload": {"order_id": "ord_5ed2e15c48c9", "customer_id": "CUST-1002", "side": "sell", "symbol": "DELT", "quantity": "4.05182", "limit_price": "263.33", "asset_class": "bond", "est_charges": "4.00"}, "offset": 738}
+{"event_id": "evt_5ed2e15c48c9c5d6", "type": "order_placed", "payload": {"order_id": "ord_5ed2e15c48c9", "customer_id": "CUST-1002", "side": "sell", "symbol": "DELT", "quantity": "4.05182", "limit_price": "263.33", "asset_class": "bond", "est_charges": "4.00"}, "offset": 739}
+{"event_id": "evt_79eed561271b1c7a", "type": "fx_deposit", "payload": {"customer_id": "CUST-1000", "currency": "EUR", "amount_foreign": "8175.18", "market_rate": "80.41", "customer_rate": "80.97", "usd_at_market_rate": "101.67", "usd_at_customer_rate": "100.97"}, "offset": 740}
+{"event_id": "evt_2eb1518dc8daf465", "type": "fee_charged", "payload": {"customer_id": "CUST-1001", "amount": "not-a-number"}, "offset": 741}
+{"event_id": "evt_f8e374d1352b5829", "type": "trade_settled", "payload": {"trade_id": "evt_bcd502f6b3abc6e8"}, "offset": 742}
+{"event_id": "evt_57e37039f8a599f4", "type": "order_partially_filled", "payload": {"order_id": "ord_7aa374eab8ea", "customer_id": "CUST-1011", "side": "buy", "symbol": "HELI", "quantity": "24.5", "price": "33.07", "principal": "810.22", "asset_class": "etf", "broker": "BRK-A", "partner_rate": "0.35", "trade_id": "evt_57e37039f8a599f4"}, "offset": 743}
+{"event_id": "evt_c949217d369a5153", "type": "trade_settled", "payload": {"trade_id": "evt_57e37039f8a599f4"}, "offset": 744}
+{"event_id": "evt_da4a9d4132d6018e", "type": "order_filled", "payload": {"order_id": "ord_caaed509f231", "customer_id": "CUST-1010", "side": "sell", "symbol": "JUNO", "quantity": "8.375", "price": "136.56", "principal": "1143.69", "asset_class": "equity", "broker": "BRK-A", "partner_rate": "0.35", "trade_id": "evt_da4a9d4132d6018e"}, "offset": 745}
+{"event_id": "evt_75bbac0a9337e23a", "type": "trade_settled", "payload": {"trade_id": "evt_da4a9d4132d6018e"}, "offset": 746}
+{"event_id": "evt_2c1c4e2af9382b0a", "type": "withdrawal_settled", "payload": {"withdrawal_id": "wdr_e240fe122405"}, "offset": 747}
+{"event_id": "evt_8f707e9fd51ba898", "type": "order_placed", "payload": {"order_id": "ord_8f707e9fd51b", "customer_id": "CUST-1006", "side": "buy", "symbol": "JUNO", "quantity": "1", "limit_price": "58.44", "asset_class": "equity", "est_charges": "2.00"}, "offset": 748}
+{"event_id": "evt_ca038a344adb2aeb", "type": "order_filled", "payload": {"order_id": "ord_4721e329b591", "customer_id": "CUST-1001", "side": "buy", "symbol": "ACME", "quantity": "9", "price": "21.82", "principal": "196.38", "asset_class": "equity", "broker": "BRK-A", "partner_rate": "0.35", "trade_id": "evt_ca038a344adb2aeb"}, "offset": 749}
+{"event_id": "evt_756302f3ce8ede78", "type": "trade_settled", "payload": {"trade_id": "evt_ca038a344adb2aeb"}, "offset": 750}
+{"event_id": "evt_6fad9001be3f9abd", "type": "order_placed", "payload": {"order_id": "ord_6fad9001be3f", "customer_id": "CUST-1010", "side": "sell", "symbol": "IONX", "quantity": "1", "limit_price": "348.54", "asset_class": "bond", "est_charges": "2.00"}, "offset": 751}
+{"event_id": "evt_934c43413cdda840", "type": "order_cancelled", "payload": {"order_id": "ord_e061a3d9b3e0"}, "offset": 752}
+{"event_id": "evt_2463d7f86f77ac10", "type": "withdrawal_settled", "payload": {"withdrawal_id": "wdr_548b3d880926"}, "offset": 753}
+{"event_id": "evt_88e48015449e250f", "type": "order_placed", "payload": {"order_id": "ord_88e48015449e", "customer_id": "CUST-1002", "side": "sell", "symbol": "DELT", "quantity": "3.489067", "limit_price": "225.02", "asset_class": "bond", "est_charges": "3.00"}, "offset": 754}
+{"event_id": "evt_6892da977b58d20e", "type": "order_filled", "payload": {"order_id": "ord_36d56e808e81", "customer_id": "CUST-1010", "side": "sell", "symbol": "JUNO", "quantity": "4.175", "price": "398.79", "principal": "1664.95", "asset_class": "equity", "broker": "BRK-B", "partner_rate": "0.25", "trade_id": "evt_6892da977b58d20e"}, "offset": 755}
+{"event_id": "evt_b7e13b6c1bfe4ef0", "type": "order_placed", "payload": {"order_id": "ord_b7e13b6c1bfe", "customer_id": "CUST-1003", "side": "sell", "symbol": "JUNO", "quantity": "24.876773", "limit_price": "254.69", "asset_class": "equity", "est_charges": "18.00"}, "offset": 756}
+{"event_id": "evt_77ee8c9da725688c", "type": "withdrawal_settled", "payload": {"withdrawal_id": "wdr_3f7f2cb75626"}, "offset": 757}
+{"event_id": "evt_586ce040d4d161e0", "type": "trade_settled", "payload": {"trade_id": "evt_6892da977b58d20e"}, "offset": 758}
+{"event_id": "evt_5ee05b0450adeb5e", "type": "order_placed", "payload": {"order_id": "ord_5ee05b0450ad", "customer_id": "CUST-1010", "side": "sell", "symbol": "IONX", "quantity": "1", "limit_price": "337.02", "asset_class": "bond", "est_charges": "2.00"}, "offset": 759}
+{"event_id": "evt_5fd111bbfe6433df", "type": "order_placed", "payload": {"order_id": "ord_5fd111bbfe64", "customer_id": "CUST-1004", "side": "buy", "symbol": "CRUX", "quantity": "2", "limit_price": "32.03", "asset_class": "etf", "est_charges": "1.00"}, "offset": 760}
+{"event_id": "evt_e49f37d511d8fa3e", "type": "order_placed", "payload": {"order_id": "ord_e49f37d511d8", "customer_id": "CUST-1009", "side": "buy", "symbol": "LUMA", "quantity": "3", "limit_price": "139.76", "asset_class": "etf", "est_charges": "2.00"}, "offset": 761}
+{"event_id": "evt_960fea40972cace7", "type": "order_cancelled", "payload": {"order_id": "ord_36c170a6ea00"}, "offset": 762}
+{"event_id": "evt_4291f6f422db18da", "type": "withdrawal_requested", "payload": {"withdrawal_id": "wdr_d5e64f77efde", "customer_id": "CUST-1002", "amount": "376.16"}, "offset": 763}
+{"event_id": "evt_db49dd50a8e3d03f", "type": "order_placed", "payload": {"order_id": "ord_db49dd50a8e3", "customer_id": "CUST-1010", "side": "sell", "symbol": "IONX", "quantity": "1", "limit_price": "339.02", "asset_class": "bond", "est_charges": "2.00"}, "offset": 764}
+{"event_id": "evt_f956628ff60e88c7", "type": "withdrawal_requested", "payload": {"withdrawal_id": "wdr_a56cbbde3e08", "customer_id": "CUST-1004", "amount": "622.21"}, "offset": 765}
+{"event_id": "evt_e17625a757f86602", "type": "order_filled", "payload": {"order_id": "ord_7cae05364a13", "customer_id": "CUST-1001", "side": "sell", "symbol": "LUMAX", "quantity": "2.97", "price": "357.40", "principal": "1061.48", "asset_class": "etf", "broker": "BRK-A", "partner_rate": "0.20", "trade_id": "evt_e17625a757f86602"}, "offset": 766}
+{"event_id": "evt_899399af7fc85ab1", "type": "trade_settled", "payload": {"trade_id": "evt_e17625a757f86602"}, "offset": 767}
+{"event_id": "evt_ceab7242e32c2ead", "type": "withdrawal_requested", "payload": {"withdrawal_id": "wdr_ad902d35bdfb", "customer_id": "CUST-1006", "amount": "2669.56"}, "offset": 768}
+{"event_id": "evt_83fc05a04c3bab9c", "type": "order_filled", "payload": {"order_id": "ord_db49dd50a8e3", "customer_id": "CUST-1010", "side": "sell", "symbol": "IONX", "quantity": "1", "price": "333.46", "principal": "333.46", "asset_class": "bond", "broker": "BRK-C", "partner_rate": "0.25", "trade_id": "evt_83fc05a04c3bab9c"}, "offset": 769}
+{"event_id": "evt_222bd6e8198a0081", "type": "order_placed", "payload": {"order_id": "ord_222bd6e8198a", "customer_id": "CUST-1001", "side": "sell", "symbol": "LUMAXXX", "quantity": "13.23", "limit_price": "21.92", "asset_class": "etf", "est_charges": "2.00"}, "offset": 770}
+{"event_id": "evt_fec1a799b55e93c2", "type": "withdrawal_settled", "payload": {"withdrawal_id": "wdr_a56cbbde3e08"}, "offset": 771}
+{"event_id": "evt_4287d010e43ce0a1", "type": "withdrawal_requested", "payload": {"withdrawal_id": "wdr_f80b312ecf31", "customer_id": "CUST-1003", "amount": "2386.43"}, "offset": 772}
+{"event_id": "evt_ccd5e8e9d29fa2d5", "type": "trade_settled", "payload": {"trade_id": "evt_83fc05a04c3bab9c"}, "offset": 773}
+{"event_id": "evt_c908e55a0480a33f", "type": "withdrawal_rejected", "payload": {"withdrawal_id": "wdr_f80b312ecf31"}, "offset": 774}
+{"event_id": "evt_da874cd7d0e3e63b", "type": "withdrawal_requested", "payload": {"withdrawal_id": "wdr_ab9a65d0b296", "customer_id": "CUST-1009", "amount": "2445.40"}, "offset": 775}
+{"event_id": "evt_6a85985ab08d5e50", "type": "withdrawal_settled", "payload": {"withdrawal_id": "wdr_ad902d35bdfb"}, "offset": 776}
+{"event_id": "evt_9827e257a1d06af5", "type": "order_filled", "payload": {"order_id": "ord_5ed2e15c48c9", "customer_id": "CUST-1002", "side": "sell", "symbol": "DELT", "quantity": "4.05182", "price": "263.04", "principal": "1065.79", "asset_class": "bond", "broker": "BRK-C", "partner_rate": "0.20", "trade_id": "evt_9827e257a1d06af5"}, "offset": 777}
+{"event_id": "evt_67d73eb0b2a7b3b1", "type": "order_cancelled", "payload": {"order_id": "ord_b5b39c462e32"}, "offset": 778}
+{"event_id": "evt_cb327a08061c513e", "type": "order_placed", "payload": {"order_id": "ord_cb327a08061c", "customer_id": "CUST-1005", "side": "sell", "symbol": "JUNOX", "quantity": "2.8", "limit_price": "216.95", "asset_class": "equity", "est_charges": "2.00"}, "offset": 779}
+{"event_id": "evt_938d5f991f98d9b5", "type": "order_filled", "payload": {"order_id": "ord_763efbce8318", "customer_id": "CUST-1003", "side": "buy", "symbol": "JUNO", "quantity": "1", "price": "359.52", "principal": "359.52", "asset_class": "equity", "broker": "BRK-B", "partner_rate": "0.35", "trade_id": "evt_938d5f991f98d9b5"}, "offset": 780}
+{"event_id": "evt_666de84ad1c7c0bd", "type": "withdrawal_requested", "payload": {"withdrawal_id": "wdr_d5b53c6a0fbb", "customer_id": "CUST-1003", "amount": "1527.15"}, "offset": 781}
+{"event_id": "evt_e14e003e1ad43ea2", "type": "trade_settled", "payload": {"trade_id": "evt_9827e257a1d06af5"}, "offset": 782}
+{"event_id": "evt_d01cc8a62e54aab9", "type": "trade_settled", "payload": {"trade_id": "evt_938d5f991f98d9b5"}, "offset": 783}
+{"event_id": "evt_ebcf60e3f6995792", "type": "order_placed", "payload": {"order_id": "ord_ebcf60e3f699", "customer_id": "CUST-1009", "side": "sell", "symbol": "LUMA", "quantity": "5.486889", "limit_price": "307.56", "asset_class": "etf", "est_charges": "6.00"}, "offset": 784}
+{"event_id": "evt_3d298338e153bcfd", "type": "order_placed", "payload": {"order_id": "ord_3d298338e153", "customer_id": "CUST-1001", "side": "sell", "symbol": "ACME", "quantity": "4.77", "limit_price": "314.02", "asset_class": "equity", "est_charges": "5.00"}, "offset": 785}
+{"event_id": "evt_ab319cf195c75d51", "type": "order_partially_filled", "payload": {"order_id": "ord_b7e13b6c1bfe", "customer_id": "CUST-1003", "side": "sell", "symbol": "JUNO", "quantity": "12.438387", "price": "249.52", "principal": "3103.63", "asset_class": "equity", "broker": "BRK-B", "partner_rate": "0.35", "trade_id": "evt_ab319cf195c75d51"}, "offset": 786}
+{"event_id": "evt_d85f0eca4c4c9225", "type": "trade_settled", "payload": {"trade_id": "evt_ab319cf195c75d51"}, "offset": 787}
+{"event_id": "evt_2588dd55a21a6f2a", "type": "withdrawal_requested", "payload": {"withdrawal_id": "wdr_3fcc47a27ee1", "customer_id": "CUST-1000", "amount": "2788.94"}, "offset": 788}
+{"event_id": "evt_08f15a49cb7643fd", "type": "order_filled", "payload": {"order_id": "ord_cb327a08061c", "customer_id": "CUST-1005", "side": "sell", "symbol": "JUNOX", "quantity": "2.8", "price": "219.58", "principal": "614.82", "asset_class": "equity", "broker": "BRK-A", "partner_rate": "0.35", "trade_id": "evt_08f15a49cb7643fd"}, "offset": 789}
+{"event_id": "evt_2220406b5480377f", "type": "withdrawal_settled", "payload": {"withdrawal_id": "wdr_d5b53c6a0fbb"}, "offset": 790}
+{"event_id": "evt_0d26cb3f412b860b", "type": "withdrawal_settled", "payload": {"withdrawal_id": "wdr_ab9a65d0b296"}, "offset": 791}
+{"event_id": "evt_caff601e792e1a27", "type": "withdrawal_requested", "payload": {"withdrawal_id": "wdr_97d9c4ac1bd5", "customer_id": "CUST-1009", "amount": "2472.03"}, "offset": 792}
+{"event_id": "evt_d4427a43e79e3a1e", "type": "trade_settled", "payload": {"trade_id": "evt_08f15a49cb7643fd"}, "offset": 793}
+{"event_id": "evt_9d5bfb727c55cf65", "type": "order_filled", "payload": {"order_id": "ord_8f707e9fd51b", "customer_id": "CUST-1006", "side": "buy", "symbol": "JUNO", "quantity": "1", "price": "59.12", "principal": "59.12", "asset_class": "equity", "broker": "BRK-A", "partner_rate": "0.50", "trade_id": "evt_9d5bfb727c55cf65"}, "offset": 794}
+{"event_id": "evt_c2e3522d3fb75230", "type": "trade_settled", "payload": {"trade_id": "evt_9d5bfb727c55cf65"}, "offset": 795}
+{"event_id": "evt_8eaf6416fcf32f17", "type": "order_placed", "payload": {"order_id": "ord_8eaf6416fcf3", "customer_id": "CUST-1006", "side": "sell", "symbol": "JUNO", "quantity": "60.72", "limit_price": "382.42", "asset_class": "equity", "est_charges": "66.00"}, "offset": 796}
+{"event_id": "evt_027f8148df14d4b7", "type": "withdrawal_requested", "payload": {"withdrawal_id": "wdr_d8630249d3c9", "customer_id": "CUST-1008", "amount": "2867.07"}, "offset": 797}
+{"event_id": "evt_c8f314a6108d9b80", "type": "order_placed", "payload": {"order_id": "ord_c8f314a6108d", "customer_id": "CUST-1000", "side": "buy", "symbol": "FORT", "quantity": "15", "limit_price": "134.98", "asset_class": "equity", "est_charges": "6.00"}, "offset": 798}
+{"event_id": "evt_b1956db91dae1e92", "type": "order_filled", "payload": {"order_id": "ord_88e48015449e", "customer_id": "CUST-1002", "side": "sell", "symbol": "DELT", "quantity": "3.489067", "price": "219.46", "principal": "765.71", "asset_class": "bond", "broker": "BRK-C", "partner_rate": "0.25", "trade_id": "evt_b1956db91dae1e92"}, "offset": 799}
+{"event_id": "evt_8b3ba580ab0c192d", "type": "withdrawal_settled", "payload": {"withdrawal_id": "wdr_3fcc47a27ee1"}, "offset": 800}
+{"event_id": "evt_ae51bbed9919347e", "type": "withdrawal_requested", "payload": {"withdrawal_id": "wdr_a9764464cb7d", "customer_id": "CUST-1003", "amount": "2193.74"}, "offset": 801}
+{"event_id": "evt_f6c1e6333e7d5592", "type": "trade_settled", "payload": {"trade_id": "evt_b1956db91dae1e92"}, "offset": 802}
+{"event_id": "evt_d1d6b024fcec285d", "type": "withdrawal_requested", "payload": {"withdrawal_id": "wdr_e9e63676f965", "customer_id": "CUST-1006", "amount": "2339.85"}, "offset": 803}
+{"event_id": "evt_54bd38e26b12e0ef", "type": "withdrawal_settled", "payload": {"withdrawal_id": "wdr_a9764464cb7d"}, "offset": 804}
+{"event_id": "evt_cbb3e76c8cb6b144", "type": "order_rejected", "payload": {"order_id": "ord_35c284ab2927"}, "offset": 805}
+{"event_id": "cp_cp3", "type": "checkpoint_request", "payload": {"checkpoint_id": "cp3", "respond_within_seconds": 60}, "offset": 806}

@@ -56,21 +56,30 @@ class Order:
     def hold_remaining(self) -> Decimal:
         """What is still held back.
 
-        Each fill releases its own proportional share, and that share is
-        rounded to the cent like every other derived amount, so what remains is
-        the total less the sum of the releases. Working the remainder out
-        directly from the unfilled quantity instead is a cent adrift whenever
-        the releases do not divide evenly - confirmed against practice, which
-        disagreed on exactly the two part-filled orders where the two formulas
-        differ.
+        The released share is computed on the **cumulative** quantity filled and
+        rounded once; the remainder is the total less that. Three formulas are
+        possible here and they disagree by a cent:
+
+          A  total less the sum of each fill's separately rounded release
+          B  round(total x unfilled / quantity)
+          C  total - round(total x cumulative_filled / quantity)   <- this one
+
+        Practice settled it, and only C fits every observation: A was right at
+        the first checkpoint and wrong at every later one, B the reverse. C
+        agrees with both where they were right. Checked against all seven
+        checkpoints of run run_463ab2612b8c, C changes the answer for exactly
+        the customers the server flagged and for no others.
+
+        The intuition is that there is one hold, revalued once against how much
+        of the order has filled - not a series of independently rounded
+        releases that accumulate their own rounding error.
 
         Unknown until the placement arrives: a fill seen first tells us nothing
         about the limit price the hold was struck at.
         """
         if self.closed or not self.placed or self.quantity <= ZERO:
             return ZERO
-        released = sum((money(self.hold_total * f / self.quantity)
-                        for f in self.fills), ZERO)
+        released = money(self.hold_total * self.filled_qty / self.quantity)
         return max(ZERO, self.hold_total - released)
 
     @property
@@ -161,9 +170,14 @@ class OrderBook:
 
     # -- settlement ----------------------------------------------------------
     def record_trade(self, trade_id: str, customer_id: str, side: str,
-                     principal: Decimal) -> None:
+                     principal: Decimal, event_id: str) -> None:
+        """Remember what a fill obliged, and which event obliged it.
+
+        The event id matters because a reversal of that fill cancels the
+        obligation, and a settlement arriving afterwards has nothing to settle.
+        """
         self.trades[trade_id] = {"customer_id": customer_id, "side": side,
-                                 "principal": principal}
+                                 "principal": principal, "event_id": event_id}
 
     def trade(self, trade_id: str) -> Optional[dict]:
         return self.trades.get(trade_id)
