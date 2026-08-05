@@ -38,6 +38,16 @@ from book import Book
 # tail afterwards, so let stream_end end the run and keep a wide margin.
 RUN_SECONDS = {"practice": 2400, "submission": 5400, "final": 6600}
 
+# Never sleep longer than this on a throttle, however large the Retry-After.
+MAX_BACKOFF = 10.0
+
+# The first event can be 90 seconds out, so a read timeout has to clear that
+# comfortably. Without one httpx waits forever, and a silently stalled socket
+# would take the whole run down with it - we would sit reading a dead
+# connection while the server counted our latency. On timeout we reconnect
+# from the cursor, which costs nothing because the stream is resumable.
+STREAM_READ_TIMEOUT = 180.0
+
 
 class Recorder:
     """Writes the run to disk: the events in, the gradings back.
@@ -98,27 +108,58 @@ class ArenaClient:
         self._reset = False             # set by stream_reset, cleared on reconnect
         self.stats = {"events": 0, "posted": 0, "checkpoints": 0,
                       "reconnects": 0, "resets": 0, "errors": 0,
-                      "duplicates": 0, "graded_ok": 0, "graded_bad": 0}
+                      "duplicates": 0, "graded_ok": 0, "graded_bad": 0,
+                      "throttled": 0}
+        self.sent_at: dict[str, float] = {}   # event_id -> when we received it
+        self.timing: list[tuple] = []         # (request_s, queue_wait_s, batch)
         self.done = False
 
     # -- submitting ---------------------------------------------------------
     def flush(self, http: httpx.Client) -> None:
-        """Postings go up in batches; one request per event falls behind."""
+        """Postings go up in batches; one request per event falls behind.
+
+        Latency is measured by the server from when it sent an event to when
+        our posting for it arrives, so anything that parks this loop is paid
+        for in liveness. Two things could park it and both are now bounded:
+        a 429 with a large `Retry-After`, and a slow response. Every outcome
+        is timed and recorded, because a run that loses liveness without
+        leaving evidence cannot be debugged afterwards.
+        """
         if not self.pending:
             return
         body, self.pending = {"postings": self.pending[:500]}, self.pending[500:]
+        oldest = min((self.sent_at.get(p["event_id"], time.time())
+                      for p in body["postings"]), default=time.time())
+        started = time.time()
         try:
             r = http.post(f"{self.url}/v1/postings", params={"mode": self.mode},
                           json=body, timeout=30)
+            elapsed = time.time() - started
+            self.timing.append((elapsed, started - oldest, len(body["postings"])))
+
             if r.status_code == 429:
-                time.sleep(float(r.headers.get("Retry-After", 5)))
+                # Honour the server, but never disappear for minutes: the
+                # queue keeps growing while we sleep and every event in it is
+                # accruing latency.
+                wait = min(float(r.headers.get("Retry-After", 2) or 2), MAX_BACKOFF)
+                self.stats["throttled"] += 1
+                self.rec.write("diag", {"kind": "throttled", "retry_after":
+                                        r.headers.get("Retry-After"), "slept": wait,
+                                        "queued": len(body["postings"])})
                 self.pending = body["postings"] + self.pending
+                time.sleep(wait)
                 return
             r.raise_for_status()
             self.stats["posted"] += len(body["postings"])
+            if elapsed > 5:
+                self.rec.write("diag", {"kind": "slow_post", "seconds": round(elapsed, 1),
+                                        "batch": len(body["postings"])})
             self._record_grades(r)
-        except httpx.HTTPError:
+        except httpx.HTTPError as exc:
             self.stats["errors"] += 1
+            self.rec.write("diag", {"kind": "post_error", "error": repr(exc),
+                                    "seconds": round(time.time() - started, 1),
+                                    "batch": len(body["postings"])})
             self.pending = body["postings"] + self.pending
             time.sleep(1)
 
@@ -190,6 +231,7 @@ class ArenaClient:
         if already:
             self.stats["duplicates"] += 1
             return
+        self.sent_at[ev["event_id"]] = time.time()
         self.pending.append({"event_id": ev["event_id"], "legs": legs or []})
         self.stats["events"] += 1
 
@@ -202,7 +244,8 @@ class ArenaClient:
 
         last_flush = time.time()
         with http.stream("GET", f"{self.url}/v1/stream", params=params,
-                         timeout=httpx.Timeout(None, connect=20)) as r:
+                         timeout=httpx.Timeout(None, connect=20,
+                                               read=STREAM_READ_TIMEOUT)) as r:
             r.raise_for_status()
             self.started_run = True
             etype = data = None
@@ -288,8 +331,22 @@ class ArenaClient:
         return {"stats": self.stats, "me": me}
 
 
-def show(out: dict, book: Book) -> None:
+def show(out: dict, book: Book, client: "ArenaClient" = None) -> None:
     print("\nstats:", json.dumps(out["stats"]))
+
+    # Liveness is 10 points and the server measures it from its own send time,
+    # so our side of that latency is worth printing every run rather than
+    # reconstructing it after a bad one.
+    if client and client.timing:
+        waits = sorted(w for _req, w, _n in client.timing)
+        reqs = sorted(r for r, _w, _n in client.timing)
+        p95 = lambda xs: xs[min(len(xs) - 1, int(len(xs) * 0.95))]
+        print(f"\nour posting latency: queue wait p95 {p95(waits):.1f}s "
+              f"max {waits[-1]:.1f}s | request p95 {p95(reqs):.1f}s "
+              f"max {reqs[-1]:.1f}s | flushes {len(client.timing)}")
+        if waits[-1] > 30:
+            print("  WARNING: events sat in the queue for a long time - "
+                  "check diag.jsonl for throttled / slow_post / post_error")
 
     report = book.report()
     for bucket in ("unhandled", "rejected", "malformed", "errors", "detected"):
@@ -340,7 +397,7 @@ def main() -> int:
     c = ArenaClient(a.url, a.key, a.mode, record=not a.no_record)
     print(f"connecting to {a.url} as {a.mode} ...", flush=True)
     out = c.run(seconds)
-    show(out, c.book)
+    show(out, c.book, c)
     if c.rec.dir:
         print(f"\nrecorded to {c.rec.dir}")
     return 0

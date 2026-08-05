@@ -141,7 +141,19 @@ def _interest_share(ev, led) -> Optional[str]:
 
 
 def _fx_conversion(ev, led) -> Optional[str]:
-    """The stated USD figures should follow from the stated rates."""
+    """The stated USD figures should follow from the stated rates.
+
+    The rates are quoted **foreign per USD**, so the conversion divides. A
+    sample makes it unambiguous: 8607.10 EUR at a market rate of 82.8466 gives
+    103.89 USD, which is 8607.10 / 82.8466 and nothing like the product.
+
+    This is worth recording because the first version of this check multiplied,
+    and so fired on all 63 `fx_deposit` events of run run_463ab2612b8c while the
+    server marked every one of them correct. A detector that fires on
+    everything is not evidence of a defect in the feed; it is evidence of a
+    defect in the detector, which is exactly why nothing is armed on a count
+    alone.
+    """
     p = ev["payload"]
     try:
         foreign = dec(p["amount_foreign"])
@@ -151,11 +163,13 @@ def _fx_conversion(ev, led) -> Optional[str]:
         customer = dec(p["customer_rate"])
     except (KeyError, InvalidOperation, TypeError):
         return None
+    if market <= ZERO or customer <= ZERO:
+        return f"non-positive rate: market {market}, customer {customer}"
     problems = []
-    if money(foreign * market) != at_market:
-        problems.append(f"market {at_market} != {foreign} x {market}")
-    if money(foreign * customer) != at_customer:
-        problems.append(f"customer {at_customer} != {foreign} x {customer}")
+    if money(foreign / market) != at_market:
+        problems.append(f"market {at_market} != {foreign} / {market}")
+    if money(foreign / customer) != at_customer:
+        problems.append(f"customer {at_customer} != {foreign} / {customer}")
     return "; ".join(problems) or None
 
 

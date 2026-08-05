@@ -54,33 +54,52 @@ class Order:
 
     @property
     def hold_remaining(self) -> Decimal:
-        """What is still held back.
+        """What is still held back, released progressively.
 
-        The released share is computed on the **cumulative** quantity filled and
-        rounded once; the remainder is the total less that. Three formulas are
-        possible here and they disagree by a cent:
+        Each fill releases a share of **what is still held**, in proportion to
+        **what is still unfilled** - not a share of the original hold in
+        proportion to the original quantity. The hold is decremented as it
+        goes, and each decrement is rounded to the cent like every other
+        derived amount.
 
-          A  total less the sum of each fill's separately rounded release
+        Four formulas are possible and they disagree by a cent:
+
+          A  total - sum of each fill's release, each taken on the original base
           B  round(total x unfilled / quantity)
-          C  total - round(total x cumulative_filled / quantity)   <- this one
+          C  total - round(total x cumulative_filled / quantity)
+          D  decrement: hold -= round(hold x fill / unfilled), per fill  <- this
 
-        Practice settled it, and only C fits every observation: A was right at
-        the first checkpoint and wrong at every later one, B the reverse. C
-        agrees with both where they were right. Checked against all seven
-        checkpoints of run run_463ab2612b8c, C changes the answer for exactly
-        the customers the server flagged and for no others.
+        Only D survives. A and C were each submitted for a whole practice run
+        and each was wrong in ways the other was not - A right at the first
+        checkpoint and wrong later, C the reverse - which looked contradictory
+        until the progressive reading explained both. Checked against all 14
+        checkpoints of runs run_463ab2612b8c and run_ab1f4e2134d0, D changes
+        the answer for exactly the customers the server flagged in each, and
+        for nobody else.
 
-        The intuition is that there is one hold, revalued once against how much
-        of the order has filled - not a series of independently rounded
-        releases that accumulate their own rounding error.
+        Worked example (`ord_000cb7f816ec`, 22 shares, hold 1975.00):
+            fill 10 of 22 unfilled -> release round(1975.00 x 10/22) = 897.73,
+                                      hold 1077.27, 12 unfilled
+            fill  6 of 12 unfilled -> release round(1077.27 x  6/12) = 538.64,
+                                      hold  538.63
+        Taking both releases on the original 1975.00 gives 538.63 by a
+        different route and 1436.37 released; taking one release on the
+        cumulative 16 gives 538.64. Only the running hold gives both numbers
+        consistently across every order observed.
 
         Unknown until the placement arrives: a fill seen first tells us nothing
         about the limit price the hold was struck at.
         """
         if self.closed or not self.placed or self.quantity <= ZERO:
             return ZERO
-        released = money(self.hold_total * self.filled_qty / self.quantity)
-        return max(ZERO, self.hold_total - released)
+        hold = self.hold_total
+        unfilled = self.quantity
+        for filled in self.fills:
+            if unfilled <= ZERO:
+                break
+            hold -= money(hold * filled / unfilled)
+            unfilled -= filled
+        return max(ZERO, hold)
 
     @property
     def cash_hold(self) -> Decimal:

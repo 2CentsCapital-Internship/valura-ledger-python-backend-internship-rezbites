@@ -274,25 +274,39 @@ thing, and it is never posted - holds appear only in checkpoints.
   and the final fill, a cancellation or a rejection releases whatever remains,
   so **a closed order always returns its hold to exactly zero**. `tools/replay.py`
   asserts this over the whole run.
-- **The released share is computed on the cumulative quantity filled and
-  rounded once.** There are three plausible formulas and they disagree by a
-  cent:
+- **The hold is released progressively.** Each fill releases a share of *what
+  is still held*, in proportion to *what is still unfilled* - not a share of
+  the original hold in proportion to the original quantity. The hold is
+  decremented as it goes, each decrement rounded to the cent.
 
-  | | Formula |
-  | --- | --- |
-  | A | total less the sum of each fill's separately rounded release |
-  | B | `round(total x unfilled / quantity)` |
-  | **C** | **`total - round(total x cumulative_filled / quantity)`** |
+  This one took three attempts and is the most instructive mistake in the
+  project. Four formulas are possible and they disagree by a cent:
 
-  Only C fits the evidence. A was right at the first checkpoint of run
-  `run_463ab2612b8c` and wrong at every later one; B was the reverse; C agrees
-  with each where it was right. Switching to C changes the answer for exactly
-  the customers the server flagged, at exactly the checkpoints it flagged them,
-  and for nobody else - checked across all seven checkpoints.
+  | | Formula | Result |
+  | --- | --- | --- |
+  | A | total − Σ each fill's release, all on the original base | wrong |
+  | B | `round(total x unfilled / quantity)` | wrong |
+  | C | `total − round(total x cumulative_filled / quantity)` | wrong |
+  | **D** | **`hold -= round(hold x fill / unfilled)`, per fill** | **correct** |
 
-  The intuition is that there is one hold, revalued once against how much of
-  the order has filled, rather than a series of independently rounded releases
-  each carrying its own rounding error.
+  A and C were each submitted for a full practice run, and each was wrong in
+  places the other was right - A correct at the first checkpoint and wrong
+  later, C the reverse. That looked contradictory, and the contradiction was
+  the clue: no single-shot formula could satisfy both, so the release had to be
+  path-dependent. D is, and it reconciles every observation.
+
+  Worked example, order `ord_000cb7f816ec`, 22 shares, hold 1975.00:
+
+  ```
+  fill 10 of 22 unfilled -> release round(1975.00 x 10/22) = 897.73, hold 1077.27
+  fill  6 of 12 unfilled -> release round(1077.27 x  6/12) = 538.64, hold  538.63
+  ```
+
+  Verified across all 14 checkpoints of runs `run_463ab2612b8c` and
+  `run_ab1f4e2134d0`: D changes the answer for exactly the customers the server
+  flagged in each run, and for nobody else. Two independent datasets, and the
+  two runs had submitted two different formulas, so the evidence is not
+  circular.
 - **A reversal does not restore a hold.** A released hold stays released; a
   reversal undoes postings and the lot book, not the lifecycle. This is why
   nothing in `orders.py` has an undo.
@@ -376,11 +390,24 @@ events agree.
 Other detectors written but **not armed**: principal disagreeing with
 quantity x price, a broker executing an asset class it does not trade, a symbol
 changing asset class mid-run, a dividend whose net is not gross less tax, an
-interest share exceeding the interest earned, and a transfer to oneself. One,
-`fx_conversion`, fires on 50 of 50 `fx_deposit` events while the server marks
-every one of them correct - so the feed's USD figures simply are not the product
-of its quoted rates, and that detector is measuring something the feed never
-promised. It stays unarmed and is a candidate for deletion.
+interest share exceeding the interest earned, FX figures inconsistent with the
+quoted rates, and a transfer to oneself.
+
+`fx_conversion` is worth recording as a caught mistake. Its first version fired
+on every single `fx_deposit` - 63 of 63 in run `run_463ab2612b8c` - while the
+server marked every one of them correct. The detector was wrong, not the feed:
+FX rates here are quoted **foreign per USD**, so the conversion divides. 8607.10
+EUR at a market rate of 82.8466 is 103.89 USD, which is `8607.10 / 82.8466` and
+nothing like the product. Corrected, it now fires on nothing.
+
+A detector that fires on everything is evidence of a defect in the detector, not
+in the feed. That is precisely why nothing is armed on a count alone, and why
+`ARMED` requires a run in which the server agrees the flagged events are wrong.
+
+Note that the rejection rule for a negative spread does **not** depend on this
+convention: it compares `usd_at_customer_rate > usd_at_market_rate`, which is
+the question actually being asked - was the customer credited more than the
+market value - and is true whichever way the rate is quoted.
 
 The rejections the spec states outright are not detectors - they need ledger
 state, so they live with the handlers that have it: oversell, a negative FX
