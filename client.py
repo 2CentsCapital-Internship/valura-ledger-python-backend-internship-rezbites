@@ -93,10 +93,12 @@ class Recorder:
 
 class ArenaClient:
     def __init__(self, url: str, key: str, mode: str, batch: int = 100,
-                 flush_ms: int = 400, record: bool = True) -> None:
+                 flush_ms: int = 400, record: bool = True,
+                 resume: bool = False) -> None:
         self.url = url.rstrip("/")
         self.key = key
         self.mode = mode
+        self.resume = resume
         self.batch = batch
         self.flush_ms = flush_ms
         self.book = Book()
@@ -109,7 +111,8 @@ class ArenaClient:
         self.stats = {"events": 0, "posted": 0, "checkpoints": 0,
                       "reconnects": 0, "resets": 0, "errors": 0,
                       "duplicates": 0, "graded_ok": 0, "graded_bad": 0,
-                      "throttled": 0}
+                      "throttled": 0, "checkpoint_repeats": 0}
+        self.answered: set[str] = set()       # checkpoint_ids already accepted
         self.sent_at: dict[str, float] = {}   # event_id -> when we received it
         self.timing: list[tuple] = []         # (request_s, queue_wait_s, batch)
         self.done = False
@@ -196,6 +199,18 @@ class ArenaClient:
         """
         cp_id = payload.get("checkpoint_id")
         as_of = payload.get("as_of_event_id")
+
+        # A rewind re-delivers checkpoint requests we have already answered.
+        # Answering again is worse than not answering: a checkpoint describes
+        # the book as at *its* offset, and by now the book has moved past it,
+        # so the second reply would describe a later state than the one being
+        # asked about. Run run_f5a6640aed76 rewound twice and re-delivered five
+        # of them. Only a reply the server actually accepted counts as
+        # answered, so a failed send is still retried.
+        if cp_id in self.answered:
+            self.stats["checkpoint_repeats"] += 1
+            return
+
         try:
             snap = self.book.snapshot(as_of)
         except Exception as exc:                    # noqa: BLE001
@@ -207,6 +222,8 @@ class ArenaClient:
         try:
             r = http.post(f"{self.url}/v1/checkpoint", params={"mode": self.mode},
                           json={"checkpoint_id": cp_id, **snap}, timeout=30)
+            r.raise_for_status()
+            self.answered.add(cp_id)
             self.stats["checkpoints"] += 1
             try:
                 body = r.json()
@@ -237,9 +254,12 @@ class ArenaClient:
 
     def consume(self, http: httpx.Client, deadline: float) -> None:
         params = {"mode": self.mode, "from": self.cursor}
-        if self.mode != "practice" and not self.started_run:
+        if self.mode != "practice" and not self.started_run and not self.resume:
             # An attempt here is scarce: the server refuses to start one unless
             # asked explicitly, so a dropped connection can never spend it.
+            # `started_run` means we have already opened one on this process, so
+            # a reconnect resumes rather than spending another; `--resume`
+            # means the attempt was opened by an earlier process.
             params["new"] = "true"
 
         last_flush = time.time()
@@ -368,6 +388,18 @@ def show(out: dict, book: Book, client: "ArenaClient" = None) -> None:
         print("\nscore: withheld on this tier")
 
 
+def probe(url: str, key: str, mode: str) -> dict:
+    """What the server thinks the state of this tier is, before we touch it."""
+    try:
+        r = httpx.get(f"{url.rstrip('/')}/v1/me", params={"mode": mode},
+                      headers={"Authorization": f"Bearer {key}"}, timeout=20)
+        r.raise_for_status()
+        return r.json()
+    except (httpx.HTTPError, ValueError) as exc:
+        print(f"  could not read /v1/me ({exc!r}); proceeding blind")
+        return {}
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--url", default=os.environ.get(
@@ -380,21 +412,50 @@ def main() -> int:
     ap.add_argument("--no-record", action="store_true")
     ap.add_argument("--yes", action="store_true",
                     help="skip the confirmation on a graded tier")
+    ap.add_argument("--resume", action="store_true",
+                    help="rejoin the attempt already in flight instead of "
+                         "spending a new one (submission/final)")
     a = ap.parse_args()
 
     if not a.key:
         print("no API key: pass --key or set ARENA_KEY")
         return 2
 
-    if a.mode != "practice" and not a.yes:
-        print(f"\n  You are about to start a {a.mode.upper()} run.")
-        print("  Attempts are limited and this one will count.")
-        if input("  Type the mode name to continue: ").strip() != a.mode:
-            print("  Cancelled.")
+    if a.mode != "practice":
+        # Attempts here are scarce and irreversible, so look before leaping.
+        # A run left in flight - the process died, the laptop slept - must be
+        # rejoined with --resume, because connecting without it asks the server
+        # for a brand new attempt and silently spends one.
+        state = probe(a.url, a.key, a.mode)
+        used, allowed = state.get("attempts_used"), state.get("attempts_allowed")
+        print(f"\n  {a.mode.upper()}: {used} of {allowed} attempts used, "
+              f"current state {state.get('state')!r}")
+        if state.get("state") == "running" and not a.resume:
+            print("  An attempt is already in flight. Rejoin it with --resume,")
+            print("  or pass --yes as well if you really mean to spend another.")
+            if not a.yes:
+                return 1
+        if used is not None and allowed is not None and used >= allowed and not a.resume:
+            print("  No attempts left on this tier.")
             return 1
+        if not a.yes:
+            what = "REJOIN the running" if a.resume else f"start a NEW {a.mode}"
+            print(f"  You are about to {what} run.")
+            try:
+                typed = input(f"  Type {a.mode} to continue: ").strip()
+            except EOFError:
+                # No terminal to confirm at. Refusing is the only safe reading:
+                # spending a graded attempt must be a deliberate act.
+                print("\n  No input available; not starting. Pass --yes to "
+                      "run unattended.")
+                return 1
+            if typed != a.mode:
+                print("  Cancelled.")
+                return 1
 
     seconds = a.seconds or RUN_SECONDS[a.mode]
-    c = ArenaClient(a.url, a.key, a.mode, record=not a.no_record)
+    c = ArenaClient(a.url, a.key, a.mode, record=not a.no_record,
+                    resume=a.resume)
     print(f"connecting to {a.url} as {a.mode} ...", flush=True)
     out = c.run(seconds)
     show(out, c.book, c)
