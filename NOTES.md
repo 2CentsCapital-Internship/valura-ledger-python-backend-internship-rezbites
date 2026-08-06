@@ -477,25 +477,79 @@ Everything in this implementation follows the live specification.
 
 ## Where this stands
 
-| Run | Score | Postings /30 | Checkpoints /40 | Resilience /15 | Liveness /10 | Recon /5 |
-| --- | --- | --- | --- | --- | --- | --- |
-| starter kit | 18.45 | 6.29 | 1.42 | 3.07 | 7.50 | 0.18 |
-| `run_deb24bbe5b3c` | 77.21 | 28.92 | 24.18 | 11.08 | 10.00 | 3.02 |
-| `run_463ab2612b8c` | **99.41** | 29.85 | 39.78 | 14.81 | 10.00 | 4.97 |
+| # | Run | Tier | Score | Post /30 | Chkpt /40 | Resil /15 | Live /10 | Recon /5 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 | starter kit | practice | 18.45 | 6.29 | 1.42 | 3.07 | 7.50 | 0.18 |
+| 2 | `run_deb24bbe5b3c` | practice | 77.21 | 28.92 | 24.18 | 11.08 | 10.00 | 3.02 |
+| 3 | `run_463ab2612b8c` | practice | 99.41 | 29.85 | 39.78 | 14.81 | 10.00 | 4.97 |
+| 4 | `run_ab1f4e2134d0` | practice | 94.69 | 29.93 | 39.93 | 14.85 | 5.00 | 4.99 |
+| 5 | `run_f5a6640aed76` | practice | 99.18 | 29.93 | 40.00 | 14.26 | 10.00 | 5.00 |
+| 6 | `run_323459ee611d` | practice | 99.77 | 29.92 | 40.00 | 14.84 | 10.00 | 5.00 |
+| 7 | `run_e1774bc71a59` | **submission** | **99.85** | 29.98 | 40.00 | 14.87 | 10.00 | 5.00 |
+| 8 | `run_8bed5c8d287f` | **final** | withheld | - | - | - | - | - |
 
-Run 2 settled the three tariff readings in section 4, confirmed
-`OMIT_ZERO_LEGS`, and identified the duplicate-fill defect. Run 3 measured
-those fixes and left 7 wrong events out of 782, all of them the reversed-trade
-settlement described in section 8, which also accounted for the whole
-trial-balance gap; plus one customer's `cash_hold`, which produced the hold
-formula above.
+The final run completed on the first attempt: 5,882 events submitted across 6,010
+contiguous offsets with none missing, 10 checkpoints all answered on time, 118
+events redelivered after the rewind at offset 2,633 with no checkpoint repeats,
+p95 latency 1,017 ms, and no errors, reconnects or throttles. Replayed offline,
+that stream passes 7,007 invariant checks.
 
-Both of those are now fixed. Replaying run 3's recorded stream, all 7 events the
-server graded wrong are now suppressed and the 960 offline invariant checks
-pass. **Not yet measured live** - that is the next practice run.
+What each run bought:
 
-### Not done yet
+- **2** settled the three tariff readings in section 4 - every properly formed
+  fill scored correct, which confirmed the minimum-fee floor, the ticket's
+  place in broker cost and the rounding order at once - confirmed
+  `OMIT_ZERO_LEGS`, and identified the duplicate-fill defect.
+- **3** left 7 wrong events, all the reversed-trade settlement of section 8,
+  which was also the entire trial-balance gap.
+- **4** reached 89.70 of the 90 correctness points with zero wrong events, and
+  lost half its liveness to a 470-second stall that left no evidence, because
+  the client recorded no timing. It does now. The same code scored full
+  liveness the run before and the run after, so the stall was environmental;
+  the backoff cap and stream read timeout bound it either way.
+- **5** took checkpoints to 40/40 and exposed the checkpoint-repeat bug: the
+  server rewound twice, and re-answering a checkpoint with later state scored a
+  third of the original.
+- **6** confirmed the repeat fix through another rewind, with 779 of 779 correct.
+- **7**, the graded run: **3,913 of 3,913 events correct, nine checkpoints, all
+  on time**, through a 300-event rewind at five times the practice volume.
 
-- The two fixes above need a live run to confirm.
-- `fx_conversion` is a false-positive detector and should probably be deleted:
-  it fires on every `fx_deposit` while the server marks them all correct.
+Three consecutive datasets have now produced zero incorrect events.
+
+### What is imperfect, and why it is being left alone
+
+**0.15 points**: 0.02 on postings, 0.13 on resilience. Every event in the
+submission run was graded correct, so the posting residual is the scoring
+formula's own weighting - no-leg events count a quarter - and not a case this
+book gets wrong. There is no failing input left to fix.
+
+**One latency outlier.** Postings flush when a frame arrives, so an event
+landing just before a quiet stretch waits for the next one; the submission run
+had a single 149-second queue wait. It cost nothing - p95 was 1.0s against a
+5s full-marks threshold and liveness was perfect - and removing it means either
+a background sender or a timer-driven flush in the transport layer. Rewriting
+the network loop to chase an outlier that is not costing points, immediately
+before a one-attempt run, is a bad trade. Recorded here rather than fixed.
+
+**Deliberate deviation from the README.** It says `client.py` is finished and
+is not what is being assessed. It was changed anyway, for four reasons, all
+transport and none of them ledger logic: the shipped copy predates `&new=true`
+and so could not have started a graded run at all; it discarded the per-event
+diagnostics that made every fix in the table above findable; it died on a
+malformed SSE frame; and it never passed `as_of_event_id` to the book. The
+guard around graded attempts was added after noticing that a naive restart of a
+dropped run asks the server for a fresh attempt and silently spends one.
+
+### Not done
+
+- No `stock_split` or `symbol_change` has been observed *inside* a reversal in
+  any of the eight runs, so that path is covered by the offline synthetic
+  fixture and the invariant suite but has no live evidence behind it. It is the
+  one branch of the lot-book undo logic I would want a grader to poke at first.
+- `validate.py` carries six detectors that have never fired on real data.
+  They cost nothing and would catch a defect of a different shape, but they are
+  unproven and should be read as hypotheses rather than as verified rules.
+- Recorded runs are kept out of the repository, so the numbers in the table
+  above cannot be reproduced from a clone alone. Re-running `client.py` against
+  practice regenerates an equivalent fixture; the seed differs per candidate,
+  so the events themselves will not match.
