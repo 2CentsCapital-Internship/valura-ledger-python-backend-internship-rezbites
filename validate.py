@@ -48,10 +48,12 @@ NON_NEGATIVE = {
 }
 
 
+# The error for a message we cannot even read.
 class Malformed(Exception):
     """A payload that will not parse. Reject it and carry on."""
 
 
+# Is the message even readable, and are any amounts impossibly negative?
 def structural(ev: dict) -> None:
     """The parse gate. Anything that gets past this is at least readable."""
     if not isinstance(ev, dict):
@@ -77,6 +79,7 @@ def structural(ev: dict) -> None:
 # ---------------------------------------------------------------------------
 # Detectors. Each returns a reason when it fires, or None.
 # ---------------------------------------------------------------------------
+# Does price times quantity actually equal the total they stated?
 def _fill_principal(ev, led) -> Optional[str]:
     """principal should be quantity x price, to the cent."""
     p = ev["payload"]
@@ -90,6 +93,7 @@ def _fill_principal(ev, led) -> Optional[str]:
     return None
 
 
+# Is this broker even allowed to trade this kind of investment?
 def _fill_broker_asset(ev, led) -> Optional[str]:
     """A broker cannot execute an asset class it does not trade."""
     p = ev["payload"]
@@ -101,6 +105,7 @@ def _fill_broker_asset(ev, led) -> Optional[str]:
     return None
 
 
+# Did a company change category halfway through the run?
 def _symbol_class_conflict(ev, led) -> Optional[str]:
     """Every symbol belongs to one asset class for the whole run."""
     p = ev["payload"]
@@ -113,6 +118,7 @@ def _symbol_class_conflict(ev, led) -> Optional[str]:
     return None
 
 
+# Does the dividend's gross minus tax actually equal the net?
 def _dividend_net(ev, led) -> Optional[str]:
     """net should be gross less the tax withheld at source."""
     p = ev["payload"]
@@ -127,6 +133,7 @@ def _dividend_net(ev, led) -> Optional[str]:
     return None
 
 
+# Is the customer's share of the interest bigger than the total? Impossible.
 def _interest_share(ev, led) -> Optional[str]:
     """The customer's share cannot exceed the interest actually earned."""
     p = ev["payload"]
@@ -140,6 +147,7 @@ def _interest_share(ev, led) -> Optional[str]:
     return None
 
 
+# Do the currency amounts match the exchange rates given?
 def _fx_conversion(ev, led) -> Optional[str]:
     """The stated USD figures should follow from the stated rates.
 
@@ -173,6 +181,7 @@ def _fx_conversion(ev, led) -> Optional[str]:
     return "; ".join(problems) or None
 
 
+# THE HIDDEN BAD DATA: the same trade sent twice under a new message id.
 def _duplicate_fill(ev, led) -> Optional[str]:
     """A fill re-sent under a new event_id. **This is the systematic defect.**
 
@@ -204,6 +213,7 @@ def _duplicate_fill(ev, led) -> Optional[str]:
     return None
 
 
+# Did more shares arrive than were actually ordered?
 def _fill_exceeds_order(ev, led) -> Optional[str]:
     """Fills totalling more than the order. Counted, not armed.
 
@@ -224,6 +234,7 @@ def _fill_exceeds_order(ev, led) -> Optional[str]:
     return None
 
 
+# Is someone paying money to themselves?
 def _self_transfer(ev, led) -> Optional[str]:
     p = ev["payload"]
     if p.get("from_customer_id") and p["from_customer_id"] == p.get("to_customer_id"):
@@ -246,6 +257,7 @@ DETECTORS: dict[str, tuple[tuple[str, ...], Callable]] = {
 }
 
 
+# Run every check that applies to this event and report which ones fired.
 def inspect(ev: dict, led) -> list[tuple[str, str]]:
     """Run every detector that applies. Returns [(name, reason), ...]."""
     fired = []

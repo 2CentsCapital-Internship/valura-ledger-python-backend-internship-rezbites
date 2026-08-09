@@ -32,12 +32,14 @@ import validate
 from ledger import Ledger, Rejected
 
 
+# Send one event to the right handler, and catch every failure so we never stop.
 def _dispatch(state: Ledger, ev: dict, counters: Optional[dict] = None) -> list[dict]:
     """Apply one event to a ledger and return its legs.
 
     Deterministic in (ledger state, event), which is what makes replay produce
     exactly the state the live pass produced.
     """
+    # Add one to a tally so the end-of-run summary can show it.
     def count(bucket: str, key: str) -> None:
         if counters is not None:
             counters[bucket][key] += 1
@@ -75,7 +77,9 @@ def _dispatch(state: Ledger, ev: dict, counters: Optional[dict] = None) -> list[
         return []
 
 
+# The doorman: decides whether an event gets processed, and remembers the history.
 class Book:
+    # Start with an empty book and an empty list of events.
     def __init__(self) -> None:
         self.state = Ledger()
         self.log: list[dict] = []                 # first deliveries, in order
@@ -86,6 +90,7 @@ class Book:
         self.duplicates = 0
 
     # -- ingestion -----------------------------------------------------------
+    # The main entrance: is it readable, have we seen it before, then process it.
     def apply(self, ev: dict) -> list[dict]:
         """Post one event and return its legs. Safe to call with anything."""
         try:
@@ -110,10 +115,12 @@ class Book:
         self.legs[event_id] = legs
         return legs
 
+    # Have we already dealt with this event?
     def seen(self, event_id: str) -> bool:
         return event_id in self.legs
 
     # -- reporting -----------------------------------------------------------
+    # The report - either as things are now, or as they stood at an event in the past.
     def snapshot(self, as_of_event_id: Optional[str] = None) -> dict:
         """The state a checkpoint wants.
 
@@ -140,6 +147,7 @@ class Book:
             _dispatch(past, ev)
         return past.snapshot()
 
+    # Rebuild the whole book from scratch using the saved list of events.
     def replay_state(self, upto: Optional[int] = None) -> Ledger:
         """A fresh ledger folded from the log. Used by the offline harness to
         prove that incremental state and replayed state agree."""
@@ -148,6 +156,7 @@ class Book:
             _dispatch(past, ev)
         return past
 
+    # Summary of what we handled, refused, and could not read.
     def report(self) -> dict:
         """A run summary: what we handled, refused, and could not read."""
         return {

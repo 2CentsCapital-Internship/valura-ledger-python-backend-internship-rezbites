@@ -23,6 +23,7 @@ from money import D, ZERO, bps, dec, money
 REG_BPS = D("8")          # regulatory fee, charged to the customer on every fill
 
 
+# One broker's price list: their rates, minimum fee and flat per-trade fee.
 class Broker(NamedTuple):
     broker_id: str
     asset_classes: frozenset
@@ -48,6 +49,7 @@ ASSET_CLASSES = frozenset({"equity", "etf", "bond"})
 BROKER_PAYABLES = {b.payable_account for b in BROKERS.values()}
 
 
+# The six fee amounts worked out for one trade.
 class Charges(NamedTuple):
     """The six derived amounts for one fill."""
     brokerage: Decimal
@@ -58,20 +60,24 @@ class Charges(NamedTuple):
     partner_share: Decimal
     payable_account: str
 
+    # What the customer pays in total, on top of the share price.
     @property
     def customer_charges(self) -> Decimal:
         """What the customer pays on top of (buy) or out of (sell) principal."""
         return self.brokerage + self.custody + self.regulatory
 
+    # What we earned on this trade.
     @property
     def revenue(self) -> Decimal:
         return self.brokerage + self.custody
 
+    # What this trade cost us.
     @property
     def cost(self) -> Decimal:
         return self.broker_cost + self.custody_cost
 
 
+# What the customer would pay if we used this broker - used to compare brokers.
 def customer_charge(broker_id: str, notional) -> Decimal:
     """Brokerage + custody for this notional. The quantity the routing rule ranks.
 
@@ -86,6 +92,7 @@ def customer_charge(broker_id: str, notional) -> Decimal:
     return brokerage + custody
 
 
+# Pick the cheapest broker that handles this kind of investment.
 def route(asset_class: str, notional) -> Optional[str]:
     """The broker this order goes to.
 
@@ -101,6 +108,7 @@ def route(asset_class: str, notional) -> Optional[str]:
     return min(candidates, key=lambda bid: customer_charge(bid, notional))
 
 
+# Work out all six fees for one trade from the price list.
 def charges_for(broker_id: str, principal, partner_rate) -> Charges:
     """The full fee chain for one fill.
 
@@ -129,6 +137,7 @@ def charges_for(broker_id: str, principal, partner_rate) -> Charges:
                    broker_cost, custody_cost, partner_share, b.payable_account)
 
 
+# Does this broker deal in this kind of investment at all?
 def trades(broker_id: str, asset_class: str) -> bool:
     """Whether this broker deals in this asset class at all."""
     b = BROKERS.get(broker_id)

@@ -26,9 +26,11 @@ import tariff
 from money import ZERO, dec, money, qty
 
 
+# One order, and how much of it has been filled so far.
 class Order:
     """One order, however it first reached us."""
 
+    # Start an order with nothing known about it yet.
     def __init__(self, order_id: str) -> None:
         self.order_id = order_id
         self.customer_id: Optional[str] = None
@@ -47,11 +49,13 @@ class Order:
         self.fills: list[Decimal] = []      # quantities, in delivery order
         self.closed = False
 
+    # Is this order still waiting to be finished?
     @property
     def is_open(self) -> bool:
         """Open until a final fill, a cancellation or a rejection closes it."""
         return not self.closed
 
+    # How much money is still frozen for this order.
     @property
     def hold_remaining(self) -> Decimal:
         """What is still held back, released progressively.
@@ -101,18 +105,22 @@ class Order:
             unfilled -= filled
         return max(ZERO, hold)
 
+    # Frozen cash - only buy orders freeze cash, sells freeze shares instead.
     @property
     def cash_hold(self) -> Decimal:
         """Only a buy holds cash. A sell holds shares."""
         return self.hold_remaining if self.side == "buy" else ZERO
 
 
+# All the orders, plus the trades waiting to be paid for.
 class OrderBook:
+    # Start with no orders and no trades.
     def __init__(self) -> None:
         self.orders: dict[str, Order] = {}
         # trade_id -> what its fill obliged, for trade_settled to discharge
         self.trades: dict[str, dict] = {}
 
+    # Find an order, or create it if we have never seen it before.
     def get(self, order_id: str) -> Order:
         order = self.orders.get(order_id)
         if order is None:
@@ -120,6 +128,7 @@ class OrderBook:
         return order
 
     # -- lifecycle -----------------------------------------------------------
+    # A new order arrived: freeze the money and pick the cheapest broker.
     def place(self, p: dict) -> Order:
         """order_placed. No legs; this creates the hold and picks the route."""
         o = self.get(p["order_id"])
@@ -145,6 +154,7 @@ class OrderBook:
             o.route = tariff.route(o.asset_class, notional)
         return o
 
+    # Part or all of the order went through - unfreeze that share of the money.
     def fill(self, p: dict, final: bool) -> Order:
         """A partial or final fill. Releases hold in proportion to quantity."""
         o = self.get(p["order_id"])
@@ -162,6 +172,7 @@ class OrderBook:
             o.closed = True
         return o
 
+    # Cancelled or rejected - unfreeze everything that is left.
     def close(self, order_id: str) -> Order:
         """order_cancelled / order_rejected. Releases whatever remains."""
         o = self.get(order_id)
@@ -169,6 +180,7 @@ class OrderBook:
         return o
 
     # -- reporting -----------------------------------------------------------
+    # Total frozen money per person, for the report.
     def cash_holds(self) -> dict[str, Decimal]:
         """{customer: cash still held back by open buy orders}."""
         out: dict[str, Decimal] = {}
@@ -177,6 +189,7 @@ class OrderBook:
                 out[o.customer_id] = out.get(o.customer_id, ZERO) + o.cash_hold
         return out
 
+    # Which broker each still-waiting order would go to, for the report.
     def open_routes(self) -> dict[str, str]:
         """{order_id: broker} for every order we believe is still open.
 
@@ -188,6 +201,7 @@ class OrderBook:
                 if o.is_open and o.placed and o.route}
 
     # -- settlement ----------------------------------------------------------
+    # Remember a completed trade, because the money only moves two days later.
     def record_trade(self, trade_id: str, customer_id: str, side: str,
                      principal: Decimal, event_id: str) -> None:
         """Remember what a fill obliged, and which event obliged it.
@@ -198,5 +212,6 @@ class OrderBook:
         self.trades[trade_id] = {"customer_id": customer_id, "side": side,
                                  "principal": principal, "event_id": event_id}
 
+    # Look up a trade when its payment day arrives.
     def trade(self, trade_id: str) -> Optional[dict]:
         return self.trades.get(trade_id)

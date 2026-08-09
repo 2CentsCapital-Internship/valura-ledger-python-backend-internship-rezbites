@@ -49,6 +49,7 @@ MAX_BACKOFF = 10.0
 STREAM_READ_TIMEOUT = 180.0
 
 
+# Saves everything to disk so we can study a run afterwards.
 class Recorder:
     """Writes the run to disk: the events in, the gradings back.
 
@@ -56,6 +57,7 @@ class Recorder:
     there is a directory to name after it.
     """
 
+    # Get ready to record, but wait until we know the run's name.
     def __init__(self, root: str = "runs", enabled: bool = True) -> None:
         self.root = root
         self.enabled = enabled
@@ -63,6 +65,7 @@ class Recorder:
         self._buffer: list[tuple[str, dict]] = []
         self._files: dict[str, object] = {}
 
+    # We know the run's name now - make the folder and write out anything waiting.
     def bind(self, run_id: str) -> None:
         if not self.enabled or self.dir:
             return
@@ -72,6 +75,7 @@ class Recorder:
         for stream, record in buffered:
             self.write(stream, record)
 
+    # Save one line into one of the record files.
     def write(self, stream: str, record: dict) -> None:
         if not self.enabled:
             return
@@ -85,13 +89,16 @@ class Recorder:
         fh.write(json.dumps(record, default=str) + "\n")
         fh.flush()
 
+    # Close the record files at the end.
     def close(self) -> None:
         for fh in self._files.values():
             fh.close()
         self._files.clear()
 
 
+# Our program's phone line to their server.
 class ArenaClient:
+    # Set up the connection settings and an empty book.
     def __init__(self, url: str, key: str, mode: str, batch: int = 100,
                  flush_ms: int = 400, record: bool = True,
                  resume: bool = False) -> None:
@@ -118,6 +125,7 @@ class ArenaClient:
         self.done = False
 
     # -- submitting ---------------------------------------------------------
+    # Send our saved-up answers to their server in one batch.
     def flush(self, http: httpx.Client) -> None:
         """Postings go up in batches; one request per event falls behind.
 
@@ -166,6 +174,7 @@ class ArenaClient:
             self.pending = body["postings"] + self.pending
             time.sleep(1)
 
+    # Save their marking of the answers we just sent - this is how we find bugs.
     def _record_grades(self, response: httpx.Response) -> None:
         """Keep whatever the server says about what we just sent.
 
@@ -189,6 +198,7 @@ class ArenaClient:
             elif correct is False:
                 self.stats["graded_bad"] += 1
 
+    # Answer "what does your book say?" - take the snapshot first, then send it.
     def checkpoint(self, http: httpx.Client, payload: dict) -> None:
         """Snapshot first, send second.
 
@@ -235,6 +245,7 @@ class ArenaClient:
             self.stats["errors"] += 1
 
     # -- consuming ----------------------------------------------------------
+    # One event in: record it, process it, and queue our answer.
     def handle(self, ev: dict) -> None:
         """One ledger event in, one submission out.
 
@@ -252,6 +263,7 @@ class ArenaClient:
         self.pending.append({"event_id": ev["event_id"], "legs": legs or []})
         self.stats["events"] += 1
 
+    # Read the stream of messages and deal with each one as it arrives.
     def consume(self, http: httpx.Client, deadline: float) -> None:
         params = {"mode": self.mode, "from": self.cursor}
         if self.mode != "practice" and not self.started_run and not self.resume:
@@ -301,6 +313,7 @@ class ArenaClient:
                         last_flush = time.time()
                     etype = data = None
 
+    # Work out what kind of message arrived and act on it.
     def dispatch(self, http: httpx.Client, etype: str, ev: dict) -> None:
         if etype == "stream_open":
             self.run_id = ev.get("run_id") or self.run_id
@@ -327,6 +340,7 @@ class ArenaClient:
             else:
                 self.handle(ev)
 
+    # The main loop: keep reading, and reconnect if the connection drops.
     def run(self, max_seconds: float) -> dict:
         deadline = time.time() + max_seconds
         headers = {"Authorization": f"Bearer {self.key}"}
@@ -351,6 +365,7 @@ class ArenaClient:
         return {"stats": self.stats, "me": me}
 
 
+# Print the results at the end of a run.
 def show(out: dict, book: Book, client: "ArenaClient" = None) -> None:
     print("\nstats:", json.dumps(out["stats"]))
 
@@ -388,6 +403,7 @@ def show(out: dict, book: Book, client: "ArenaClient" = None) -> None:
         print("\nscore: withheld on this tier")
 
 
+# Check with the server before a graded run, so we never waste an attempt.
 def probe(url: str, key: str, mode: str) -> dict:
     """What the server thinks the state of this tier is, before we touch it."""
     try:
@@ -400,6 +416,7 @@ def probe(url: str, key: str, mode: str) -> dict:
         return {}
 
 
+# Read the command line options and start everything off.
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--url", default=os.environ.get(

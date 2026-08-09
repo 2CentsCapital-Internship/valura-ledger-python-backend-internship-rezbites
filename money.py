@@ -21,6 +21,7 @@ CENT = D("0.01")
 QTY_STEP = D("0.000001")      # share quantities carry up to 6 decimal places
 
 
+# Turn text like "10.50" into an exact number. Crashes on purpose if handed a float, because floats lose pennies.
 def dec(x) -> Decimal:
     """Decimal from a payload value, refusing floats.
 
@@ -35,20 +36,24 @@ def dec(x) -> Decimal:
     return D(str(x))
 
 
+# Round to 2 decimal places (pennies), always rounding half a penny UP.
 def money(x) -> Decimal:
     """To the cent, half away from zero. The only rounding in this codebase."""
     return dec(x).quantize(CENT, rounding=ROUND_HALF_UP)
 
 
+# Round a share count to 6 decimal places - you can own part of a share.
 def qty(x) -> Decimal:
     """Share quantity, to six places."""
     return dec(x).quantize(QTY_STEP, rounding=ROUND_HALF_UP)
 
 
+# Turn a number into text like "10.50" so we can send it.
 def money_str(x) -> str:
     return format(money(x), "f")
 
 
+# Turn a share count into plain text, never something like "8E+1".
 def qty_str(x) -> str:
     """Plain decimal string, never scientific notation.
 
@@ -58,6 +63,7 @@ def qty_str(x) -> str:
     return format(qty(x).normalize(), "f")
 
 
+# Work out a tiny percentage: "20 bps of 1000" is 2.00.
 def bps(principal: Decimal, points) -> Decimal:
     """`points` basis points of `principal`, rounded to the cent.
 

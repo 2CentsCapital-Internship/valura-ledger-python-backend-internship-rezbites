@@ -58,6 +58,7 @@ ACCOUNTS = {
 OMIT_ZERO_LEGS = True
 
 
+# The error meaning we are refusing this event on purpose.
 class Rejected(Exception):
     """An event refused on its own merits.
 
@@ -67,14 +68,17 @@ class Rejected(Exception):
     """
 
 
+# Build one single line of a bookkeeping entry.
 def leg(account: str, customer_id: str, debit=ZERO, credit=ZERO) -> dict:
     return {"account": account, "customer_id": customer_id,
             "debit": money_str(debit), "credit": money_str(credit)}
 
 
+# The accounts book: all the balances, and one function per type of event.
 class Ledger:
     """State. Rebuildable from the event log by replaying in delivery order."""
 
+    # Start an empty book with nothing in any account.
     def __init__(self) -> None:
         self.balances: dict[tuple[str, str], Decimal] = defaultdict(lambda: ZERO)
         self.touched: set[str] = set()          # every account ever posted to
@@ -97,6 +101,7 @@ class Ledger:
         self.symbol_class: dict[str, str] = {}   # a symbol keeps one asset class
 
     # -- posting -------------------------------------------------------------
+    # Check the two halves of the entry match, then write it into the accounts.
     def post(self, event_id: str, legs: list[dict]) -> list[dict]:
         """Apply legs to balances after checking the entry balances."""
         if OMIT_ZERO_LEGS:
@@ -118,17 +123,21 @@ class Ledger:
         self.legs_by_event[event_id] = legs
         return legs
 
+    # How much is sitting in one account for one person.
     def balance(self, customer_id: str, account: str) -> Decimal:
         """Debit-positive balance for one customer on one account."""
         return self.balances[(customer_id, account)]
 
+    # How much we still owe on something.
     def owed(self, customer_id: str, account: str) -> Decimal:
         """What is outstanding on a liability: the credit-positive balance."""
         return -self.balance(customer_id, account)
 
+    # Remember how to undo a change we just made to the shares notebook.
     def _record_lot_undo(self, event_id: str, record: dict) -> None:
         self.lot_undo_by_event.setdefault(event_id, []).append(record)
 
+    # Something failed - undo any change this event made to the shares notebook.
     def rollback(self, event_id: str) -> None:
         """Undo whatever a failed event did to the lot book.
 
@@ -143,6 +152,7 @@ class Ledger:
     # =======================================================================
     # Cash
     # =======================================================================
+    # Money came in: our cash goes up, and so does what we owe them.
     def on_deposit(self, p, ev):
         """Cash arrives at the broker and the firm owes the customer more.
 
@@ -154,6 +164,7 @@ class Ledger:
         return [leg("1100", cid, debit=amount),
                 leg("2010", cid, credit=amount)]
 
+    # We charged a fee: their balance goes down and the cash leaves.
     def on_fee_charged(self, p, ev):
         """The customer pays the firm's fee out of their wallet.
 
@@ -166,6 +177,7 @@ class Ledger:
         return [leg("2010", cid, debit=amount),
                 leg("1100", cid, credit=amount)]
 
+    # Give a fee back. The amount is not in the message - we look up the original.
     def on_fee_refund(self, p, ev):
         """Undoes an earlier fee in full. The amount is not in this payload."""
         source = p.get("refunds_source_id")
@@ -181,6 +193,7 @@ class Ledger:
         return [leg("1100", cid, debit=amount),
                 leg("2010", cid, credit=amount)]
 
+    # Money left their wallet but has not left the bank yet.
     def on_withdrawal_requested(self, p, ev):
         """The money has left the wallet but not the broker.
 
@@ -195,6 +208,7 @@ class Ledger:
         return [leg("2010", cid, debit=amount),
                 leg("2300", cid, credit=amount)]
 
+    # Find a withdrawal we were told about earlier and check it is in the right state.
     def _withdrawal(self, p, expect_state="requested"):
         wid = p.get("withdrawal_id")
         w = self.withdrawals.get(wid)
@@ -204,6 +218,7 @@ class Ledger:
             raise Rejected(f"withdrawal {wid} already {w['state']}")
         return wid, w
 
+    # The money has actually left the bank now.
     def on_withdrawal_settled(self, p, ev):
         """The cash actually leaves the broker, discharging the obligation."""
         wid, w = self._withdrawal(p)
@@ -211,6 +226,7 @@ class Ledger:
         return [leg("2300", w["cid"], debit=w["amount"]),
                 leg("1100", w["cid"], credit=w["amount"])]
 
+    # The withdrawal failed - the money goes back to their wallet.
     def on_withdrawal_rejected(self, p, ev):
         """The withdrawal fails. No cash ever moved; the money is wallet money
         again."""
@@ -219,6 +235,7 @@ class Ledger:
         return [leg("2300", w["cid"], debit=w["amount"]),
                 leg("2010", w["cid"], credit=w["amount"])]
 
+    # The bank paid interest: the customer gets a share and we keep the rest.
     def on_interest_credited(self, p, ev):
         """Interest on the omnibus balance, shared with the customer.
 
@@ -232,6 +249,7 @@ class Ledger:
                 leg("2010", cid, credit=share),
                 leg("4200", cid, credit=gross - share)]
 
+    # One customer pays another. No money enters or leaves the firm.
     def on_transfer_between_customers(self, p, ev):
         """One customer pays another. No external cash moves.
 
@@ -243,6 +261,7 @@ class Ledger:
         return [leg("2010", p["from_customer_id"], debit=amount),
                 leg("2010", p["to_customer_id"], credit=amount)]
 
+    # Foreign money came in. The customer gets a worse rate and the gap is our profit.
     def on_fx_deposit(self, p, ev):
         """Foreign cash converted on the way in.
 
@@ -263,6 +282,7 @@ class Ledger:
     # =======================================================================
     # Orders
     # =======================================================================
+    # An order was placed. Nothing is written down - we just freeze the money.
     def on_order_placed(self, p, ev):
         """No legs. A placement moves no money; it makes money unspendable."""
         if p.get("symbol") and p.get("asset_class"):
@@ -270,12 +290,15 @@ class Ledger:
         self.book.place(p)
         return []
 
+    # Part of an order went through.
     def on_order_partially_filled(self, p, ev):
         return self._fill(p, ev, final=False)
 
+    # The last part of an order went through, which closes it.
     def on_order_filled(self, p, ev):
         return self._fill(p, ev, final=True)
 
+    # A trade happened: work out all six fees, move the shares, and record the debt.
     def _fill(self, p, ev, final: bool):
         """A fill. The whole fee chain lands here, and cash does not move.
 
@@ -352,6 +375,7 @@ class Ledger:
         self.book.fill(p, final=final)
         return legs
 
+    # Payment day: the cash for a trade actually moves now.
     def on_trade_settled(self, p, ev):
         """Settlement day: the cash from that fill actually moves."""
         trade_id = p.get("trade_id")
@@ -385,17 +409,20 @@ class Ledger:
         return [leg("1100", cid, debit=principal),
                 leg("1150", cid, credit=principal)]
 
+    # Order cancelled. Nothing written down - just unfreeze the money.
     def on_order_cancelled(self, p, ev):
         """No legs. The remaining hold is released."""
         self.book.close(p["order_id"])
         return []
 
+    # Order rejected. Treated exactly like a cancellation.
     def on_order_rejected(self, p, ev):
         return self.on_order_cancelled(p, ev)
 
     # =======================================================================
     # Paying it all onward
     # =======================================================================
+    # Pay off whatever has built up in one account for one person.
     def _settle_payable(self, account: str, cid: str, what: str):
         """Discharge a payable in full for one customer, out of omnibus cash.
 
@@ -409,6 +436,7 @@ class Ledger:
         return [leg(account, cid, debit=amount),
                 leg("1100", cid, credit=amount)]
 
+    # Pay our broker what we owe them.
     def on_broker_fees_settled(self, p, ev):
         broker = p.get("broker")
         if broker not in tariff.BROKERS:
@@ -416,20 +444,24 @@ class Ledger:
         return self._settle_payable(tariff.BROKERS[broker].payable_account,
                                     p["customer_id"], "broker_fees_settled")
 
+    # Pay the custodian what we owe them.
     def on_custodian_fees_settled(self, p, ev):
         return self._settle_payable("2420", p["customer_id"],
                                     "custodian_fees_settled")
 
+    # Hand over the government fees we collected from customers.
     def on_reg_fees_remitted(self, p, ev):
         return self._settle_payable("2400", p["customer_id"],
                                     "reg_fees_remitted")
 
+    # Pay the introducing partner their share.
     def on_partner_payout(self, p, ev):
         return self._settle_payable("2430", p["customer_id"], "partner_payout")
 
     # =======================================================================
     # Corporate actions
     # =======================================================================
+    # A dividend arrived as cash. The tax was already taken off at source.
     def on_dividend_cash(self, p, ev):
         """Tax was withheld at source, so only the net ever reaches the firm
         and the firm owes the tax to nobody. Raise no payable."""
@@ -438,6 +470,7 @@ class Ledger:
         return [leg("1100", cid, debit=net),
                 leg("2010", cid, credit=net)]
 
+    # A dividend was used to buy more shares. No cash is involved at all.
     def on_dividend_reinvested(self, p, ev):
         """The broker reinvests the net directly: cash is never involved.
 
@@ -451,6 +484,7 @@ class Ledger:
         return [leg("1200", cid, debit=net),
                 leg("2100", cid, credit=net)]
 
+    # Shares split. Nothing written down - counts change, total cost does not.
     def on_stock_split(self, p, ev):
         """No legs. Quantity scales, each lot's total cost is unchanged, so
         cost per share moves and the position's cost basis does not."""
@@ -459,6 +493,7 @@ class Ledger:
         self._record_lot_undo(ev["event_id"], undo)
         return []
 
+    # The company renamed itself. Nothing written down - just re-file the shares.
     def on_symbol_change(self, p, ev):
         """No legs. Re-key the holding."""
         undo = self.lots.rekey(p["customer_id"], p["old_symbol"],
@@ -472,6 +507,7 @@ class Ledger:
     # =======================================================================
     # Corrections
     # =======================================================================
+    # Cancel an earlier event: write the exact opposite and undo its effect on the shares.
     def on_reversal(self, p, ev):
         """Post the exact inverse of the original's legs, and keep both.
 
@@ -508,6 +544,7 @@ class Ledger:
     # =======================================================================
     # Reporting
     # =======================================================================
+    # The full report: every account, everyone's cash, their shares, and pending orders.
     def snapshot(self) -> dict:
         """The whole state, in the shape a checkpoint wants."""
         trial: dict[str, Decimal] = defaultdict(lambda: ZERO)
